@@ -7,3 +7,15 @@ it('creates a load action', () => {
   expect(payload.length).toBe(3);
 });
 
+it('creates add action', () => {
+  const category = { name: 'budget4', budget: 6000 };
+
+  const { type, payload } = addCategory(category);
+  expect(type).toBe(CATEGORY_ADD);
+
+  const { name, budget, id, timestamp } = payload;
+  expect(name).toBe(category.name);
+  expect(budget).toBe(category.budget);
+  expect(id).toBeTruthy();
+  expect(timestamp).toBeTruthy();
+});
