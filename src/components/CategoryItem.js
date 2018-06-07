@@ -13,7 +13,7 @@ export default class CategoryItem extends Component {
     const { name, budget, onRemove } = this.props;
 
     return (
-      <tr key={name} className={styles['category-item']}>
+      <tr className={styles['category-item']}>
         <td>{name}</td>
         <td>${budget}</td>
         <td><button onClick={onRemove}>&times;</button></td>

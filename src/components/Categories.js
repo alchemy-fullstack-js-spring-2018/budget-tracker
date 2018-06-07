@@ -12,11 +12,10 @@ export default class Categories extends Component {
     const { categories, onRemove } = this.props;
 
     if(!categories) return null;
-
     return (
       <div>
         <ul>
-          <table key={name}>
+          <table>
             <thead>
               <tr>
                 <th>Category</th>
@@ -27,7 +26,7 @@ export default class Categories extends Component {
               {categories.map(category => {
                 return (
                   <CategoryItem 
-                    key={category.name}
+                    key={category.id}
                     onRemove={() => onRemove(category)}
                     {...category}/>
 
