@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import AddCategory from './AddCategory';
 
 const categories = [
   { name: 'groceries', budget: 300 },
-  { name: 'movies', budget: 25 },
+  { name: 'movies', budget: 20 },
   { name: 'gas', budget: 30 }
 ];
 
@@ -16,6 +17,13 @@ export default class App extends Component {
       .then(categories => this.setState({ categories }));
   }
 
+  handleAdd = ({ name, budget }) => {
+    this.setState(({ categories }) => {
+      categories.push({ name, budget: parseInt(budget) });
+      return { categories };
+    });
+  };
+
   render() {
     const { categories } = this.state;
 
@@ -24,6 +32,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Budget Tracker</h1>
+        <AddCategory onAdd={this.handleAdd}/>
         <ul>
           <table key={name}>
             <thead>
