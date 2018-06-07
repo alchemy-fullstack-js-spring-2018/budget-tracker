@@ -20,10 +20,10 @@ In this app a category should contain at least the following properties:
 #### reducer
 
 This reducer should support the following interactions 
+* `CATEGORIES_LOAD`
 * `CATEGORY_ADD`
-* `CATEGORY_UPDATE`
 * `CATEGORY_REMOVE`
-* STRETCH: `CATEGORIES_LOAD`
+* STRETCH: `CATEGORIES_UPDATE`
 
 #### action creators
 
@@ -41,10 +41,9 @@ Create the following components and structure them according to the following di
 Provider
   App
     Dashboard
-      CategoryForm -- for creating categorys
+      CategoryForm -- for creating categories
       Categories -- list of categories
         Category Item -- display of category
-          CategoryForm  -- for updating categorys
 ```
 
 #### Provider/App 
@@ -59,6 +58,7 @@ The Provider should wrap App component in `index.js`
 
 #### CategoryForm Component
 
+Only need to handle add today
 * should expect an `onComplete` prop to be a function
   * that function should be invoked with the CategoryForm state when the form is submited
 * should expect a `buttonText` prop to be configure the submit buttons text
@@ -68,7 +68,7 @@ The Provider should wrap App component in `index.js`
 * should display the category's name and budget
 * should display a delete button
   * `onClick` the category should be removed from the application state
-* should display a CategoryForm  
+* XXXXXshould display a CategoryFormXXXXXXX 
   * `onComplete` the form should update the component in the application state
 * STRETCH: Provide an edit button to toggle editing state
 
