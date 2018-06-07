@@ -2,10 +2,10 @@ import { GAMES_LOAD, GAME_ADD, GAME_REMOVE } from './reducers';
 import shortid from 'shortid';
 
 const games = [
-  {name: 'Armello', developer: 'League of Geeks', price: '19.99' },
-  {name: 'Guild Wars 2', developer: 'Arenanet', price: '29.99' },
-  {name: 'Battle Chef Brigade', developer: 'Trinket Studios', price: '19.99' },
-  {name: 'Dead In Vinland', developer: 'CCCP', price: '19.99' },
+  { name: 'Armello', developer: 'League of Geeks', price: '19.99' },
+  { name: 'Guild Wars 2', developer: 'Arenanet', price: '29.99' },
+  { name: 'Battle Chef Brigade', developer: 'Trinket Studios', price: '19.99' },
+  { name: 'Dead In Vinland', developer: 'CCCP', price: '19.99' },
 ];
 
 export const loadGames = () => ({
