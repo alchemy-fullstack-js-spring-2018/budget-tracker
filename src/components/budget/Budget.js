@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
+import LineItem from './LineItem';
 import { loadBudget, addLineItem } from './actions';
 
 class Budget extends Component {
@@ -21,7 +22,12 @@ class Budget extends Component {
     if(!budget) return null;
 
     return (
-      <BudgetForm onComplete={addLineItem}/>
+      <main>
+        <BudgetForm onComplete={addLineItem}/>
+        <ul>
+          <LineItem/>
+        </ul>
+      </main>
     );
   }
 }
