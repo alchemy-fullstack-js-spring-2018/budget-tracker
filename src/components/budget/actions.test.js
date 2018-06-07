@@ -48,3 +48,17 @@ it('creates an update action', () => {
     payload: rent
   });
 });
+
+it('creates a remove action', () => {
+  const rent = { 
+    date: new Date('12/04/2017'),
+    description: 'rent',
+    amount: -302.64
+  };
+
+  const action = removeLineItem(rent);
+  expect(action).toEqual({
+    type: BUDGET_REMOVE,
+    payload: rent
+  });
+});
