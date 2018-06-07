@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class AddCategory extends Component {
+export default class CategoryForm extends Component {
   static propTypes = {
     onAdd: PropTypes.func.isRequired
   };
