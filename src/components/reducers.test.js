@@ -43,4 +43,9 @@ describe('categories', () => {
     );
     expect(state).toEqual([{ id: 1, name: 'gas', budget: 40 }]);
   });
+
+  it('removes a category', () => {
+    const state = categories([groceries, gas], { type: CATEGORY_REMOVE, payload: gas });
+    expect(state).toEqual([groceries]);
+  });
 });
