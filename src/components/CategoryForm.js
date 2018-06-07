@@ -19,6 +19,7 @@ export default class CategoryForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    if(this.state.name === '' || this.state.budget === '') return;
     this.props.onAdd(this.state);
     this.setState(emptyState);
   };
