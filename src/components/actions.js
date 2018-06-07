@@ -19,6 +19,7 @@ export const loadCategories = () => ({
 export const addCategory = category => {
   category.id = shortid.generate();
   category.timestamp = new Date();
+  category.budget = parseInt(category.budget);
 
   return {
     type: CATEGORY_ADD,
@@ -26,10 +27,14 @@ export const addCategory = category => {
   };
 };
 
-export const updateCategory = category => ({
-  type: CATEGORY_UPDATE,
-  payload: category
-});
+export const updateCategory = category => {
+  category.budget = parseInt(category.budget);
+  
+  return {
+    type: CATEGORY_UPDATE,
+    payload: category
+  };
+};
 
 export const removeCategory = category => ({
   type: CATEGORY_REMOVE,
