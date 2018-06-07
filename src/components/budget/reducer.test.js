@@ -45,3 +45,8 @@ it('updates a lineItem', () => {
   const state = budget([{ id: 1, ...rent }], { type: BUDGET_UPDATE, payload: newRent });
   expect(state).toEqual([newRent]);
 });
+
+it('removes a lineItem', () => {
+  const state = budget([paycheck, rent], { type: BUDGET_REMOVE, payload: rent });
+  expect(state).toEqual([paycheck]);
+});
