@@ -26,3 +26,10 @@ it('loads a budget', () => {
   const state = budget([], { type: BUDGET_LOAD, payload: [paycheck, rent] });
   expect(state).toEqual([paycheck, rent]);
 });
+
+it('add a lineItem', () => {
+  const prevState = [];
+  const state = budget(prevState, { type: BUDGET_ADD, payload: paycheck });
+  expect(state).toEqual([paycheck]);
+  expect(state).not.toBe(prevState);
+});
