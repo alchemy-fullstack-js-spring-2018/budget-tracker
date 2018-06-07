@@ -10,4 +10,19 @@ describe('categories', () => {
     const state = categories(undefined, {});
     expect(state).toEqual([]);
   });
+
+  const groceries = {
+    name: 'groceries',
+    budget: '300'
+  };
+  
+  const gas = {
+    name: 'gas',
+    budget: '30'
+  };
+
+  it('loads categories', () => {
+    const state = categories([], { type: CATEGORIES_LOAD, payload: [groceries, gas] });
+    expect(state).toEqual([groceries, gas]);
+  });
 });
