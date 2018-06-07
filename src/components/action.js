@@ -1,4 +1,4 @@
-import { FRUIT_LOAD, FRUIT_ADD, FRUIT_REMOVE } from './reducer';
+import { CATEGORIES_LOAD, CATEGORIES_ADD, CATEGORIES_REMOVE } from './reducer';
 import shortid from 'shortid';
 
 const categories = [
@@ -7,6 +7,22 @@ const categories = [
   { name: 'Student Loan', budget: 95 }
 ];
 
-export const loadCategories = () => {
-    
-}
+export const loadCategories = () => ({
+  type: CATEGORIES_LOAD,
+  payload: categories
+});
+
+export const addCategories = categories => {
+  categories.id = shortid.generate();
+  categories.timestamp = new Date();
+
+  return {
+    type: CATEGORIES_ADD,
+    payload: categories
+  };
+};
+
+export const removeCategories = categories => ({
+  type: CATEGORIES_REMOVE,
+  payload: categories
+});
