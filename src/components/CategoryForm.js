@@ -14,7 +14,9 @@ export default class CategoryForm extends Component {
   state = emptyState;
 
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+    let value = target.value;
+    if(target.type === 'number') value = +value;
+    this.setState({ [target.name]: value });
   };
 
   handleSubmit = event => {
