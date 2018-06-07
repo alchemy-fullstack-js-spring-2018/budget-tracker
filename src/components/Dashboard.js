@@ -1,48 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Categories from './Categories';
 import CategoryForm from './CategoryForm';
+import { loadCategories, addCategory, removeCategory } from './actions';
 
-const categories = [
-  { name: 'groceries', budget: 300 },
-  { name: 'movies', budget: 20 },
-  { name: 'gas', budget: 30 }
-];
+class Dashboard extends Component {
+  static propTypes = {
+    categories: PropTypes.array,
+    addCategory: PropTypes.func.isRequired,
+    removeCategory: PropTypes.func.isRequired,
+    loadCategories: PropTypes.func.isRequired,
+  };
 
-export default class Dashboard extends Component {
   state = {
     categories: null
   };
 
   componentDidMount() {
-    Promise.resolve(categories)
-      .then(categories => this.setState({ categories }));
+    this.props.loadCategories();
   }
 
-  handleAdd = ({ name, budget }) => {
-    this.setState(({ categories }) => {
-      categories.push({ name, budget: parseInt(budget) });
-      return { categories };
-    });
-  };
-
-  handleRemove = category => {
-    this.setState(({ categories }) => {
-      const i = categories.indexOf(category);
-      if(i < 0) return;
-      categories.splice(i, 1);
-      return { categories };
-    });
-  };
-
   render() {
-    const { categories } = this.state;
+    const { categories, addCategory, removeCategory } = this.props;
 
     return (
       <div>
         <h1>Budget Tracker</h1>        
-        <CategoryForm onAdd={this.handleAdd}/>      
-        <Categories categories={categories} onRemove={this.handleRemove}/>
+        <CategoryForm onAdd={addCategory}/>      
+        <Categories categories={categories} onRemove={removeCategory}/>
       </div>
     );
   }
 }
+
+export default connect(
+  state => ({ categories: state.categories }),
+  { loadCategories, addCategory, removeCategory }
+)(Dashboard);
