@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import'./main.css';
-import Games from './components/games/Games';
+import './main.css';
+import App from './components/App';
+// import { Provider } from 'react-redux';
 
-ReactDOM.render (
-     Games,
-    document.getElementById('root')
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
 );
