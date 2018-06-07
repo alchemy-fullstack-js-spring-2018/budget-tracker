@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const emptyState = {
+  name: '',
+  budget: ''  
+};
+
 export default class CategoryForm extends Component {
   static propTypes = {
     onAdd: PropTypes.func.isRequired
   };
 
-  state = {
-    name: '',
-    budget: ''
-  };
+  state = emptyState;
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -18,6 +20,7 @@ export default class CategoryForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.onAdd(this.state);
+    this.setState(emptyState);
   };
 
   render() {
