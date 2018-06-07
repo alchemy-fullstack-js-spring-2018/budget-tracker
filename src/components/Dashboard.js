@@ -25,6 +25,15 @@ export default class Dashboard extends Component {
     });
   };
 
+  handleRemove = category => {
+    this.setState(({ categories }) => {
+      const i = categories.indexOf(category);
+      if(i < 0) return;
+      categories.splice(i, 1);
+      return { categories };
+    });
+  };
+
   render() {
     const { categories } = this.state;
 
@@ -32,7 +41,7 @@ export default class Dashboard extends Component {
       <div>
         <h1>Budget Tracker</h1>        
         <CategoryForm onAdd={this.handleAdd}/>      
-        <Categories categories={categories}/>
+        <Categories categories={categories} onRemove={this.handleRemove}/>
       </div>
     );
   }

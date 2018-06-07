@@ -5,10 +5,11 @@ import CategoryItem from './CategoryItem';
 export default class Categories extends Component {
   static propTypes = {
     categories: PropTypes.array,
+    onRemove: PropTypes.func.isRequired
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, onRemove } = this.props;
 
     if(!categories) return null;
 
@@ -24,7 +25,13 @@ export default class Categories extends Component {
             </thead>
             <tbody>
               {categories.map(category => {
-                return <CategoryItem key={category.name} {...category}/>;
+                return (
+                  <CategoryItem 
+                    key={category.name}
+                    onRemove={() => onRemove(category)}
+                    {...category}/>
+
+                );
               })}
             </tbody>
           </table>

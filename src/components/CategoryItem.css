@@ -1,0 +1,9 @@
+:local(.category-item) {
+  button {
+    font-size: 2em;
+    border: none;
+    background: transparent;
+    padding-top: 0;
+    cursor: pointer;
+  }
+}
