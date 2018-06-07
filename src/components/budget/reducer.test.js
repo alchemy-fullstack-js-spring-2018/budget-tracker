@@ -19,5 +19,10 @@ const paycheck = {
 const rent = {
   date: new Date('06/30/2018'),
   description: 'rent',
-  amount: 435.89
+  amount: -435.89
 };
+
+it('loads a budget', () => {
+  const state = budget([], { type: BUDGET_LOAD, payload: [paycheck, rent] });
+  expect(state).toEqual([paycheck, rent]);
+});
