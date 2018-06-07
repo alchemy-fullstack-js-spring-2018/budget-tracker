@@ -13,12 +13,12 @@ describe('categories', () => {
 
   const groceries = {
     name: 'groceries',
-    budget: '300'
+    budget: 300
   };
   
   const gas = {
     name: 'gas',
-    budget: '30'
+    budget: 30
   };
 
   it('loads categories', () => {
@@ -31,5 +31,16 @@ describe('categories', () => {
     const state = categories(prevState, { type: CATEGORY_ADD, payload: gas });
     expect(state).toEqual([groceries, gas]);
     expect(state).not.toBe(prevState);
+  });
+
+  it('updates a category', () => {
+    const state = categories(
+      [{ id: 1, name: 'gas', budget: 30 }],
+      {
+        type: CATEGORY_UPDATE,
+        payload: { id: 1, name: 'gas', budget: 40 }
+      }
+    );
+    expect(state).toEqual([{ id: 1, name: 'gas', budget: 40 }]);
   });
 });
