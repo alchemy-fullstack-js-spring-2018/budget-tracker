@@ -33,3 +33,13 @@ export const addLineItem = lineItem => {
     payload: lineItem
   };
 };
+
+export const updateLineItem = lineItem => ({
+  type: BUDGET_UPDATE,
+  payload: lineItem
+});
+
+export const removeLineItem = lineItem => ({
+  type: BUDGET_REMOVE,
+  payload: lineItem
+});
