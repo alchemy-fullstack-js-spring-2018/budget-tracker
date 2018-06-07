@@ -1,38 +1,18 @@
 import React, { Component } from 'react';
-import CategoryForm from './CategoryForm';
-
-const categories = [
-  { name: 'groceries', budget: 300 },
-  { name: 'movies', budget: 20 },
-  { name: 'gas', budget: 30 }
-];
+import PropTypes from 'prop-types';
 
 export default class Categories extends Component {
-  state = {
-    categories: null
-  };
-
-  componentDidMount() {
-    Promise.resolve(categories)
-      .then(categories => this.setState({ categories }));
-  }
-
-  handleAdd = ({ name, budget }) => {
-    this.setState(({ categories }) => {
-      categories.push({ name, budget: parseInt(budget) });
-      return { categories };
-    });
+  static propTypes = {
+    categories: PropTypes.array,
   };
 
   render() {
-    const { categories } = this.state;
+    const { categories } = this.props;
 
     if(!categories) return null;
 
     return (
       <div>
-        <h1>Budget Tracker</h1>
-        <CategoryForm onAdd={this.handleAdd}/>
         <ul>
           <table key={name}>
             <thead>
