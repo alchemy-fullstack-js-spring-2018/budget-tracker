@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import {
   CATEGORIES_LOAD,
   CATEGORY_ADD,
@@ -14,3 +15,13 @@ export const loadCategories = () => ({
   type: CATEGORIES_LOAD,
   payload: categories
 });
+
+export const addCategory = category => {
+  category.id = shortid.generate();
+  category.timestamp = new Date();
+
+  return {
+    type: CATEGORY_ADD,
+    payload: category
+  };
+};
