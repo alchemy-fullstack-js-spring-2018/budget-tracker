@@ -33,3 +33,15 @@ it('add a lineItem', () => {
   expect(state).toEqual([paycheck]);
   expect(state).not.toBe(prevState);
 });
+
+it('updates a lineItem', () => {
+  const newRent = {
+    id: 2000,
+    date: new Date('01/01/2020'),
+    description: 'MORE RENT!',
+    amount: -1000.01
+  };
+
+  const state = budget([{ id: 2000, ...rent }], { type: BUDGET_UPDATE, payload: [newRent] });
+  expect(state).toEqual([newRent]);
+});
