@@ -25,4 +25,11 @@ describe('categories', () => {
     const state = categories([], { type: CATEGORIES_LOAD, payload: [groceries, gas] });
     expect(state).toEqual([groceries, gas]);
   });
+
+  it('adds a category', () => {
+    const prevState = [groceries];
+    const state = categories(prevState, { type: CATEGORY_ADD, payload: gas });
+    expect(state).toEqual([groceries, gas]);
+    expect(state).not.toBe(prevState);
+  });
 });

@@ -7,6 +7,8 @@ export function categories(state = [], { type, payload }) {
   switch(type) {
     case CATEGORIES_LOAD:
       return payload;
+    case CATEGORY_ADD:
+      return [...state, payload];
     default:
       return state;
   }
