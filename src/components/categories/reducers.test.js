@@ -25,6 +25,18 @@ const budget2 = {
 };
 
 it('loads a category', () => {
-  const state = categories([], { type: CATEGORIES_LOAD, payload: [budget1, budget2]});
+  const state = categories([], { type: CATEGORIES_LOAD, payload: [budget1, budget2] });
   expect(state).toEqual([budget1, budget2]);
+});
+
+it('adds a category', () => {
+  const prevState = [];
+  const state = categories(prevState, { type: CATEGORY_ADD, payload: budget2 });
+  expect(state).toEqual([budget2]);
+  expect(state).not.toBe(prevState);
+});
+
+it('removes a category', () => {
+  const state = categories([budget1, budget2], { type: CATEGORY_REMOVE, payload: budget2 });
+  expect(state).toEqual([budget1]);
 });
