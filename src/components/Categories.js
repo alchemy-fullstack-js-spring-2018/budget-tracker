@@ -20,6 +20,7 @@ export default class Categories extends Component {
               <tr>
                 <th>Category</th>
                 <th>Budget</th>
+                <th>Remove</th>
               </tr>
             </thead>
             <tbody>
