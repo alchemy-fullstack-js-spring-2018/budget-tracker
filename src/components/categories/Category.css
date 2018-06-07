@@ -1,0 +1,18 @@
+:local(.category) {
+    background-color: lightgrey;
+    padding: 5px 15px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+
+    button {
+      background-color: firebrick;
+      color: white;
+      padding: 5px 15px;
+      margin-left: 5px;
+      border: 1pt solid black
+    }
+
+    span {
+      font-weight: bold;
+    }
+}
