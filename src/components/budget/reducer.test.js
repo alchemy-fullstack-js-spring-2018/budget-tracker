@@ -36,12 +36,12 @@ it('add a lineItem', () => {
 
 it('updates a lineItem', () => {
   const newRent = {
-    id: 2000,
+    id: 1,
     date: new Date('01/01/2020'),
     description: 'MORE RENT!',
     amount: -1000.01
   };
 
-  const state = budget([{ id: 2000, ...rent }], { type: BUDGET_UPDATE, payload: [newRent] });
+  const state = budget([{ id: 1, ...rent }], { type: BUDGET_UPDATE, payload: newRent });
   expect(state).toEqual([newRent]);
 });
