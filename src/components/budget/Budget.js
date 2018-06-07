@@ -27,7 +27,7 @@ class Budget extends Component {
         <ul>
           {budget.map(lineItem => <LineItem 
             key={lineItem.description}
-            budget={budget}
+            lineItem={lineItem}
           />)
           }
         </ul>
