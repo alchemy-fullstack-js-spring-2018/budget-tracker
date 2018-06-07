@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CategoryForm from './CategoryForm';
-
+import styles from './Category.css';
 export default class Category extends Component {
 
   static propTypes = {
@@ -14,9 +13,9 @@ export default class Category extends Component {
     const { name, id, budget, timestamp } = category;
 
     return (
-      <li key={name}>
-        {name} - ID: {id} - Budget: {budget} Added: {timestamp.toString()}
-        <button style={{ color: 'black' }} onClick={() => onRemove(category)}>X</button>
+      <li key={name} className={styles.category}>
+        {name} - <span>ID:</span> {id} - <span>Budget:</span> ${budget} <span>Added:</span> {timestamp.toString()}
+        <button className={styles.category} onClick={() => onRemove(category)}>X</button>
       </li>
     );
   }

@@ -1,0 +1,14 @@
+:local(.category-form) {
+  margin-bottom: 20px;
+
+  * {
+    margin: 5px;
+  }
+
+  button {
+    background-color: steelblue;
+    color: white;
+    padding: 5px 15px;
+    margin-left: 15px;
+  }
+}
