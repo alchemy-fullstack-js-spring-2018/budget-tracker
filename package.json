@@ -4,10 +4,10 @@
   "description": "",
   "main": "postcss.config.js",
   "scripts": {
-      "build": "webpack --mode production",
-      "start": "webpack-dev-server --hot --mode development",
-      "test": "jest",
-      "test:watch": "npm run test -- --watch"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --hot --mode development",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
