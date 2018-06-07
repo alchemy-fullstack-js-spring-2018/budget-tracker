@@ -2,8 +2,8 @@ import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
 import shortid from 'shortid';
 
 const categories = [
-  { name: 'Perfect Vacation ', budget: 5000 },
-  { name: 'Perfect Home', budget: 100000 }
+  { name: 'Perfect Vacation ', budget: 5000, id: shortid.generate(), timestamp: new Date() },
+  { name: 'Perfect Home', budget: 100000, id: shortid.generate(), timestamp: new Date() }
 ];
 
 export const loadCategories = () => ({ 
