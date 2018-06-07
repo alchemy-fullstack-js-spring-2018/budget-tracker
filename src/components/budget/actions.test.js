@@ -22,3 +22,15 @@ it('creates a add action', () => {
   expect(amount).toBe(paycheck.amount);
   expect(id).toBeTruthy();
 });
+
+it('creates a date on add', () => {
+  const paycheck = { 
+    date: null,
+    description: 'paycheck',
+    amount: 500.34
+  };
+
+  const { payload } = addLineItem(paycheck);
+  const { date } = payload;
+  expect(date).toBeTruthy();
+});
