@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CategoryItem from './CategoryItem';
 
 export default class Categories extends Component {
   static propTypes = {
@@ -22,13 +23,8 @@ export default class Categories extends Component {
               </tr>
             </thead>
             <tbody>
-              {categories.map(({ name, budget }) => {
-                return (
-                  <tr key={name}>
-                    <td>{name}</td>
-                    <td>${budget}</td>
-                  </tr>
-                );
+              {categories.map(category => {
+                return <CategoryItem key={category.name} {...category}/>;
               })}
             </tbody>
           </table>
