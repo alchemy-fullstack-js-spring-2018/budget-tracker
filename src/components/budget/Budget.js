@@ -25,7 +25,11 @@ class Budget extends Component {
       <main>
         <BudgetForm onComplete={addLineItem}/>
         <ul>
-          <LineItem/>
+          {budget.map(lineItem => <LineItem 
+            key={lineItem.description}
+            budget={budget}
+          />)
+          }
         </ul>
       </main>
     );
