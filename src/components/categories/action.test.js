@@ -19,3 +19,13 @@ it('creates add action', () => {
   expect(id).toBeTruthy();
   expect(timestamp).toBeTruthy();
 });
+
+it('creates a remove action', () => {
+  const category = { name: 'budget4', budget: 6000 };
+
+  const action = removeCategory(category);
+  expect(action).toEqual({
+    type: CATEGORY_REMOVE,
+    payload: category
+  });
+});
