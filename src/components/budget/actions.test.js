@@ -1,5 +1,5 @@
 import { BUDGET_LOAD, BUDGET_ADD, BUDGET_UPDATE, BUDGET_REMOVE } from './reducers';
-import { loadBudget, addLineItem } from './actions';
+import { loadBudget, addLineItem, updateLineItem, removeLineItem } from './actions';
 
 it('creates a load action', () => {
   const { type, payload } = loadBudget();
@@ -33,4 +33,18 @@ it('creates a date on add', () => {
   const { payload } = addLineItem(paycheck);
   const { date } = payload;
   expect(date).toBeTruthy();
+});
+
+it('creates an update action', () => {
+  const rent = { 
+    date: new Date('12/04/2017'),
+    description: 'rent',
+    amount: -302.64
+  };
+
+  const action = updateLineItem(rent);
+  expect(action).toEqual({
+    type: BUDGET_UPDATE,
+    payload: rent
+  });
 });
