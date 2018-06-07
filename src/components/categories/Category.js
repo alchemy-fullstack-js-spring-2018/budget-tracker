@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CategoryForm from './CategoryForm';
 
 export default class Category extends Component {
 
@@ -11,11 +10,12 @@ export default class Category extends Component {
 
   render() {
     const { category, onRemove } = this.props;
-    const { id, timestamp, name, budget } = category;
+    const { name, budget } = category;
 
     return (
       <li key={name}>
-        {name}
+        {name}:
+        {budget} dollars
         <button onClick={() => onRemove(category)}>X</button>
       </li>
     );

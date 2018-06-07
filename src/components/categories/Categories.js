@@ -26,7 +26,7 @@ class Categories extends Component {
     return (
       <div>
         <h2>Categories</h2>
-        {/* <CategoryForm onComplete={addCategory} label="Add"/> */}
+        <CategoryForm onComplete={addCategory} label="Add"/>
         <ul>
           {categories.map(category => <Category 
             key={category.name} 
