@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import BudgetForm from './BudgetForm';
+// import BudgetForm from './BudgetForm';
 
 export default class LineItem extends Component {
 
