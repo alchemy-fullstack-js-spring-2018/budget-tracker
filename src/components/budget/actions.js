@@ -17,5 +17,9 @@ const budget = [
     description: 'bonus',
     amount: 1000.00
   }
-
 ];
+
+export const loadBudget = () => ({
+  type: BUDGET_LOAD,
+  payload: budget
+});
