@@ -30,6 +30,6 @@ export const addLineItem = lineItem => {
 
   return {
     type: BUDGET_ADD,
-    payload: budget
+    payload: lineItem
   };
 };
