@@ -4,6 +4,7 @@
   "description": "Budget Tracker",
   "main": "enzyme.setup.js",
   "scripts": {
+    "lint": "eslint .",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --hot --mode development",
     "test": "jest",
