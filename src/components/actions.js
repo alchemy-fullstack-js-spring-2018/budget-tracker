@@ -25,3 +25,8 @@ export const addCategory = category => {
     payload: category
   };
 };
+
+export const updateCategory = category => ({
+  type: CATEGORY_UPDATE,
+  payload: category
+});
