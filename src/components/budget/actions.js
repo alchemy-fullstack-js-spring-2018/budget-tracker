@@ -23,3 +23,13 @@ export const loadBudget = () => ({
   type: BUDGET_LOAD,
   payload: budget
 });
+
+export const addLineItem = lineItem => {
+  lineItem.id = shortid.generate();
+  lineItem.date = lineItem.date ? lineItem.date : new Date();
+
+  return {
+    type: BUDGET_ADD,
+    payload: budget
+  };
+};
