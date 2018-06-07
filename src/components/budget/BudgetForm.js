@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const defaultState = {
   description: '',
@@ -7,6 +7,11 @@ const defaultState = {
 };
 
 export default class BudgetForm extends Component {
+  static propTypes = {
+    onComplete: PropTypes.func.isRequired,
+    // label: PropTypes.string.isRequired
+  };
+
   state = defaultState;
 
   handleChange = ({ target }) => {
@@ -15,14 +20,13 @@ export default class BudgetForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-    // this.props.onComplete(this.state);
+    this.props.onComplete(this.state);
     this.setState(defaultState);
   };
 
   render() {
     const { date, description, amount } = this.state;
-
+    // const { label } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
