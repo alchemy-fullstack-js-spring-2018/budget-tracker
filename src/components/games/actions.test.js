@@ -1,5 +1,5 @@
-import { GAMES_LOAD, GAME_ADD } from './reducers';
-import { loadGames, addGame } from './actions';
+import { GAMES_LOAD, GAME_ADD, GAME_REMOVE } from './reducers';
+import { loadGames, addGame, removeGame } from './actions';
 
 it('creates a load action', () => {
   const { type, payload } = loadGames();
@@ -18,4 +18,14 @@ it(' create an add action', () => {
   expect(price).toBe(game.price);
   expect(id).toBeTruthy();
   expect(timestamp).toBeTruthy();
+});
+
+it('create a remove action', () => {
+  const game = { name: 'Armello', developer: 'League of Geeks', price: '19.99' };
+
+  const action = removeGame(game);
+  expect(action).toEqual({
+    type: GAME_REMOVE,
+    payload: game
+  });
 });

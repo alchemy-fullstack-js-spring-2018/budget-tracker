@@ -23,3 +23,7 @@ export const addGame = game => {
   };
 
 };
+export const removeGame = game => ({ 
+  type: GAME_REMOVE,
+  payload: game
+});
