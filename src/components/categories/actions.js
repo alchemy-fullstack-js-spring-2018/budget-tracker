@@ -21,3 +21,8 @@ export const addCategory = category => {
   };
 };
 
+export const removeCategory = category => ({
+  type: CATEGORY_REMOVE,
+  payload: category
+});
+

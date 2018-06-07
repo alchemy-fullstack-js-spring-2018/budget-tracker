@@ -18,3 +18,13 @@ it('Create and Add Action', () => {
   expect(id).toBeTruthy();
   expect(timestamp).toBeTruthy();
 });
+
+it('Create a Remove Action', () => {
+  const category = { name: 'Perfect Golf Swing', budget: 500 };
+
+  const action = removeCategory(category);
+  expect(action).toEqual({
+    type: CATEGORY_REMOVE,
+    payload: category
+  });
+});
