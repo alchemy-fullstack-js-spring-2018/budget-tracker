@@ -16,10 +16,9 @@ it('creates a add action', () => {
 
   const { type, payload } = addLineItem(paycheck);
   expect(type).toBe(BUDGET_ADD);
-  console.log('PAYLOAD!!!!', payload);
   const { date, description, amount, id } = payload;
-  // expect(date).toEqual(paycheck.date);
+  expect(date).toEqual(paycheck.date);
   expect(description).toBe(paycheck.description);
-  // expect(amount).toBe(paycheck.amount);
-  // expect(id).toBeTruthy();
+  expect(amount).toBe(paycheck.amount);
+  expect(id).toBeTruthy();
 });
