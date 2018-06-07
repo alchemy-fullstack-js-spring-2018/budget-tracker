@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Fruit extends Component {
+export default class Category extends Component {
 
   static propTypes = {
     category: PropTypes.object,

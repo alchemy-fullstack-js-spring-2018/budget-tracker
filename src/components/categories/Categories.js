@@ -24,14 +24,14 @@ class Categories extends Component {
 
     return (
       <div>
-        <h2>Fruits</h2>
+        <h2>Categories</h2>
         <CategoryForm onComplete={addCategory} label="Add"/>
         <ul>
           {categories.map(category => <Category 
             key={category.id} 
             onRemove={removeCategory} 
             onUpdate={updateCategory}
-            fruit={category}
+            category={category}
           />)}
         </ul>
       </div>

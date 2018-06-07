@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const defaultState = {
-  id: null,
-  timestamp: null,
+  id: '',
+  timestamp: '',
   name: '',
-  budget: null,
+  budget: '',
 };
 
 export default class CategoryForm extends Component {

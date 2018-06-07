@@ -36,7 +36,7 @@ it('add a category', () => {
   expect(state).not.toBe(prevState);
 });
   
-it('updates a fruit', () => {
+it('updates a category', () => {
   const state = categories(
     [{ id: 1, timestamp: new Date(), name: 'Monthly Utilities', budget: 200 }], 
     { 
@@ -47,7 +47,7 @@ it('updates a fruit', () => {
   expect(state).toEqual([{ id: 1, timestamp: new Date(), name: 'Monthly Utilities', budget: 220 }]);
 });
   
-it('removes a fruit', () => {
+it('removes a category', () => {
   const state = categories([utilities, groceries], { type: CATEGORY_REMOVE, payload: utilities });
   expect(state).toEqual([groceries]);
 });
