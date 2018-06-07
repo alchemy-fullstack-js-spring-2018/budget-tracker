@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Budget from '../budget/Budget';
+import Categories from '../categories/Categories';
 
 
 export default class App extends Component {
@@ -7,7 +7,7 @@ export default class App extends Component {
     return (
       <main>
         <h1>Redux Demo</h1>
-        <Budget/>
+        <Categories/>
       </main>
     );
   }
