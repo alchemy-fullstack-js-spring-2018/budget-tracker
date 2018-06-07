@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CategoryForm from './CategoryForm'; //eslint-disable-line
+import CategoryItem from './CategoryItem'; //eslint-disable-line
 
 export default class Category extends Component {
 

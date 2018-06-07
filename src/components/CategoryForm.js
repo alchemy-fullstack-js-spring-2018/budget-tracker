@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './CategoryForm.css';
 
 const defaultState = {
   name: '',
@@ -30,7 +31,7 @@ export default class CategoryForm extends Component {
       const { label } = this.props;
 
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form className={styles['form']} onSubmit={this.handleSubmit}>
           <label>
               Expense:
             <input name="name" value={name} onChange={this.handleChange}/>
