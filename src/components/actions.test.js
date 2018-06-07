@@ -7,7 +7,8 @@ import {
 import {
   loadCategories,
   addCategory,
-  updateCategory } from './actions';
+  updateCategory,
+  removeCategory } from './actions';
 
 describe('categories', () => {
   it('creates a load action', () => {
@@ -16,9 +17,9 @@ describe('categories', () => {
     expect(payload).toHaveLength(3);
   });
 
-  it('creates an add action, which adds a timestamp and id', () => {
-    const gas = { name: 'gas', budget: 30 };
+  let gas = { id: 1, name: 'gas', budget: 30 };  
 
+  it('creates an add action, which adds a timestamp and id', () => {
     const { type, payload } = addCategory(gas);
     expect(type).toBe(CATEGORY_ADD);
     const { name, budget, id, timestamp } = payload;
@@ -29,9 +30,14 @@ describe('categories', () => {
   });
 
   it('creates an update action', () => {
-    const gas = { id: 1, name: 'gas', budget: 30 };
     const { type, payload } = updateCategory(gas);
     expect(type).toBe(CATEGORY_UPDATE);
+    expect(payload).toEqual(gas);
+  });
+
+  it('creates a remove action', () => {
+    const { type, payload } = removeCategory(gas);
+    expect(type).toBe(CATEGORY_REMOVE);
     expect(payload).toEqual(gas);
   });
 });

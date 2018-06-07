@@ -30,3 +30,8 @@ export const updateCategory = category => ({
   type: CATEGORY_UPDATE,
   payload: category
 });
+
+export const removeCategory = category => ({
+  type: CATEGORY_REMOVE,
+  payload: category
+});
