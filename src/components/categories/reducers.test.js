@@ -5,7 +5,8 @@ import {
   CATEGORY_REMOVE,
   CATEGORY_UPDATE,
   expenses,
-  EXPENSES_LOAD
+  EXPENSES_LOAD,
+  EXPENSES_CREATE
 } from './reducers';
 
 describe('Category Reducers', () => {
@@ -86,4 +87,12 @@ describe('Expense Reducers', () => {
     const state = expenses([], { type: EXPENSES_LOAD, payload: [expense1, expense2] });
     expect(state).toEqual([expense1, expense2]);
   });
+
+  it('Creates an Expense', () => {
+    const prevState = [];
+    const state = expenses(prevState, { type: EXPENSES_CREATE, payload: expense1 });
+    expect(state).toEqual([expense1]);
+    expect(state).not.toBe(prevState);
+  });
 });
+

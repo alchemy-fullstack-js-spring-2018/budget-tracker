@@ -4,6 +4,7 @@ export const CATEGORY_REMOVE = 'CATEGORY_REMOVE';
 export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
 
 export const EXPENSES_LOAD = 'EXPENSES_LOAD';
+export const EXPENSES_CREATE = 'EXPENSES_CREATE';
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
@@ -24,6 +25,8 @@ export function expenses(state = [], { type, payload }) {
   switch (type) {
     case EXPENSES_LOAD:
       return payload;
+    case EXPENSES_CREATE:
+      return [...state, payload];
     default:
       return state;
   }
