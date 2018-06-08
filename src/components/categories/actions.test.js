@@ -1,31 +1,30 @@
-import { GAMES_LOAD, GAME_ADD, GAME_REMOVE } from './reducers';
-import { loadGames, addGame, removeGame } from './actions';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
+import { loadCategories, addCategory, removeCategory } from './actions';
 
 it('creates a load action', () => {
-  const { type, payload } = loadGames();
-  expect(type).toBe(GAMES_LOAD);
-  expect(payload.length).toBe(4); //expects games array to be four in length.
+  const { type, payload } = loadCategories();
+  expect(type).toBe(CATEGORIES_LOAD);
+  expect(payload.length).toBe(2); //expects games array to be four in length.
 });
 
 it(' create an add action', () => {
-  const game = { name: 'Armello', developer: 'League of Geeks', price: '19.99' };
+  const category = { name: 'meat', budget: '50' };
 
-  const { type, payload } = addGame(game);
-  expect(type).toBe(GAME_ADD);
-  const { name, developer, price, id, timestamp } = payload;
-  expect(name).toBe(game.name);
-  expect(developer).toBe(game.developer);
-  expect(price).toBe(game.price);
+  const { type, payload } = addCategory(category);
+  expect(type).toBe(CATEGORY_ADD);
+  const { name, budget, id, timestamp } = payload;
+  expect(name).toBe(category.name);
+  expect(budget).toBe(category.budget);
   expect(id).toBeTruthy();
   expect(timestamp).toBeTruthy();
 });
 
 it('create a remove action', () => {
-  const game = { name: 'Armello', developer: 'League of Geeks', price: '19.99' };
+  const category = { name: 'meat', budget: '50' };
 
-  const action = removeGame(game);
+  const action = removeCategory(category);
   expect(action).toEqual({
-    type: GAME_REMOVE,
-    payload: game
+    type: CATEGORY_REMOVE,
+    payload: category
   });
 });

@@ -1,29 +1,27 @@
-import { GAMES_LOAD, GAME_ADD, GAME_REMOVE } from './reducers';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
 import shortid from 'shortid';
 
-const games = [
-  { name: 'Armello', developer: 'League of Geeks', price: '19.99' },
-  { name: 'Guild Wars 2', developer: 'Arenanet', price: '29.99' },
-  { name: 'Battle Chef Brigade', developer: 'Trinket Studios', price: '19.99' },
-  { name: 'Dead In Vinland', developer: 'CCCP', price: '19.99' },
+const categories = [
+  { name: 'Produce', budget:'$50' },
+  { name: 'Meat', budget:'$60' }
 ];
 
-export const loadGames = () => ({
-  type: GAMES_LOAD,
-  payload: games
+export const loadCategories = () => ({
+  type: CATEGORIES_LOAD,
+  payload: categories
 });
 
-export const addGame = game => {
-  game.id = shortid.generate();
-  game.timestamp = new Date();
+export const addCategory = category => {
+  category.id = shortid.generate();
+  category.timestamp = new Date();
 
   return {
-    type: GAME_ADD,
-    payload: game
+    type: CATEGORY_ADD,
+    payload: category
   };
 
 };
-export const removeGame = game => ({ 
-  type: GAME_REMOVE,
-  payload: game
+export const removeCategory = category => ({ 
+  type: CATEGORY_REMOVE,
+  payload: category
 });

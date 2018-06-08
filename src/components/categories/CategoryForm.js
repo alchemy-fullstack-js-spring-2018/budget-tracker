@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'pro-types';
-import styles from './GameForm.css';
+import PropTypes from 'prop-types';
+import styles from './CategoryForm.css';
 
 const defaultState = {
   name: '',
-  developer: '',
-  price: ''
+  budget: '',
 };
 
 export default class CategoryForm extends Component {
@@ -28,7 +27,7 @@ export default class CategoryForm extends Component {
     };
 
     render() {
-      const { name, developer, price } = this.state;
+      const { name, budget } = this.state;
       const { label } = this.props;
 
       return (
@@ -38,13 +37,8 @@ export default class CategoryForm extends Component {
             <input name="name" value={name} onChange={this.handleChange} />
           </label>
           <label>
-                    Developer:
-            <input name="developer" value={developer} onChange={this.handleChange} />
-          </label>
-
-          <label>
-                    Steam Price:
-            <input name="developer" value={price} onChange={this.handleChange} />
+                    Budget:
+            <input name="budget" value={budget} onChange={this.handleChange} />
           </label>
           <button type="submit">{label}</button>
         </form>
