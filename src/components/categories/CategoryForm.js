@@ -33,11 +33,11 @@ export default class CategoryForm extends Component {
       return (
         <form className={styles['add-category']} onSubmit={this.handleSubmit}>
           <label>
-                    Name:
-            <input name="name" value={name} onChange={this.handleChange} />
+                    Name: &nbsp;
+            <input name="name" value={name} onChange={this.handleChange} />&nbsp;
           </label>
           <label>
-                    Budget:
+                    Budget(in dollars): &nbsp;
             <input name="budget" value={budget} onChange={this.handleChange} />
           </label>
           <button type="submit">{label}</button>
