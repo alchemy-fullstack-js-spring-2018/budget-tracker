@@ -20,11 +20,12 @@ class Categories extends Component {
 
     render() {
       const { categories, addCategory, removeCategory } = this.props;
+      // console.log('we are in categories');
       if(!categories) return null;
-
+      // console.log('we are past guard in categories');
       return (
         <div>
-          <h2>Fruits</h2>
+          <h2>Categories</h2>
           <CategoryForm onComplete={addCategory} label="Add"/>
           <ul>
             {categories.map(category => <Category 
