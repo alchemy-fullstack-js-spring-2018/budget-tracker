@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
-import Category from './Category';
+import Categories from './Categories';
 import { loadCategories, addCategory, removeCategory } from './actions';
 
 class Dashboard extends Component {
@@ -27,7 +27,7 @@ class Dashboard extends Component {
         <h2>Categories</h2>
         <CategoryForm onComplete={addCategory} label="Add"/>
         <ul>
-          {categories.map(category => <Category
+          {categories.map(category => <Categories
             key={category.name}
             onRemove={removeCategory}
             category={category}  
