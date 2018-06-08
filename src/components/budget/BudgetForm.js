@@ -10,24 +10,44 @@ const defaultState = {
 export default class BudgetForm extends Component {
   static propTypes = {
     onComplete: PropTypes.func.isRequired,
+    onCancel: PropTypes.func,
     label: PropTypes.string.isRequired
   };
 
-  state = defaultState;
+  static getDerivedStateFromProps({ lineItem }, { edit }) {
+    if(edit) return null;
+
+    return {
+      edit: lineItem ? { ...lineItem } : { ... defaultState }
+    };
+  }
+
+  state = {
+    edit: null
+  };
 
   handleChange = ({ target }) => {
-    this.setState({ [target.placeholder]: target.value });
+    this.setState(({ edit }) => {
+      return {
+        edit: {
+          ...edit,
+          [target.placeholder]: target.value
+        }
+      };
+    });
   };
 
   handleSubmit = event => {
     event.preventDefault();
     this.props.onComplete(this.state);
-    this.setState(defaultState);
+    this.setState({
+      edit: { ...defaultState }
+    });
   };
 
   render() {
     const { date, description, amount } = this.state;
-    const { label } = this.props;
+    const { label, onCancel } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -35,6 +55,7 @@ export default class BudgetForm extends Component {
         <input placeholder="amount" value={amount} onChange={this.handleChange}/>
         <input type="date" placeholder="date" value={date} onChange={this.handleChange}/>
         <button type="submit" >{label}</button>
+        {onCancel && <button type="reset" onClick={onCancel}>Cancel</button>}
       </form>
     );
   }
