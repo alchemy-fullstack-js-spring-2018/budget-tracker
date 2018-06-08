@@ -7,7 +7,8 @@ export default class Categories extends Component {
 
   static propTypes = {
     category: PropTypes.object,
-    onRemove: PropTypes.func.isRequired
+    onRemove: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired
   };
 
   state = {
@@ -20,7 +21,7 @@ export default class Categories extends Component {
   };
 
   render() {
-    const { category, onRemove } = this.props;
+    const { category, onRemove, onUpdate } = this.props;
     const { name } = category;
 
     return (
@@ -32,6 +33,7 @@ export default class Categories extends Component {
         {this.state.viewing && <CategoryItem
           category={category}
           onRemove={onRemove}
+          onUpdate={onUpdate}
         />}
       </div>
     );

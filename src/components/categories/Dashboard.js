@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
-import { loadCategories, addCategory, removeCategory } from './actions';
+import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
 
 class Dashboard extends Component {
 
@@ -11,7 +11,8 @@ class Dashboard extends Component {
     categories: PropTypes.array,
     addCategory: PropTypes.func.isRequired,
     removeCategory: PropTypes.func.isRequired,
-    loadCategories: PropTypes.func.isRequired
+    loadCategories: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { categories, addCategory, removeCategory } = this.props;
+    const { categories, addCategory, removeCategory, updateCategory } = this.props;
     if(!categories) return null;
 
     return (
@@ -30,7 +31,8 @@ class Dashboard extends Component {
           {categories.map(category => <Categories
             key={category.name}
             onRemove={removeCategory}
-            category={category}  
+            category={category} 
+            onUpdate={updateCategory}
           />)}
         </ul>
       </div>
@@ -40,5 +42,5 @@ class Dashboard extends Component {
 
 export default connect(
   state => ({ categories: state.categories }),
-  { loadCategories, addCategory, removeCategory }
+  { loadCategories, addCategory, removeCategory, updateCategory }
 )(Dashboard);
