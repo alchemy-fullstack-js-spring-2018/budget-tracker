@@ -13,10 +13,6 @@ class Dashboard extends Component {
     loadCategories: PropTypes.func.isRequired,
   };
 
-  state = {
-    categories: null
-  };
-
   componentDidMount() {
     this.props.loadCategories();
   }
