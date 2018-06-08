@@ -1,5 +1,5 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
-import { loadCategories, addCategory, removeCategory } from './actions';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './reducers';
+import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
 
 it('creates a load action', () => {
   const { type, payload } = loadCategories();
@@ -18,6 +18,15 @@ it('creates add action', () => {
   expect(budget).toBe(category.budget);
   expect(id).toBeTruthy();
   expect(timestamp).toBeTruthy();
+});
+
+it('creates an update action', () => {
+  const category = { name: 'budget4', budget: 6000 };
+  const action = updateCategory(category);
+  expect(action).toEqual({
+    type: CATEGORY_UPDATE,
+    payload: category
+  });
 });
 
 it('creates a remove action', () => {
