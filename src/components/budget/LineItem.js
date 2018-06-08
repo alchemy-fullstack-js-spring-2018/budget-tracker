@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 
 export default class LineItem extends Component {
 
+  state = {
+    editing: false
+  };
+
   static propTypes = {
     lineItem: PropTypes.object,
     onRemove: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired
   };
 
     
