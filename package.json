@@ -5,11 +5,12 @@
   "main": "postcss.config.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --hot --mode development --open",
-    "test": "jest",
-    "test:watch": "npm run test -- --watch",
+    "start": "webpack-dev-server --hot --mode development",
     "lint": "eslint .",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+    "jest": "jest",
+    "test": "npm run jest",
+    "test:watch": "npm run jest -- --watch"
   },
   "repository": {
     "type": "git",
