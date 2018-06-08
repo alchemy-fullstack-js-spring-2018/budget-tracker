@@ -25,7 +25,7 @@ export default class CategoryItem extends Component {
   handleUpdate = data => {
     this.props.onUpdate(data);
     this.setState({ editing: false });
-  }
+  };
 
   render() {
     const { editing } = this.state;

@@ -3,52 +3,87 @@ import {
   CATEGORIES_LOAD,
   CATEGORY_ADD,
   CATEGORY_REMOVE,
-  CATEGORY_UPDATE
+  CATEGORY_UPDATE,
+  expenses,
+  EXPENSES_LOAD
 } from './reducers';
 
-it('Has a Default Value of Empty Array', () => {
-  const state = categories(undefined, {});
-  expect(state).toEqual([]);
+describe('Category Reducers', () => {
+
+  it('Has a Default Value of Empty Array', () => {
+    const state = categories(undefined, {});
+    expect(state).toEqual([]);
+  });
+  
+  const dreamTrip = {
+    id: 1,
+    timestamp: new Date(),
+    name: 'Trip to Copenhagen',
+    budget: 5000
+  };
+  
+  const dreamHouse = {
+    id: 2,
+    timestamp: new Date(),
+    name: 'Big Apartment',
+    budget: 100000
+  };
+  
+  it('Loads Categories', () => {
+    const state = categories([], { type: CATEGORIES_LOAD, payload: [dreamTrip, dreamHouse] });
+    expect(state).toEqual([dreamTrip, dreamHouse]);
+  });
+  
+  it('Add a Category', () => {
+    const prevState = [];
+    const state = categories(prevState, { type: CATEGORY_ADD, payload: dreamHouse });
+    expect(state).toEqual([dreamHouse]);
+    expect(state).not.toBe(prevState);
+  });
+  
+  it('Removes a Category', () => {
+    const state = categories([dreamHouse, dreamTrip], { type: CATEGORY_REMOVE, payload: dreamHouse });
+    expect(state).toEqual([dreamTrip]);
+  });
+  
+  it('Updates a Category', () => {
+    const state = categories(
+      [{ id: 1, name: 'Perfect Job', budget: 500 }],
+      {
+        type: CATEGORY_UPDATE,
+        payload: { id: 1, name: 'Perfect Job', budget: 1000 }
+      }
+    );
+    expect(state).toEqual([{ id: 1, name: 'Perfect Job', budget: 1000 }]);
+  });
+
 });
 
-const dreamTrip = {
-  id: 1,
-  timestamp: new Date(),
-  name: 'Trip to Copenhagen',
-  budget: 5000
-};
+describe('Expense Reducers', () => {
 
-const dreamHouse = {
-  id: 2,
-  timestamp: new Date(),
-  name: 'Big Apartment',
-  budget: 100000
-};
+  const expense1 = {
+    id: 1,
+    categoryId: 1,
+    timestamp: new Date(),
+    name: 'Clothes',
+    price: 200
+  };
 
-it('Loads Categories', () => {
-  const state = categories([], { type: CATEGORIES_LOAD, payload: [dreamTrip, dreamHouse] });
-  expect(state).toEqual([dreamTrip, dreamHouse]);
-});
+  const expense2 = {
+    id: 2,
+    categoryId: 2,
+    timestamp: new Date(),
+    name: 'Furniture',
+    price: 2000
+  };
 
-it('Add a Category', () => {
-  const prevState = [];
-  const state = categories(prevState, { type: CATEGORY_ADD, payload: dreamHouse });
-  expect(state).toEqual([dreamHouse]);
-  expect(state).not.toBe(prevState);
-});
+  it('Has a Default Value of Empty Array', () => {
+    const state = expenses(undefined, {});
+    expect(state).toEqual([]);
+  });
 
-it('Removes a Category', () => {
-  const state = categories([dreamHouse, dreamTrip], { type: CATEGORY_REMOVE, payload: dreamHouse });
-  expect(state).toEqual([dreamTrip]);
-});
-
-it('Updates a Category', () => {
-  const state = categories(
-    [{ id: 1, name: 'Perfect Job', budget: 500 }],
-    {
-      type: CATEGORY_UPDATE,
-      payload: { id: 1, name: 'Perfect Job', budget: 1000 }
-    }
-  );
-  expect(state).toEqual([{ id: 1, name: 'Perfect Job', budget: 1000 }]);
+  it('Loads Expenses', () => {
+    const state = expenses([], { type: EXPENSES_LOAD, payload: [expense1, expense2] });
+    expect(state).toEqual([expense1, expense2]);
+  });
 });
