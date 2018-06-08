@@ -11,41 +11,41 @@ describe('categories', () => {
     expect(state).toEqual([]);
   });
 
-  const groceries = {
-    name: 'groceries',
-    budget: 300
+  const food = {
+    name: 'food',
+    budget: 500
   };
   
-  const gas = {
-    name: 'gas',
-    budget: 30
+  const shelter = {
+    name: 'shelter',
+    budget: 1500
   };
 
   it('loads categories', () => {
-    const state = categories([], { type: CATEGORIES_LOAD, payload: [groceries, gas] });
-    expect(state).toEqual([groceries, gas]);
+    const state = categories([], { type: CATEGORIES_LOAD, payload: [food, shelter] });
+    expect(state).toEqual([food, shelter]);
   });
 
   it('adds a category', () => {
-    const prevState = [groceries];
-    const state = categories(prevState, { type: CATEGORY_ADD, payload: gas });
-    expect(state).toEqual([groceries, gas]);
+    const prevState = [food];
+    const state = categories(prevState, { type: CATEGORY_ADD, payload: shelter });
+    expect(state).toEqual([food, shelter]);
     expect(state).not.toBe(prevState);
   });
 
   it('updates a category', () => {
     const state = categories(
-      [{ id: 1, name: 'gas', budget: 30 }],
+      [{ id: 1, name: 'shelter', budget: 1500 }],
       {
         type: CATEGORY_UPDATE,
-        payload: { id: 1, name: 'gas', budget: 40 }
+        payload: { id: 1, name: 'shelter', budget: 2000 }
       }
     );
-    expect(state).toEqual([{ id: 1, name: 'gas', budget: 40 }]);
+    expect(state).toEqual([{ id: 1, name: 'shelter', budget: 2000 }]);
   });
 
   it('removes a category', () => {
-    const state = categories([groceries, gas], { type: CATEGORY_REMOVE, payload: gas });
-    expect(state).toEqual([groceries]);
+    const state = categories([food, shelter], { type: CATEGORY_REMOVE, payload: shelter });
+    expect(state).toEqual([food]);
   });
 });

@@ -17,27 +17,27 @@ describe('categories', () => {
     expect(payload).toHaveLength(3);
   });
 
-  let gas = { id: 1, name: 'gas', budget: 30 };  
+  let food = { id: 1, name: 'food', budget: 500 };  
 
   it('creates an add action, which adds a timestamp and id', () => {
-    const { type, payload } = addCategory(gas);
+    const { type, payload } = addCategory(food);
     expect(type).toBe(CATEGORY_ADD);
     const { name, budget, id, timestamp } = payload;
-    expect(name).toBe(gas.name);
-    expect(budget).toBe(gas.budget);
+    expect(name).toBe(food.name);
+    expect(budget).toBe(food.budget);
     expect(id).toBeTruthy();
     expect(timestamp).toBeTruthy();
   });
 
   it('creates an update action', () => {
-    const { type, payload } = updateCategory(gas);
+    const { type, payload } = updateCategory(food);
     expect(type).toBe(CATEGORY_UPDATE);
-    expect(payload).toEqual(gas);
+    expect(payload).toEqual(food);
   });
 
   it('creates a remove action', () => {
-    const { type, payload } = removeCategory(gas);
+    const { type, payload } = removeCategory(food);
     expect(type).toBe(CATEGORY_REMOVE);
-    expect(payload).toEqual(gas);
+    expect(payload).toEqual(food);
   });
 });
