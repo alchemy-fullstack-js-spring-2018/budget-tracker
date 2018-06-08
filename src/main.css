@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  margin: 1rem 2rem;
+}
+
+form {
+  margin-left: 1rem; 
+}
+
+fieldset {
+  width: 20%;
+  padding: 1rem;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+input[name="name"] {
+  margin-left: 0.5rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+table {
+  margin: 1rem;
+  border-collapse: collapse;
+  width: 20%;
+  text-align: left;
+}
+
+td, th {
+  padding: 1rem;
+}
+
+
+th {
+  border-bottom: 1px solid black;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
