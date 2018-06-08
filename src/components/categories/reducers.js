@@ -6,6 +6,7 @@ export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
 export const EXPENSES_LOAD = 'EXPENSES_LOAD';
 export const EXPENSE_CREATE = 'EXPENSE_CREATE';
 export const EXPENSE_UPDATE = 'EXPENSE_UPDATE';
+export const EXPENSE_DELETE = 'EXPENSE_DELETE';
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
@@ -30,6 +31,8 @@ export function expenses(state = [], { type, payload }) {
       return [...state, payload];
     case EXPENSE_UPDATE:
       return state.map(expense => expense.id === payload.id ? payload : expense);
+    case EXPENSE_DELETE:
+      return state.filter(expense => expense !== payload);
     default:
       return state;
   }

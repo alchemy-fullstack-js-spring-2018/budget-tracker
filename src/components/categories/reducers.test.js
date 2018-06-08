@@ -7,7 +7,8 @@ import {
   expenses,
   EXPENSES_LOAD,
   EXPENSE_CREATE,
-  EXPENSE_UPDATE
+  EXPENSE_UPDATE,
+  EXPENSE_DELETE
 } from './reducers';
 
 describe('Category Reducers', () => {
@@ -96,7 +97,7 @@ describe('Expense Reducers', () => {
     expect(state).not.toBe(prevState);
   });
 
-  it('Updates and Expense', () => {
+  it('Updates an Expense', () => {
     const state = expenses(
       [{ id: 1, name: 'Gas', budget: 100 }],
       {
@@ -106,5 +107,11 @@ describe('Expense Reducers', () => {
     );
     expect(state).toEqual([{ id: 1, name: 'Gas', budget: 200 }]);
   });
+
+  it('Deletes an Expense', () => {
+    const state = expenses([expense1, expense2], { type: EXPENSE_DELETE, payload: expense2 });
+    expect(state).toEqual([expense1]);
+  });
+
 });
 
