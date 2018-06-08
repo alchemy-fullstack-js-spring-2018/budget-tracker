@@ -30,6 +30,11 @@ export function expensesByCategory(state = {}, { type, payload }) {
         map[category.id] = category.expenses;
         return map;
       }, {});
+    case CATEGORY_ADD:
+      return {
+        ...state,
+        [payload.id]: []
+      };
     case EXPENSE_CREATE:
       return [...state, payload];
     case EXPENSE_UPDATE:

@@ -93,6 +93,11 @@ describe('Expense Reducers', () => {
     expect(state).toEqual({});
   });
 
+  it('Adds an Entry for Category Add', () => {
+    const state = expensesByCategory({}, { type: CATEGORY_ADD, payload: { id: 123 } });
+    expect(state).toEqual({ 123: [] });
+  });
+
   it('Loads Expenses', () => {
     const state = expensesByCategory({}, {
       type: CATEGORIES_LOAD,
@@ -107,6 +112,7 @@ describe('Expense Reducers', () => {
     });
     expect(state).toEqual({ 123: [expense1], 456: [expense2] });
   });
+
 
   // it('Creates an Expense', () => {
   //   const prevState = [];
