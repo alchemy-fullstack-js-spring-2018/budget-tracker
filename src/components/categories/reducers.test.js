@@ -6,7 +6,8 @@ import {
   CATEGORY_UPDATE,
   expenses,
   EXPENSES_LOAD,
-  EXPENSES_CREATE
+  EXPENSE_CREATE,
+  EXPENSE_UPDATE
 } from './reducers';
 
 describe('Category Reducers', () => {
@@ -90,9 +91,20 @@ describe('Expense Reducers', () => {
 
   it('Creates an Expense', () => {
     const prevState = [];
-    const state = expenses(prevState, { type: EXPENSES_CREATE, payload: expense1 });
+    const state = expenses(prevState, { type: EXPENSE_CREATE, payload: expense1 });
     expect(state).toEqual([expense1]);
     expect(state).not.toBe(prevState);
+  });
+
+  it('Updates and Expense', () => {
+    const state = expenses(
+      [{ id: 1, name: 'Gas', budget: 100 }],
+      {
+        type: EXPENSE_UPDATE,
+        payload: { id: 1, name: 'Gas', budget: 200 }
+      }
+    );
+    expect(state).toEqual([{ id: 1, name: 'Gas', budget: 200 }]);
   });
 });
 
