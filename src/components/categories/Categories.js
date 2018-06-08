@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CategoryItem from './CategoryItem';
 import styles from './Categories.css';
 
 export default class Categories extends Component {
@@ -20,7 +21,7 @@ export default class Categories extends Component {
 
   render() {
     const { category, onRemove } = this.props;
-    const { name, id, budget, timestamp } = category;
+    const { name } = category;
 
     return (
       <div>
@@ -28,11 +29,10 @@ export default class Categories extends Component {
           {name}
           <button onClick={this.handleView}>VIEW</button>
         </li>
-        {this.state.viewing &&
-        <li>
-          {id} ${budget} {timestamp.toLocaleString()}
-        </li>
-        }
+        {this.state.viewing && <CategoryItem
+          category={category}
+          onRemove={onRemove}
+        />}
       </div>
     );
   }
