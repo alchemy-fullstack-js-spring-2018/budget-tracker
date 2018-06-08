@@ -15,6 +15,7 @@ export default class CategoryItem extends Component {
     return (
       <li>
         Budget: ${budget} Added: {timestamp.toLocaleString()}
+        <button onClick={() => onRemove(category)}>REMOVE</button>
       </li>
     );
   }
