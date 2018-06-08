@@ -8,12 +8,12 @@ const defaultState = {
   price: ''
 };
 
-export default class GameForm extends Component {
-
-    static PropTypes = {
-      onComplete: PropTypes.func.isRequired,
-      label: PropTypes.string.isRequired
-    };
+export default class CategoryForm extends Component {
+  
+  static propTypes = {
+    onComplete: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired
+  };
 
     state = defaultState;
 
@@ -44,7 +44,7 @@ export default class GameForm extends Component {
 
           <label>
                     Steam Price:
-            <input name="developer" value={developer} onChange={this.handleChange} />
+            <input name="developer" value={price} onChange={this.handleChange} />
           </label>
           <button type="submit">{label}</button>
         </form>
