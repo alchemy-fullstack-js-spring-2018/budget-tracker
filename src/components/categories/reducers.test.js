@@ -2,7 +2,8 @@ import {
   categories,
   CATEGORIES_LOAD,
   CATEGORY_ADD,
-  CATEGORY_REMOVE
+  CATEGORY_REMOVE,
+  CATEGORY_UPDATE
 } from './reducers';
 
 it('Has a Default Value of Empty Array', () => {
@@ -39,4 +40,15 @@ it('Add a Category', () => {
 it('Removes a Category', () => {
   const state = categories([dreamHouse, dreamTrip], { type: CATEGORY_REMOVE, payload: dreamHouse });
   expect(state).toEqual([dreamTrip]);
+});
+
+it('Updates a Category', () => {
+  const state = categories(
+    [{ id: 1, name: 'Perfect Job', budget: 500 }],
+    {
+      type: CATEGORY_UPDATE,
+      payload: { id: 1, name: 'Perfect Job', budget: 1000 }
+    }
+  );
+  expect(state).toEqual([{ id: 1, name: 'Perfect Job', budget: 1000 }]);
 });
