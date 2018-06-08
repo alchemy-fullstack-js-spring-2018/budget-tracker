@@ -7,7 +7,7 @@ export default class Place extends Component {
    static propTypes = {
      place: PropTypes.object,
      onRemove: PropTypes.func.isRequired,
-     //   onUpdate: PropTypes.func.isRequired
+     //onUpdate: PropTypes.func.isRequired
    };
 
    render() {
