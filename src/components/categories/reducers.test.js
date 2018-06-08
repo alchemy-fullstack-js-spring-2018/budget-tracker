@@ -66,14 +66,14 @@ describe('Expense Reducers', () => {
 
   const expense1 = {
     id: 1,
-    categoryId: 1,
+    categoryId: 123,
     timestamp: new Date(),
     name: 'Clothes',
     price: 200
   };
 
   const expense2 = {
-    id: 2,
+    id: 123,
     categoryId: 2,
     timestamp: new Date(),
     name: 'Furniture',
@@ -116,6 +116,18 @@ describe('Expense Reducers', () => {
   it('Removes an entry on Category Remove', () => {
     const state = expensesByCategory({ 123: [], 456: [] }, { type: CATEGORY_REMOVE, payload: { id: 123 } });
     expect(state).toEqual({ 456: [] });
+  });
+
+  it('Adds an Expense to a Category', () => {
+    const state = expensesByCategory({ 123: [expense1] }, {
+      type: EXPENSE_CREATE,
+      payload: {
+        categoryId: 123,
+        expense: expense2
+      }
+    });
+    expect(state).toEqual({ 123: [expense1, expense2] });
+
   });
 
 

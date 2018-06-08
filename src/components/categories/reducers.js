@@ -41,7 +41,13 @@ export function expensesByCategory(state = {}, { type, payload }) {
       return copy;
     }
     case EXPENSE_CREATE:
-      return [...state, payload];
+      return {
+        ...state,
+        [payload.categoryId]: [
+          ...state[payload.categoryId],
+          payload.expense
+        ]
+      };
     case EXPENSE_UPDATE:
       return state.map(expense => expense.id === payload.id ? payload : expense);
     case EXPENSE_DELETE:
