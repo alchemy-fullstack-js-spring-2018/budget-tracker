@@ -35,6 +35,11 @@ export function expensesByCategory(state = {}, { type, payload }) {
         ...state,
         [payload.id]: []
       };
+    case CATEGORY_REMOVE: {
+      const copy = { ...state };
+      delete copy[payload.id];
+      return copy;
+    }
     case EXPENSE_CREATE:
       return [...state, payload];
     case EXPENSE_UPDATE:

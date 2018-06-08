@@ -113,6 +113,11 @@ describe('Expense Reducers', () => {
     expect(state).toEqual({ 123: [expense1], 456: [expense2] });
   });
 
+  it('Removes an entry on Category Remove', () => {
+    const state = expensesByCategory({ 123: [], 456: [] }, { type: CATEGORY_REMOVE, payload: { id: 123 } });
+    expect(state).toEqual({ 456: [] });
+  });
+
 
   // it('Creates an Expense', () => {
   //   const prevState = [];
