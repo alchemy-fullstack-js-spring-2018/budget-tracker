@@ -7,12 +7,12 @@ it('has a default value of empty array', () => {
 
 const category1 = {
   name: 'Meat',
-  budget: '50'
+  budget: 50
 };
 
 const category2 = {
   name: 'Produce',
-  budget: '60'
+  budget: 60
 };
 
 it('loads category', () => {

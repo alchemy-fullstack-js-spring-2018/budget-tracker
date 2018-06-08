@@ -31,7 +31,7 @@ export default class CategoryForm extends Component {
       const { label } = this.props;
 
       return (
-        <form className={styles['add-game']} onSubmit={this.handleSubmit}>
+        <form className={styles['add-category']} onSubmit={this.handleSubmit}>
           <label>
                     Name:
             <input name="name" value={name} onChange={this.handleChange} />

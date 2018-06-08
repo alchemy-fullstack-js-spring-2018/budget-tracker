@@ -2,8 +2,8 @@ import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
 import shortid from 'shortid';
 
 const categories = [
-  { name: 'Produce', budget:'$50' },
-  { name: 'Meat', budget:'$60' }
+  { name: 'Produce', budget: 50 },
+  { name: 'Meat', budget: 60 }
 ];
 
 export const loadCategories = () => ({

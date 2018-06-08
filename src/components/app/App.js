@@ -7,7 +7,7 @@ export default class App extends Component {
     // console.log('we are in app');
     return (
       <main>
-        <h1>Redux Demo</h1>
+        <h1>Budget Tracker App</h1>
         <Categories />
       </main>
     );

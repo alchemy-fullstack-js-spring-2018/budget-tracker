@@ -35,7 +35,10 @@ export default class CategoriesContainer extends Component {
     
     render() {
       const { categories } = this.state;
-      return <Categories categories={categories} onAdd={this.handleAdd} onRemove={this.handleRemove}
+      return <Categories 
+        categories={categories} 
+        onAdd={this.handleAdd} 
+        onRemove={this.handleRemove}
       />;
     }
 
