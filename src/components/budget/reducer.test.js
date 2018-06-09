@@ -48,6 +48,11 @@ it('updates a category', () => {
   expect(state).toEqual([newFood]);
 });
 
+it('removes a category', () => {
+  const state = categories([utilities, food], { type: CATEGORY_REMOVE, payload: food });
+  expect(state).toEqual([utilities]);
+});
+
 it('budget has a default value of empty array', () => {
   const state = budget(undefined, {});
   expect(state).toEqual([]);
