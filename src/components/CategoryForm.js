@@ -38,7 +38,7 @@ export default class CategoryForm extends Component {
           </label>
 
           <label>
-              Budget Amount: $
+              Budget Amount:
             <input name="budget" value={budget} onChange={this.handleChange}/>
           </label>    
           <button type="submit">{label}</button>
