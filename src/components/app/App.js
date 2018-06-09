@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Budget from '../budget/Budget';
+import Dashboard from '../budget/Dashboard';
 
 export default class App extends Component {
   render() {
     return (
-      <Budget/>
+      <Dashboard/>
     );  
   }
 }
