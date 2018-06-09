@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
-// import { loadBudget, addLineItem, removeLineItem, updateLineItem } from './actions';
-import { loadCategories, addCategory } from './actions';
+import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
 
 class Dashboard extends Component {
 
@@ -12,8 +11,8 @@ class Dashboard extends Component {
     categories: PropTypes.array,
     loadCategories: PropTypes.func.isRequired,
     addCategory: PropTypes.func.isRequired,
-    // removeLineItem: PropTypes.func.isRequired,
-    // updateLineItem: PropTypes.func.isRequired
+    removeCategory: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -21,14 +20,14 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { categories, addCategory } = this.props;
+    const { categories, addCategory, removeCategory } = this.props;
     if(!categories) return null;
 
     return (
       <main>
         <h1>Budget Dashboard</h1>
-        <CategoryForm onComplete={addCategory}/>
-        <Categories categories={categories}/>
+        <CategoryForm onComplete={addCategory} label="Add"/>
+        <Categories categories={categories} removeCategory={removeCategory}/>
       </main>
     );
   }
@@ -36,5 +35,5 @@ class Dashboard extends Component {
 
 export default connect(
   state => ({ categories: state.categories }),
-  { loadCategories, addCategory }
+  { loadCategories, addCategory, updateCategory, removeCategory }
 )(Dashboard);

@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { categories } from './reducers';
-// import BudgetForm from './BudgetForm';
+import CategoryForm from './CategoryForm';
 
 export default class Category extends Component {
 
+  state = {
+    editing: false
+  };
+
   static propTypes = {
-    category: PropTypes.object
+    category: PropTypes.object,
+    onRemove: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired
   };
 
   render() {
-    const { category } = this.props;
-    console.log(category.name);
-    // if(!budget) return null;
+    const { editing } = this.state;
+    const { category, onRemove } = this.props;
+    if(!category) return null;
 
     return (
-      <li>{category.name}</li>
+      <li key={category.name}>
+        <h3>{category.name}</h3>
+        <h3>${category.budget}</h3>
+        {editing || <button onClick={this.handleEdit}>✐</button>}
+        <button onClick={() => onRemove(category)}>X</button>
+        {editing && 
+          <div>
+            <CategoryForm
+              label="Update"
+              category={category}
+              onComplete={this.handleUpdate}
+              onCancel={this.handleCancel}
+            />
+          </div>
+        }
+      </li>
     );
   }
 }

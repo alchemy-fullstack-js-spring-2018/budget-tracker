@@ -10,8 +10,8 @@ const defaultState = {
 export default class CategoryForm extends Component {
   static propTypes = {
     onComplete: PropTypes.func.isRequired,
-//     onCancel: PropTypes.func,
-//     label: PropTypes.string.isRequired
+    onCancel: PropTypes.func,
+    label: PropTypes.string.isRequired
   };
 
   static getDerivedStateFromProps({ category }, { edit }) {
@@ -39,7 +39,7 @@ export default class CategoryForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onComplete(this.state);
+    this.props.onComplete(this.state.edit);
     this.setState({
       edit: { ...defaultState }
     });
@@ -47,15 +47,14 @@ export default class CategoryForm extends Component {
 
   render() {
     const { name, budget } = this.state;
-    // const { label, onCancel } = this.props;
+    const { label, onCancel } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
         <input placeholder="name" value={name} onChange={this.handleChange}/>
         <input placeholder="budget" value={budget} onChange={this.handleChange}/>
-        <button type="submit" >Submit</button>
-        {/* <button type="submit" >{label}</button> */}
-        {/* {onCancel && <button type="reset" onClick={onCancel}>Cancel</button>} */}
+        <button type="submit" >{label}</button>
+        {onCancel && <button type="reset" onClick={onCancel}>Cancel</button>}
       </form>
     );
   }
