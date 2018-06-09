@@ -37,6 +37,17 @@ it('add a category', () => {
   expect(state).not.toBe(prevState);
 });
 
+it('updates a category', () => {
+  const newFood = {
+    id: 1,
+    name: 'Food',
+    budget: 250.00
+  };
+
+  const state = categories([{ id: 1, ...food }], { type: CATEGORY_UPDATE, payload: newFood });
+  expect(state).toEqual([newFood]);
+});
+
 it('budget has a default value of empty array', () => {
   const state = budget(undefined, {});
   expect(state).toEqual([]);
