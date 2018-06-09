@@ -25,7 +25,7 @@ export function categories(state = [], { type, payload }) {
   }
 }
 
-export function ExpensesByItem(state = {}, { type, payload }) {
+export function expensesByItem(state = {}, { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
       return payload.reduce((map, category) => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExpense } from './actions';
 import { getExpenseByCategory } from './reducers';
-import AddExpense from './AddComment';
+import ExpenseForm from './ExpenseForm';
 
 class Expenses extends Component {
 
@@ -27,13 +27,14 @@ class Expenses extends Component {
           {expenses.map(expense => {
             return (
               <li key={expense.id}>
-                {expense.text} 
+                {expense.name}
+                {expense.expense} 
                 {expense.timestamp && <span> on {expense.timestamp.toLocaleString()} </span>}
               </li>
             );
           })}
         </ul>
-        <AddExpense onAdd={this.handleAdd}/>
+        <ExpenseForm onAdd={this.handleAdd}/>
       </div>
     );
   }
