@@ -8,11 +8,11 @@ const defaultState = {
 };
 
 export default class CategoryForm extends Component {
-//   static propTypes = {
-//     onComplete: PropTypes.func.isRequired,
+  static propTypes = {
+    onComplete: PropTypes.func.isRequired,
 //     onCancel: PropTypes.func,
 //     label: PropTypes.string.isRequired
-//   };
+  };
 
   static getDerivedStateFromProps({ category }, { edit }) {
     if(edit) return null;
@@ -26,24 +26,24 @@ export default class CategoryForm extends Component {
     edit: null
   };
 
-//   handleChange = ({ target }) => {
-//     this.setState(({ edit }) => {
-//       return {
-//         edit: {
-//           ...edit,
-//           [target.placeholder]: target.value
-//         }
-//       };
-//     });
-//   };
+  handleChange = ({ target }) => {
+    this.setState(({ edit }) => {
+      return {
+        edit: {
+          ...edit,
+          [target.placeholder]: target.value
+        }
+      };
+    });
+  };
 
-//   handleSubmit = event => {
-//     event.preventDefault();
-//     this.props.onComplete(this.state);
-//     this.setState({
-//       edit: { ...defaultState }
-//     });
-//   };
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.onComplete(this.state);
+    this.setState({
+      edit: { ...defaultState }
+    });
+  };
 
   render() {
     const { name, budget } = this.state;
