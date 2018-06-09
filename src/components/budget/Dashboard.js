@@ -20,7 +20,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { categories, addCategory, removeCategory } = this.props;
+    const { categories, addCategory, removeCategory, updateCategory } = this.props;
     if(!categories) return null;
 
     return (
