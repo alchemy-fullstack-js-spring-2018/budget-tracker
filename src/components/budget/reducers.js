@@ -2,14 +2,11 @@ export const CATEGORIES_LOAD = 'CATEGORIES_LOAD';
 export const CATEGORY_ADD = 'CATEGORY_ADD';
 export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
 export const CATEGORY_REMOVE = 'CATEGORY_REMOVE';
-// export const BUDGET_LOAD = 'BUDGET_LOAD';
-// export const BUDGET_ADD = 'BUDGET_ADD';
-// export const BUDGET_UPDATE = 'BUDGET_UPDATE';
-// export const BUDGET_REMOVE = 'BUDGET_REMOVE';
+export const LINEITEM_ADD = 'LINEITEM_ADD';
 
-// export const getBudget = state => state.budget;
-// export const getCategory = state => state.budgetByCategory;
-// export const getBudgetByCategory = (categoryId, state) => getCategory(state)[categoryId];
+export const getCategory = state => state.categories;
+export const getLineItems = state => state.lineItemByCategory;
+export const getLineItemByCategory = (categoryId, state) => getCategory(state)[categoryId];
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
@@ -26,29 +23,33 @@ export function categories(state = [], { type, payload }) {
   }
 }
 
-// export function budget(state = [], { type, payload }) {
-//   switch (type) {
-//     case BUDGET_LOAD:
-//       return payload;
-//     case BUDGET_ADD:
-//       return [...state, payload];
-//     case BUDGET_UPDATE:
-//       return state.map(lineItem => lineItem.id === payload.id ? payload : lineItem);
-//     case BUDGET_REMOVE:
-//       return state.filter(lineItem => lineItem !== payload);
-//     default:
-//       return state;
-//   }
-// }
-
-// export function budgetByCategory(state = {}, { type, payload }) {
-//   switch (type) {
-//     case BUDGET_ADD:
-//       return {
-//         ...state,
-//         [payload.id]: []
-//       };
-//     default:
-//       return state;
-//   }
-// }
+export function lineItemByCategory(state = {}, { type, payload }) {
+  switch (type) {
+    case CATEGORIES_LOAD:
+      return payload.reduce((map, category) =>{
+        map[category.id] = category.lineItem;
+        return map;
+      }, {});
+    case CATEGORY_ADD:
+      return {
+        ...state,
+        [payload.id]: []
+      };
+    case CATEGORY_REMOVE: {
+      const copy = { ...state };
+      delete copy[payload.id];
+      return copy;
+    }
+    case LINEITEM_ADD: {
+      return {
+        ...state,
+        [payload.categoryID]: [
+          ...state[payload.categoryID],
+          payload.lineItem
+        ]
+      };
+    }
+    default:
+      return state;
+  }
+}
