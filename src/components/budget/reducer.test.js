@@ -56,3 +56,16 @@ describe('categories reducer', () => {
 
 });
 
+describe('lineItemsByCategory reducer', () => {
+
+  it('has a default value of empty object', () => {
+    const state = lineItemByCategory(undefined, {});
+    expect(state).toEqual({});
+  });
+  
+  it('add a line item to a category', () => {
+    const state = lineItemByCategory({}, { type: CATEGORY_ADD, payload: { id: 123 } });
+    expect(state).toEqual({ 123: [] });
+  });
+
+});
