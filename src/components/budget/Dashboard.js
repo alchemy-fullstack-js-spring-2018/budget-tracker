@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import BudgetForm from './BudgetForm';
-import Categories from './Categories';
 import CategoryForm from './CategoryForm';
+import Categories from './Categories';
 // import { loadBudget, addLineItem, removeLineItem, updateLineItem } from './actions';
 import { loadCategories } from './actions';
 
@@ -22,14 +21,14 @@ class Dashboard extends Component {
   }
 
   render() {
-    // const { budget, addLineItem, removeLineItem, updateLineItem } = this.props;
-    // if(!budget) return null;
+    const { categories } = this.props;
+    if(!categories) return null;
 
     return (
       <main>
-        <h1>Hello World</h1>
+        <h1>Budget Dashboard</h1>
         <CategoryForm/>
-        <Categories/>
+        <Categories categories={categories}/>
       </main>
     );
   }
