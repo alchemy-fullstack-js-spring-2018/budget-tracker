@@ -5,17 +5,20 @@ const budget = () => [
   addLineItem({ 
     date: new Date('12/04/2018'),
     description: 'paycheck',
-    amount: 500.34
+    amount: 500.34,
+    categoryId: 1
   }).payload,
   addLineItem({
     date: new Date('12/30/2018'),
     description: 'rent',
-    amount: -435.89
+    amount: -435.89,
+    categoryId: 1
   }).payload,
   addLineItem({
     date: new Date('01/01/2019'),
     description: 'bonus',
-    amount: 1000.00
+    amount: 1000.00,
+    categoryId: 1
   }).payload
 ];
 

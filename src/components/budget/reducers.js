@@ -17,3 +17,15 @@ export function budget(state = [], { type, payload }) {
       return state;
   }
 }
+
+export function budgetByCategory(state = {}, { type, payload }) {
+  switch (type) {
+    case BUDGET_ADD:
+      return {
+        ...state,
+        
+      }
+    default:
+      return state;
+  }
+}
