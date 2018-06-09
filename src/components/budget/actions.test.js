@@ -1,64 +1,52 @@
-import { BUDGET_LOAD, BUDGET_ADD, BUDGET_UPDATE, BUDGET_REMOVE } from './reducers';
-import { loadBudget, addLineItem, updateLineItem, removeLineItem } from './actions';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './reducers';
+import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
 
 it('creates a load action', () => {
-  const { type, payload } = loadBudget();
-  expect(type).toBe(BUDGET_LOAD);
+  const { type, payload } = loadCategories();
+  expect(type).toBe(CATEGORIES_LOAD);
   expect(payload.length).toBe(3);
 });
 
 it('creates a add action', () => {
-  const paycheck = { 
-    date: new Date('12/04/2018'),
-    description: 'paycheck',
-    amount: 500.34
+  const rent = { 
+    name: 'rent',
+    budget: 500.00,
+    lineItemId: [{ id: 1, description: 'rent', amount: 500.00 }]
   };
 
-  const { type, payload } = addLineItem(paycheck);
-  expect(type).toBe(BUDGET_ADD);
-  const { date, description, amount, id } = payload;
-  expect(date).toEqual(paycheck.date);
-  expect(description).toBe(paycheck.description);
-  expect(amount).toBe(paycheck.amount);
+  const { type, payload } = addCategory(rent);
+  expect(type).toBe(CATEGORY_ADD);
+  const { name, budget, lineItemId, id } = payload;
+  expect(name).toBe(rent.name);
+  expect(budget).toBe(rent.budget);
+  expect(lineItemId).toEqual(rent.lineItemId);
   expect(id).toBeTruthy();
-});
-
-it('creates a date on add', () => {
-  const paycheck = { 
-    date: null,
-    description: 'paycheck',
-    amount: 500.34
-  };
-
-  const { payload } = addLineItem(paycheck);
-  const { date } = payload;
-  expect(date).toBeTruthy();
 });
 
 it('creates an update action', () => {
   const rent = { 
-    date: new Date('12/04/2017'),
-    description: 'rent',
-    amount: -302.64
+    name: 'rent',
+    budget: 600.00,
+    lineItemId: [{ id: 1, description: 'rent', amount: 500.00 }]
   };
 
-  const action = updateLineItem(rent);
+  const action = updateCategory(rent);
   expect(action).toEqual({
-    type: BUDGET_UPDATE,
+    type: CATEGORY_UPDATE,
     payload: rent
   });
 });
 
 it('creates a remove action', () => {
   const rent = { 
-    date: new Date('12/04/2017'),
-    description: 'rent',
-    amount: -302.64
+    name: 'rent',
+    budget: 500.00,
+    lineItemId: [{ id: 1, description: 'rent', amount: 500.00 }]
   };
 
-  const action = removeLineItem(rent);
+  const action = removeCategory(rent);
   expect(action).toEqual({
-    type: BUDGET_REMOVE,
+    type: CATEGORY_REMOVE,
     payload: rent
   });
 });
