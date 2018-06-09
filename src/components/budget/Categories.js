@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import BudgetForm from './BudgetForm';
-// import LineItem from './LineItem';
+import Category from './Category';
 
 export default class Categories extends Component {
 
-//   static propTypes = {
-//     budget: PropTypes.array,
-//     loadBudget: PropTypes.func.isRequired,
-//     addLineItem: PropTypes.func.isRequired,
-//     removeLineItem: PropTypes.func.isRequired,
-//     updateLineItem: PropTypes.func.isRequired
-//   };
+  static propTypes = {
+    categories: PropTypes.array,
+    // loadBudget: PropTypes.func.isRequired,
+    // addLineItem: PropTypes.func.isRequired,
+    // removeLineItem: PropTypes.func.isRequired,
+    // updateLineItem: PropTypes.func.isRequired
+  };
 
   render() {
-    // const { budget, addLineItem, removeLineItem, updateLineItem } = this.props;
-    // if(!budget) return null;
+    const { categories } = this.props;
+    // if(!categories) return null;
 
     return (
       <main>
         {/* <BudgetForm onComplete={addLineItem} label="Add"/> */}
         <ul>
           <li>Hello World</li>
-          {/* {budget.map(lineItem => <LineItem 
-            key={lineItem.description}
-            onRemove={removeLineItem}
-            onUpdate={updateLineItem}
-            lineItem={lineItem}
+          {categories.map(category => <Category 
+            key={category.name}
+            // onRemove={removecategory}
+            // onUpdate={updatecategory}
+            category={category}
           />)
-          } */}
+          }
         </ul>
       </main>
     );
