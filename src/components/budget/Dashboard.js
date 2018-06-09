@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 // import BudgetForm from './BudgetForm';
 // import LineItem from './LineItem';
 // import { loadBudget, addLineItem, removeLineItem, updateLineItem } from './actions';
+import { loadCategories } from './actions';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
 
-  // static propTypes = {
-  //   budget: PropTypes.array,
-  //   loadBudget: PropTypes.func.isRequired,
-  //   addLineItem: PropTypes.func.isRequired,
-  //   removeLineItem: PropTypes.func.isRequired,
-  //   updateLineItem: PropTypes.func.isRequired
-  // };
+  static propTypes = {
+    categories: PropTypes.array,
+    loadCategories: PropTypes.func.isRequired,
+    // addLineItem: PropTypes.func.isRequired,
+    // removeLineItem: PropTypes.func.isRequired,
+    // updateLineItem: PropTypes.func.isRequired
+  };
 
-  // componentDidMount() {
-  //   this.props.loadBudget();
-  // }
+  componentDidMount() {
+    this.props.loadCategories();
+  }
 
   render() {
     // const { budget, addLineItem, removeLineItem, updateLineItem } = this.props;
@@ -31,7 +32,7 @@ export default class Dashboard extends Component {
   }
 }
 
-// export default connect(
-//   state => ({ budget: state.budget }),
-//   { loadBudget, addLineItem, removeLineItem, updateLineItem }
-// )(Dashboard);
+export default connect(
+  state => ({ categories: state.categories }),
+  { loadCategories }
+)(Dashboard);
