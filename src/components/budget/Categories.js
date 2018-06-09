@@ -8,14 +8,14 @@ export default class Categories extends Component {
   static propTypes = {
     categories: PropTypes.array,
     removeCategory: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired
 
     // loadBudget: PropTypes.func.isRequired,
     // addLineItem: PropTypes.func.isRequired,
-    // updateLineItem: PropTypes.func.isRequired
   };
 
   render() {
-    const { categories, removeCategory } = this.props;
+    const { categories, removeCategory, updateCategory } = this.props;
     // if(!categories) return null;
 
     return (
@@ -26,7 +26,7 @@ export default class Categories extends Component {
           {categories.map(category => <Category 
             key={category.name}
             onRemove={removeCategory}
-            // onUpdate={updatecategory}
+            onUpdate={updateCategory}
             category={category}
           />)
           }
