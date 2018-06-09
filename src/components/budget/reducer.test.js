@@ -16,7 +16,7 @@ it('categories has a default value of empty array', () => {
 });
 
 const utilities = {
-  name: 'paycheck',
+  name: 'Utilities',
   budget: 300.00
 };
 
@@ -28,6 +28,13 @@ const food = {
 it('loads categories', () => {
   const state = categories([], { type: CATEGORIES_LOAD, payload: [utilities, food] });
   expect(state).toEqual([utilities, food]);
+});
+
+it('add a category', () => {
+  const prevState = [];
+  const state = categories(prevState, { type: CATEGORY_ADD, payload: utilities });
+  expect(state).toEqual([utilities]);
+  expect(state).not.toBe(prevState);
 });
 
 it('budget has a default value of empty array', () => {
