@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
 // import { loadBudget, addLineItem, removeLineItem, updateLineItem } from './actions';
-import { loadCategories } from './actions';
+import { loadCategories, addCategory } from './actions';
 
 class Dashboard extends Component {
 
   static propTypes = {
     categories: PropTypes.array,
     loadCategories: PropTypes.func.isRequired,
-    // addLineItem: PropTypes.func.isRequired,
+    addCategory: PropTypes.func.isRequired,
     // removeLineItem: PropTypes.func.isRequired,
     // updateLineItem: PropTypes.func.isRequired
   };
@@ -21,13 +21,13 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, addCategory } = this.props;
     if(!categories) return null;
 
     return (
       <main>
         <h1>Budget Dashboard</h1>
-        <CategoryForm/>
+        <CategoryForm onComplete={addCategory}/>
         <Categories categories={categories}/>
       </main>
     );
@@ -36,5 +36,5 @@ class Dashboard extends Component {
 
 export default connect(
   state => ({ categories: state.categories }),
-  { loadCategories }
+  { loadCategories, addCategory }
 )(Dashboard);
