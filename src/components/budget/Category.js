@@ -14,6 +14,19 @@ export default class Category extends Component {
     onUpdate: PropTypes.func.isRequired
   };
 
+  handleEdit = () => {
+    this.setState({ editing: true });
+  };
+
+  handleCancel = () => {
+    this.setState({ editing: false });
+  };
+
+  handleUpdate = data => {
+    this.props.onUpdate(data);
+    this.setState({ editing: false });
+  };
+  
   render() {
     const { editing } = this.state;
     const { category, onRemove } = this.props;
