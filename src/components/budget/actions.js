@@ -1,4 +1,4 @@
-import { BUDGET_LOAD, BUDGET_ADD, BUDGET_UPDATE, BUDGET_REMOVE } from './reducers';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, categories } from './reducers';
 import shortid from 'shortid';
 
 const budget = () => [
@@ -22,27 +22,27 @@ const budget = () => [
   }).payload
 ];
 
-export const loadBudget = () => ({
-  type: BUDGET_LOAD,
-  payload: budget()
+export const loadCategories = () => ({
+  type: CATEGORIES_LOAD,
+  payload: categories()
 });
 
-export const addLineItem = lineItem => {
-  lineItem.id = shortid.generate();
-  lineItem.date = lineItem.date ? lineItem.date : new Date();
+export const addCategory = category => {
+  category.id = shortid.generate();
+  // category.date = category.date ? category.date : new Date();
 
   return {
-    type: BUDGET_ADD,
-    payload: lineItem
+    type: CATEGORY_ADD,
+    payload: category
   };
 };
 
-export const updateLineItem = lineItem => ({
-  type: BUDGET_UPDATE,
-  payload: lineItem
+export const updateCategory = category => ({
+  type: CATEGORY_UPDATE,
+  payload: category
 });
 
-export const removeLineItem = lineItem => ({
-  type: BUDGET_REMOVE,
-  payload: lineItem
+export const removeCategory = category => ({
+  type: CATEGORY_REMOVE,
+  payload: category
 });
