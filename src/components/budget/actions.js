@@ -1,24 +1,42 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, categories } from './reducers';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './reducers';
 import shortid from 'shortid';
 
-const budget = () => [
-  addLineItem({ 
-    date: new Date('12/04/2018'),
-    description: 'paycheck',
-    amount: 500.34,
-    categoryId: 1
+// const budget = () => [
+//   addLineItem({ 
+//     date: new Date('12/04/2018'),
+//     description: 'paycheck',
+//     amount: 500.34,
+//     categoryId: 1
+//   }).payload,
+//   addLineItem({
+//     date: new Date('12/30/2018'),
+//     description: 'rent',
+//     amount: -435.89,
+//     categoryId: 1
+//   }).payload,
+//   addLineItem({
+//     date: new Date('01/01/2019'),
+//     description: 'bonus',
+//     amount: 1000.00,
+//     categoryId: 1
+//   }).payload
+// ];
+
+const categories = () => [
+  addCategory({ 
+    name: 'rent',
+    budget: 500.00,
+    lineItemId: []
   }).payload,
-  addLineItem({
-    date: new Date('12/30/2018'),
-    description: 'rent',
-    amount: -435.89,
-    categoryId: 1
+  addCategory({
+    name: 'food',
+    budget: 200.00,
+    lineItemId: []
   }).payload,
-  addLineItem({
-    date: new Date('01/01/2019'),
-    description: 'bonus',
-    amount: 1000.00,
-    categoryId: 1
+  addCategory({
+    name: 'utilities',
+    budget: 300.00,
+    lineItemId: []
   }).payload
 ];
 
