@@ -1,4 +1,9 @@
 import {
+  categories,
+  CATEGORIES_LOAD,
+  CATEGORY_ADD,
+  CATEGORY_UPDATE,
+  CATEGORY_REMOVE,
   budget,
   BUDGET_LOAD,
   BUDGET_ADD,
