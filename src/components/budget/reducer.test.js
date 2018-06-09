@@ -10,7 +10,27 @@ import {
   BUDGET_UPDATE,
   BUDGET_REMOVE } from './reducers';
 
-it('has a default value of empty array', () => {
+it('categories has a default value of empty array', () => {
+  const state = categories(undefined, {});
+  expect(state).toEqual([]);
+});
+
+const utilities = {
+  name: 'paycheck',
+  budget: 300.00
+};
+
+const food = {
+  name: 'food',
+  budget: 200.00
+};
+
+it('loads categories', () => {
+  const state = categories([], { type: CATEGORIES_LOAD, payload: [utilities, food] });
+  expect(state).toEqual([utilities, food]);
+});
+
+it('budget has a default value of empty array', () => {
   const state = budget(undefined, {});
   expect(state).toEqual([]);
 });
