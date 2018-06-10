@@ -6,7 +6,7 @@ export const LINEITEM_ADD = 'LINEITEM_ADD';
 
 export const getCategory = state => state.categories;
 export const getLineItems = state => state.lineItemByCategory;
-export const getLineItemByCategory = (categoryId, state) => getCategory(state)[categoryId];
+export const getLineItemByCategory = (categoryId, state) => getLineItems(state)[categoryId];
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
