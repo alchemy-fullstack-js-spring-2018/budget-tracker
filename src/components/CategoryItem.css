@@ -1,9 +1,18 @@
 :local(.category-item) {
+  display: flex;
+  align-items: center;
+  &:hover {
+    background-color: aquamarine
+  }
   button {
+    color: #888;
     font-size: 2em;
     border: none;
     background: transparent;
-    padding-top: 0;
-    cursor: pointer;
+    position: relative;
+    bottom: 0.1em;
+    &:hover {
+      color: black;
+    }
   }
 }

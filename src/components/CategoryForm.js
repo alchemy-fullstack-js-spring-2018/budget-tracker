@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './CategoryForm.css';
 
 const emptyState = {
   name: '',
@@ -29,19 +30,19 @@ export default class CategoryForm extends Component {
   render() {
     const { name, budget } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <fieldset>
-          <legend>Add a Category</legend>
-          <label>
-        Name: 
-            <input type="text" name="name" value={name} onChange={this.handleChange}/>
-          </label>
-          <label>
-        Budget: $
+      <form className={styles['category-form']} onSubmit={this.handleSubmit}>   
+        <div className="cell">
+          <input type="text" name="name" value={name} onChange={this.handleChange}/>
+        </div>
+        <div className="cell">
+          <label>$
             <input type="number" name="budget" value={budget} onChange={this.handleChange}/>
           </label>
+        </div>
+        <div className="cell"></div>
+        <div className="cell">
           <button type="submit">ADD</button>
-        </fieldset>
+        </div>
       </form>
     );
   }
