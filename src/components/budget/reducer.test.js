@@ -80,7 +80,7 @@ describe('lineItemsByCategory reducer', () => {
         id: 123,
         lineItems: [
           { description: 'rent', amount: 600 },
-          { description: 'good', amount: 200 }
+          { description: 'food', amount: 200 }
         ]
       }, {
         id: 1717,
@@ -90,9 +90,31 @@ describe('lineItemsByCategory reducer', () => {
     expect(state).toEqual({ 
       123: [
         { description: 'rent', amount: 600 },
-        { description: 'good', amount: 200 }
+        { description: 'food', amount: 200 }
       ],
       1717: []
+    });
+  });
+
+  it('adds a line item to a category', () => {
+    const state = lineItemByCategory({ 
+      123: [
+        { description: 'rent', amount: 600 },
+        { description: 'food', amount: 200 }
+      ] },
+    { 
+      type: LINEITEM_ADD,
+      payload: {
+        categoryId: 123,
+        lineItem: { description: 'utilities', amount: 300 }
+      }
+    });
+    expect(state).toEqual({ 
+      123: [
+        { description: 'rent', amount: 600 },
+        { description: 'food', amount: 200 },
+        { description: 'utilities', amount: 300 }
+      ]
     });
   });
 
