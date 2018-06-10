@@ -1,5 +1,5 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './reducers';
-import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, LINEITEM_ADD } from './reducers';
+import { loadCategories, addCategory, updateCategory, removeCategory, addLineItem } from './actions';
 
 it('creates a load action', () => {
   const { type, payload } = loadCategories();
@@ -49,4 +49,21 @@ it('creates a remove action', () => {
     type: CATEGORY_REMOVE,
     payload: rent
   });
+});
+
+it('create an add line item', () => {
+  const parentId = 123;
+  const data = { description: 'June Rent', amount: 700 };
+
+  const { type, payload } = addLineItem(parentId, data);
+  expect(type).toBe(LINEITEM_ADD);
+
+  const { categoryId, lineItem } = payload;
+  expect(categoryId).toBe(parentId);
+
+  const { description, amount, id, date } = lineItem;
+  expect(description).toBe(data.description);
+  expect(amount).toBe(data.amount);
+  expect(id).toBeTruthy();
+  expect(date).toBeTruthy();
 });
