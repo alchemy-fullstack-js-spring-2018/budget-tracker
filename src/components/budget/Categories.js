@@ -16,7 +16,7 @@ export default class Categories extends Component {
 
     return (
       <ul>
-        <li>Categories</li>
+        <h2>Categories</h2>
         {categories.map(category => <Category 
           key={category.name}
           onRemove={removeCategory}
@@ -24,7 +24,7 @@ export default class Categories extends Component {
           category={category}
         />)
         }
-        <LineItems/>
+        <LineItems categories={categories}/>
       </ul>
     );
   }
