@@ -23,9 +23,8 @@ class LineItems extends Component {
   handleAdd = event => {
     const { description, amount, date, categoryId } = event.edit;
     this.setState({ description, amount, date });
-    
+    addLineItem(categoryId, { description, amount, date });
   };
-
 
   render() {
     const { categories } = this.props;
