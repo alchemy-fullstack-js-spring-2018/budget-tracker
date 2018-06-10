@@ -16,7 +16,6 @@ export default class Categories extends Component {
 
     return (
       <div>
-        <LineItems categories={categories}/>
         <ul>
           <h2>Categories</h2>
           {categories.map(category => <Category 
@@ -27,6 +26,7 @@ export default class Categories extends Component {
           />)
           }
         </ul>
+        <LineItems categories={categories}/>
       </div>
     );
   }
