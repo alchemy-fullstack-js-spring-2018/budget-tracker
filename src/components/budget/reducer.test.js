@@ -119,3 +119,22 @@ describe('lineItemsByCategory reducer', () => {
   });
 
 });
+
+describe('selectors', () => {
+
+  it('gets a line item for a category id', () => {
+    const lineItems = [
+      { description: 'rent', amount: 600 },
+      { description: 'food', amount: 200 }
+    ];
+    const state = {
+      lineItemByCategory: {
+        123: lineItems
+      }
+    };
+
+    const selected = getLineItemByCategory(123, state);
+    expect(selected).toBe(lineItems);
+  });
+
+});
