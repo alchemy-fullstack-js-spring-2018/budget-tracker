@@ -6,12 +6,16 @@ it('has a default value of empty array', () => {
 });
 
 const category1 = {
+  id: 1,
   name: 'Meat',
+  timestamp: '11/15/1990',
   budget: 50
 };
 
 const category2 = {
+  id: 2,
   name: 'Produce',
+  timestamp: '6/10/2018',
   budget: 60
 };
 
@@ -30,4 +34,15 @@ it('add a category', () => {
 it('removes a category', () => {
   const state = categories([category1, category2], {  type: CATEGORY_REMOVE, payload: category2  });
   expect(state).toEqual([category1]);
+});
+
+it('updates a category', () => {
+  const state = categories([{ id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 50 }],
+    {
+      type: CATEGORY_UPDATE,
+      payload: {id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 30 }
+    }
+  );
+  expect(state).toEqual([{ id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 30 }]);
+
 });
