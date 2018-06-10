@@ -31,11 +31,12 @@ export default class Category extends Component {
     const { editing } = this.state;
     const { category, onRemove } = this.props;
     if(!category) return null;
-
+    
     return (
       <li key={category.name}>
         <h3>{category.name}</h3>
         <h3>${category.budget}</h3>
+        {category.lineItems.length ? <h3>{category.lineItems[0].description}</h3> : <h3>No Line Items</h3>}
         {editing || <button onClick={this.handleEdit}>✐</button>}
         <button onClick={() => onRemove(category)}>X</button>
         {editing && 
