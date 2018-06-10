@@ -24,7 +24,7 @@ export default class CategoryItem extends Component {
 
     return (
       <div className={styles['category-item']}>
-        <li className={editing ? 'grayed-out' : null}>
+        <li className={editing ? 'being-edited' : 'table-row'}>
           <div className="cell">{name}</div>
           <div className="cell">${budget}</div>
           <div className="cell"></div>
