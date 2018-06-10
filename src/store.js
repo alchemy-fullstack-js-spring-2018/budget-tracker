@@ -1,8 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import { categories } from './components/budget/reducers';
+import { categories, lineItemByCategory } from './components/budget/reducers';
 
 const rootReducer = combineReducers({
-  categories
+  categories,
+  lineItemByCategory
 });
 
 const store = createStore(
