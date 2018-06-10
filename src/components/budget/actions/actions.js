@@ -1,4 +1,5 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './../reducers/reducers';
+import { EXPENSE_ADD, EXPENSE_UPDATE, EXPENSE_REMOVE } from './../reducers/reducers';
 import shortid from 'shortid';
 
 const categories = [
@@ -39,4 +40,24 @@ export const updateCategory = category => ({
 export const removeCategory = category => ({
   type: CATEGORY_REMOVE,
   payload: category
+});
+
+export const addExpense = expense => {
+  expense.id = shortid.generate();
+  expense.timestamp = new Date();
+
+  return {
+    type: EXPENSE_ADD,
+    payload: expense
+  };
+};
+
+export const updateExpense = expense => ({
+  type: EXPENSE_UPDATE,
+  payload: expense
+});
+
+export const removeExpense = expense => ({
+  type: EXPENSE_REMOVE,
+  payload: expense
 });
