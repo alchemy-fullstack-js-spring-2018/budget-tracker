@@ -68,4 +68,9 @@ describe('lineItemsByCategory reducer', () => {
     expect(state).toEqual({ 123: [] });
   });
 
+  it('delete a line item to a category', () => {
+    const state = lineItemByCategory({ 123: [], 1717: [] }, { type: CATEGORY_REMOVE, payload: { id: 123 } });
+    expect(state).toEqual({ 1717: [] });
+  });
+
 });
