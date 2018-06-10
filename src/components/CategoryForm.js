@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CategoryForm.css';
 
-const emptyState = {
-  name: '',
-  budget: ''  
-};
-
 export default class CategoryForm extends Component {
   static propTypes = {
     onComplete: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    budget: PropTypes.number
   };
 
-  state = emptyState;
+  state = {
+    name: this.props.name || '',
+    budget: this.props.budget || ''  
+  };
 
   handleChange = ({ target }) => {
     let { value } = target;
-    if(target.type === 'number') value = +value;
+    if(target.type === 'number') value = +value || '';
     this.setState({ [target.name]: value });
   };
 
@@ -25,7 +25,7 @@ export default class CategoryForm extends Component {
     event.preventDefault();
     if(this.state.name === '' || this.state.budget === '') return;
     this.props.onComplete(this.state);
-    this.setState(emptyState);
+    this.setState({ name: '', budget: '' });
   };
 
   render() {

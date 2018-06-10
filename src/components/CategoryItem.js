@@ -33,7 +33,7 @@ export default class CategoryItem extends Component {
             <button className={editing ? 'edit active' : 'edit icon-button'} onClick={this.handleEditToggle}>✎</button>  
           </div>
         </li>
-        {editing && <CategoryForm onComplete={() => {}} label="UPDATE"/>} 
+        {editing && <CategoryForm name={name} budget={budget} onComplete={() => {}} label="UPDATE"/>} 
       </div>
 
     );
