@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
-// import LineItem from './LineItem';
+import LineItem from './LineItem';
 import { addLineItem } from './actions';
 import { getLineItemByCategory } from './reducers';
 // import Categories from './Categories';
@@ -17,7 +17,8 @@ class LineItems extends Component {
   state = {
     description: '',
     amount: 0,
-    date: null
+    date: null,
+    categoryID: null
   };
 
   handleAdd = event => {
@@ -34,15 +35,21 @@ class LineItems extends Component {
       <div>
         <h2>Add a Line Item</h2>
         <BudgetForm onComplete={this.handleAdd} categories={categories} label="Add"/>
-        {/* <ul>
-          {budget.map(lineItem => <LineItem 
-            key={lineItem.description}
-            // onRemove={removeLineItem}
-            // onUpdate={updateLineItem}
-            lineItem={lineItem}
-          />)
+        <div>
+          {categories.map(category => <div key={category.name}>
+            <h3>{category.name}</h3>
+            <ul>
+              {category.lineItems.map(lineItem => <LineItem
+                key={lineItem.description}
+                // onRemove={removeLineItem}
+                // onUpdate={updateLineItem}
+                lineItem={lineItem}
+              />)
+              }
+            </ul>
+          </div>)
           }
-        </ul> */}
+        </div>
       </div>
     );
   }
