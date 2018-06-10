@@ -31,7 +31,7 @@ class Dashboard extends Component {
             <h2 className="table-heading">Remaining Budget</h2>
             <h2 className="table-heading">Actions</h2>
           </div>
-          <CategoryForm onAdd={addCategory}/>      
+          <CategoryForm onComplete={addCategory} label="ADD"/>      
           <Categories categories={categories} onRemove={removeCategory}/>
         </div>
       </div>

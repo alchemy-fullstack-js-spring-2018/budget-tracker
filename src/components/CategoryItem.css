@@ -1,18 +1,41 @@
 :local(.category-item) {
-  display: flex;
-  align-items: center;
+  li {
+    display: flex;
+    align-items: center;
+  }
+  .grayed-out {
+    color: #999;
+  }
   &:hover {
     background-color: aquamarine
   }
-  button {
-    color: #888;
-    font-size: 2em;
+  .icon-button {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin-right: 1rem;
+    color: #999;
     border: none;
     background: transparent;
     position: relative;
-    bottom: 0.1em;
     &:hover {
       color: black;
+    }
+  }
+  .remove {
+    font-size: 2em;
+    bottom: 0.1em;
+  }
+  .edit {
+    font-size: 1.5em;
+    bottom: 0.15em;
+    &.active {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      margin-right: 1rem;
+      border: none;
+      position: relative;
+      color: white;
+      background-color: black;
     }
   }
 }

@@ -9,7 +9,8 @@ const emptyState = {
 
 export default class CategoryForm extends Component {
   static propTypes = {
-    onAdd: PropTypes.func.isRequired
+    onComplete: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired
   };
 
   state = emptyState;
@@ -23,12 +24,14 @@ export default class CategoryForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if(this.state.name === '' || this.state.budget === '') return;
-    this.props.onAdd(this.state);
+    this.props.onComplete(this.state);
     this.setState(emptyState);
   };
 
   render() {
     const { name, budget } = this.state;
+    const { label } = this.props;
+
     return (
       <form className={styles['category-form']} onSubmit={this.handleSubmit}>   
         <div className="cell">
@@ -41,7 +44,7 @@ export default class CategoryForm extends Component {
         </div>
         <div className="cell"></div>
         <div className="cell">
-          <button type="submit">ADD</button>
+          <button type="submit">{label}</button>
         </div>
       </form>
     );
