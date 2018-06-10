@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 const defaultState = {
   date: '',
   description: '',
-  amount: 0
+  amount: 0,
+  categoryId: null
 };
 
 export default class BudgetForm extends Component {
@@ -12,7 +13,7 @@ export default class BudgetForm extends Component {
     categories: PropTypes.array,
     onComplete: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
   };
 
   static getDerivedStateFromProps({ lineItem }, { edit }) {
@@ -38,6 +39,17 @@ export default class BudgetForm extends Component {
     });
   };
 
+  handleSelect = ({ target }) => {
+    this.setState(({ edit }) => {
+      return {
+        edit: {
+          ...edit,
+          categoryId: target.value
+        }
+      };
+    });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     this.props.onComplete(this.state);
@@ -56,7 +68,8 @@ export default class BudgetForm extends Component {
         <input placeholder="description" value={description} onChange={this.handleChange}/>
         <input placeholder="amount" value={amount} onChange={this.handleChange}/>
         <input type="date" placeholder="date" value={date} onChange={this.handleChange}/>
-        <select>
+        <select onChange={this.handleSelect}>
+          <option>Category</option>
           {categories.map(category => <option key={category.name} value={category.id}>
             {category.name}
           </option>)
