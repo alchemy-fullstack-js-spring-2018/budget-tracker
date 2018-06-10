@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
-import LineItem from './LineItem';
+// import LineItem from './LineItem';
 import { addLineItem } from './actions';
 import { getLineItemByCategory } from './reducers';
-import Categories from './Categories';
+// import Categories from './Categories';
 
 class LineItems extends Component {
 
@@ -18,11 +18,9 @@ class LineItems extends Component {
     const { categories, addLineItem } = this.props;
     if(!categories) return null;
 
-    console.log('CAT!!', categories);
-
     return (
       <div>
-        <h2>Line Items</h2>
+        <h2>Add a Line Item</h2>
         <BudgetForm onComplete={addLineItem} categories={categories} label="Add"/>
         {/* <ul>
           {budget.map(lineItem => <LineItem 

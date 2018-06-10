@@ -26,6 +26,7 @@ class Dashboard extends Component {
     return (
       <main>
         <h1>Budget Dashboard</h1>
+        <h2>Add a Category</h2>
         <CategoryForm onComplete={addCategory} label="Add"/>
         <Categories categories={categories} removeCategory={removeCategory} updateCategory={updateCategory}/>
       </main>
