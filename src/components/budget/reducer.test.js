@@ -73,4 +73,27 @@ describe('lineItemsByCategory reducer', () => {
     expect(state).toEqual({ 1717: [] });
   });
 
+  it('creates a line item for all loaded categories', () => {
+    const state = lineItemByCategory({}, { 
+      type: CATEGORIES_LOAD,
+      payload: [{
+        id: 123,
+        lineItems: [
+          { description: 'rent', amount: 600 },
+          { description: 'good', amount: 200 }
+        ]
+      }, {
+        id: 1717,
+        lineItems: []
+      }] 
+    });
+    expect(state).toEqual({ 
+      123: [
+        { description: 'rent', amount: 600 },
+        { description: 'good', amount: 200 }
+      ],
+      1717: []
+    });
+  });
+
 });
