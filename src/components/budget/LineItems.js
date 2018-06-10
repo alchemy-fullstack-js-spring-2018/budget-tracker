@@ -4,39 +4,36 @@ import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
 import LineItem from './LineItem';
 import { addLineItem } from './actions';
-import { getLineItemsByCategory } from './reducers';
+import { getLineItemByCategory } from './reducers';
+import Categories from './Categories';
 
 class LineItems extends Component {
 
   static propTypes = {
-    budget: PropTypes.array,
-    loadBudget: PropTypes.func.isRequired,
-    addLineItem: PropTypes.func.isRequired,
-    removeLineItem: PropTypes.func.isRequired,
-    updateLineItem: PropTypes.func.isRequired
+    categories: PropTypes.array,
   };
 
-  componentDidMount() {
-    this.props.loadBudget();
-  }
 
   render() {
-    const { budget, addLineItem, removeLineItem, updateLineItem } = this.props;
-    if(!budget) return null;
+    const { categories, addLineItem } = this.props;
+    if(!categories) return null;
+
+    console.log('CAT!!', categories);
 
     return (
-      <main>
-        <BudgetForm onComplete={addLineItem} label="Add"/>
-        <ul>
+      <div>
+        <h2>Line Items</h2>
+        <BudgetForm onComplete={addLineItem} categories={categories} label="Add"/>
+        {/* <ul>
           {budget.map(lineItem => <LineItem 
             key={lineItem.description}
-            onRemove={removeLineItem}
-            onUpdate={updateLineItem}
+            // onRemove={removeLineItem}
+            // onUpdate={updateLineItem}
             lineItem={lineItem}
           />)
           }
-        </ul>
-      </main>
+        </ul> */}
+      </div>
     );
   }
 }
@@ -44,7 +41,7 @@ class LineItems extends Component {
 export default connect(
   (state, { categoryID }) => {
     return {
-      lineItems: getLineItemsByCategory(categoryID, state)
+      lineItems: getLineItemByCategory(categoryID, state)
     };
   },
   { addLineItem }
