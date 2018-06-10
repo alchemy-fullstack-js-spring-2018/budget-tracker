@@ -27,7 +27,7 @@ export function lineItemByCategory(state = {}, { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
       return payload.reduce((map, category) =>{
-        map[category.id] = category.lineItem;
+        map[category.id] = category.lineItems;
         return map;
       }, {});
     case CATEGORY_ADD:
