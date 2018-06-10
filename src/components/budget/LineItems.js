@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
 import LineItem from './LineItem';
-import { loadBudget, addLineItem, removeLineItem, updateLineItem } from './actions';
+import { addLineItem } from './actions';
+import { getLineItemsByCategory } from './reducers';
 
-class Budget extends Component {
+class LineItems extends Component {
 
   static propTypes = {
     budget: PropTypes.array,
@@ -41,6 +42,10 @@ class Budget extends Component {
 }
 
 export default connect(
-  state => ({ budget: state.budget }),
-  { loadBudget, addLineItem, removeLineItem, updateLineItem }
-)(Budget);
+  (state, { categoryID }) => {
+    return {
+      lineItems: getLineItemsByCategory(categoryID, state)
+    };
+  },
+  { addLineItem }
+)(LineItems);
