@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Category from './Category';
+import LineItems from './LineItems';
 
 export default class Categories extends Component {
 
@@ -23,6 +24,7 @@ export default class Categories extends Component {
           category={category}
         />)
         }
+        <LineItems/>
       </ul>
     );
   }
