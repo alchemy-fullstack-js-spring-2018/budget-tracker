@@ -43,8 +43,8 @@ export function lineItemByCategory(state = {}, { type, payload }) {
     case LINEITEM_ADD: {
       return {
         ...state,
-        [payload.categoryID]: [
-          ...state[payload.categoryID],
+        [payload.categoryId]: [
+          ...state[payload.categoryId],
           payload.lineItem
         ]
       };
