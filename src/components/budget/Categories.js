@@ -15,17 +15,19 @@ export default class Categories extends Component {
     const { categories, removeCategory, updateCategory } = this.props;
 
     return (
-      <ul>
-        <h2>Categories</h2>
-        {categories.map(category => <Category 
-          key={category.name}
-          onRemove={removeCategory}
-          onUpdate={updateCategory}
-          category={category}
-        />)
-        }
+      <div>
         <LineItems categories={categories}/>
-      </ul>
+        <ul>
+          <h2>Categories</h2>
+          {categories.map(category => <Category 
+            key={category.name}
+            onRemove={removeCategory}
+            onUpdate={updateCategory}
+            category={category}
+          />)
+          }
+        </ul>
+      </div>
     );
   }
 }
