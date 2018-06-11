@@ -18,7 +18,7 @@ export const postCategory = category => {
     },
     method: 'POST'
   })
-    .then(({ body }) => body);
+    .then(res => res.json());
 };
 
 export const putCategory = category => {
@@ -29,7 +29,7 @@ export const putCategory = category => {
     },
     method: 'PUT'
   })
-    .then(({ body }) => body);
+    .then(res => res.json());
 
 };
 
@@ -44,5 +44,5 @@ export const postLineItem = (categoryId, lineItem) => {
     body: JSON.stringify(lineItem),
     method: 'POST'
   })
-    .then(({ deleted }) => deleted);
+    .then(res => res.json());
 };
