@@ -38,6 +38,15 @@ export function expenses(state = {}, { type, payload }) {
       delete stateCopy[payload.id];
       return stateCopy;
     }
+    case EXPENSE_CREATE: {
+      return {
+        ...state,
+        [payload.categoryId]: [
+          ...state[payload.categoryId],
+          { name: payload.name, price: payload.price }
+        ]
+      };
+    }
     default:
       return state;
   } 
