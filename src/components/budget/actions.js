@@ -1,5 +1,6 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, LINEITEM_ADD } from './reducers';
 import { getCategories, postCategory, putCategory, deleteCategory, postLineItem } from '../../services/api';
+import { ERROR, LOADING_START, LOADING_END } from '../app/reducers';
 import shortid from 'shortid';
 
 const categories = () => [
