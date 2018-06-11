@@ -42,7 +42,7 @@ class Expenses extends PureComponent {
 export default connect(
   (state, { categoryId }) => {
     return { 
-      comments: getExpensesByCategory(categoryId, state)
+      expenses: getExpensesByCategory(categoryId, state)
     };
   },
   { addExpense }
