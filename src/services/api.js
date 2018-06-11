@@ -16,3 +16,9 @@ export const deleteCategory = category => {
   return request
     .del(`${BASE_URL}/${category.id}`);
 };
+
+export const putCategory = category => {
+  return request
+    .put(`${BASE_URL}/${category.id}`)
+    .send(category);
+};
