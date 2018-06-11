@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExpense } from './actions';
@@ -6,7 +6,7 @@ import { getExpensesByCategory } from './reducers';
 import ExpenseItem from './ExpenseItem';
 import ExpensesForm from './ExpenseForm';
 
-class Expenses extends PureComponent {
+export class Expenses extends Component {
 
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
@@ -14,13 +14,18 @@ class Expenses extends PureComponent {
     addExpense: PropTypes.func.isRequired
   };
 
+  handleExpenseAdd = data => {
+    this.props.addExpense(data);
+  };
+
   render() {
-    const { expenses, addExpense } = this.props;
+    const { expenses, categoryId } = this.props;
+    if(!expenses) return null;
 
     return (
       <div>
         <h2>Expenses:</h2>
-        <ExpensesForm onComplete={addExpense} label="Add"/>
+        <ExpensesForm onComplete={this.handleExpenseAdd} label="Add" categoryId={categoryId}/>
         <ul>
           {expenses.map(expense => <ExpenseItem
             key={expense.id}

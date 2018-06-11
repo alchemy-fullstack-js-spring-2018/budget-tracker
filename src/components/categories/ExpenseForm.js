@@ -10,6 +10,7 @@ export default class ExpenseForm extends Component {
 
   static propTypes = {
     expense: PropTypes.object,
+    categoryId: PropTypes.string.isRequired,
     onComplete: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
     label: PropTypes.string.isRequired
@@ -32,7 +33,8 @@ export default class ExpenseForm extends Component {
       return {
         edit: {
           ...edit,
-          [target.name]: target.value
+          [target.name]: target.value,
+          categoryId: this.props.categoryId
         }
       };
     });

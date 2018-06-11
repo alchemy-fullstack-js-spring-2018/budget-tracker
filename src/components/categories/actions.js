@@ -90,6 +90,7 @@ export const updateCategory = category => dispatch => {
 };
 
 export const addExpense = expense => dispatch => {
+  console.log('DA EXPENSE', expense);
   postExpense(expense)
     .then(
       saved => {
