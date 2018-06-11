@@ -23,8 +23,8 @@ export function categories(state = [], { type, payload }) {
 export function expensesByCategory(state = {}, { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
-      return payload.reduce((map, expense) => {
-        map[expense.id] = expense.comments;
+      return payload.reduce((map, category) => {
+        map[category.id] = category.comments;
         return map;
       }, {});
     case CATEGORY_REMOVE: {
@@ -35,9 +35,9 @@ export function expensesByCategory(state = {}, { type, payload }) {
     case EXPENSE_ADD: {
       return {
         ...state,
-        [payload.fruitId]: [
-          ...state[payload.fruitId],
-          payload.commend
+        [payload.categoryId]: [
+          ...state[payload.categoryId],
+          payload.expense
         ]
       };
     }

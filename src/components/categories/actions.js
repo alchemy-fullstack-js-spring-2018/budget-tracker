@@ -25,7 +25,7 @@ const categories = () => [
 
 export const loadCategories = () => ({
   type: CATEGORIES_LOAD,
-  payload: categories
+  payload: categories()
 });
 
 export const addCategory = category => {
