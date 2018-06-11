@@ -17,3 +17,11 @@ export function categories(state = [], { type, payload }) {
       return state;
   }
 }
+
+// export function expensesByCategory(state = {}, { type, payload }) {
+//   switch(type) {
+//     case EXPENSE_CREATE:
+//     return;
+//   }
+
+// }
