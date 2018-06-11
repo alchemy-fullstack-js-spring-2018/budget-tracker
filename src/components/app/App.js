@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Dashboard from '../budget/Dashboard';
+import Error from './Error';
+import Loading from './Loading';
 
-export default class App extends Component {
+export default class App extends PureComponent {
   render() {
     return (
-      <Dashboard/>
+      <main>
+        <Loading/>
+        <Error/>
+        <Dashboard/>
+      </main>
     );  
   }
 }
