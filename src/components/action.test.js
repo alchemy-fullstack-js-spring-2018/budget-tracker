@@ -1,5 +1,15 @@
-import { CATEGORIES_LOAD, CATEGORIES_ADD, CATEGORIES_REMOVE } from './reducer';
-import { loadCategories, addCategories, removeCategories } from './action';
+import { 
+  CATEGORIES_LOAD,
+  CATEGORIES_ADD,
+  CATEGORIES_UPDATE, 
+  CATEGORIES_REMOVE,
+  EXPENSE_ADD } from './reducer';
+import { 
+  loadCategories,
+  addCategories,
+  updateCategories,
+  removeCategories,
+  addExpense } from './action';
 
 it('makes a load action', () => {
   const { type, payload } = loadCategories();
@@ -19,6 +29,15 @@ it('makes an add action', () => {
   expect(timestamp).toBeTruthy();
 });
 
+it('create an update action', () => {
+  const art = { name: 'meep morp', color: '25' };
+  const action = updateCategories(art);
+  expect(action).toEqual({
+    type: CATEGORIES_UPDATE,
+    payload: art
+  });
+});
+
 it('makes a remove action', () => {
   const category = { name: 'stanky dancing', budget: '6' };
 
@@ -27,4 +46,20 @@ it('makes a remove action', () => {
     type: CATEGORIES_REMOVE,
     payload: category
   });
+});
+
+it('create an expense item', () => {
+  const someId = 123;
+  const data = { name: 'yummy', expense: '235' };
+
+  const { type, payload } = addExpense(someId, data);
+  expect(type).toBe(EXPENSE_ADD);
+
+  const { categoryId, expense } = payload;
+  expect(categoryId).toBe(someId);
+  
+  const { name, id, timestamp } = expense;
+  expect(name).toBe(data.name);
+  expect(id).toBeTruthy();
+  expect(timestamp).toBeTruthy();
 });

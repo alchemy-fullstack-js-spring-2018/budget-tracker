@@ -17,8 +17,8 @@ const categories = () => [
         expense: '50' }
     ]
   }).payload,
-  addCategories({ name: 'Car', budget: '500', expense: [] }).payload,
-  addCategories({ name: 'Dog', budget: '100', expense: [] }).payload
+  addCategories({ name: 'Car', budget: '500', expenses: [] }).payload,
+  addCategories({ name: 'Dog', budget: '100', expenses: [] }).payload
 ];
 
 export const loadCategories = () => ({
