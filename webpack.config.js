@@ -19,14 +19,14 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*js`),
-    new HtmlPlugin({ template: './src/index.html'})
+    new HtmlPlugin({ template: './src/index.html' })
   ],
   module: {
     rules: [
       {
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -53,7 +53,7 @@ module.exports = {
         test: /\.(jpg|png|svg)$/,
         use: {
           loader: 'url-loader',
-          options: { limit: 5000},
+          options: { limit: 5000 },
         },
       }
     ]

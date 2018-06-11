@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "jest",
-    "test:watch": "npm run test -- --watch" 
+    "test:watch": "npm run jest -- --watch"
   },
   "repository": {
     "type": "git",
