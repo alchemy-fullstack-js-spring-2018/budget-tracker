@@ -79,4 +79,9 @@ describe('expenses reducer', () => {
       '456': []
     });
   });
+
+  it('adds an expense property when a category is added', () => {
+    const state = expenses({}, { type: CATEGORY_ADD, payload: { id: '123' } });
+    expect(state).toEqual({ '123':[] });
+  });
 });

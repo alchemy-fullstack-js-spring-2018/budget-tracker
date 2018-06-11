@@ -28,6 +28,11 @@ export function expenses(state = {}, { type, payload }) {
         expenses[category.id] = category.expenses;
         return expenses;
       }, {});
+    case CATEGORY_ADD:
+      return {
+        ...state,
+        [payload.id]: []
+      };
     default:
       return state;
   } 
