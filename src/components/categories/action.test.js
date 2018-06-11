@@ -1,13 +1,13 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './reducers';
 import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
 
-it('creates a load action', () => {
+it.skip('creates a load action', () => {
   const { type, payload } = loadCategories();
   expect(type).toBe(CATEGORIES_LOAD);
   expect(payload.length).toBe(3);
 });
 
-it('creates add action', () => {
+it.skip('creates add action', () => {
   const category = { name: 'budget4', budget: 6000 };
 
   const { type, payload } = addCategory(category);
@@ -20,7 +20,7 @@ it('creates add action', () => {
   expect(timestamp).toBeTruthy();
 });
 
-it('creates an update action', () => {
+it.skip('creates an update action', () => {
   const category = { name: 'budget4', budget: 6000 };
   const action = updateCategory(category);
   expect(action).toEqual({
@@ -29,7 +29,7 @@ it('creates an update action', () => {
   });
 });
 
-it('creates a remove action', () => {
+it.skip('creates a remove action', () => {
   const category = { name: 'budget4', budget: 6000 };
 
   const action = removeCategory(category);

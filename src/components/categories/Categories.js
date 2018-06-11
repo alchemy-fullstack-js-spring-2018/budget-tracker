@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Category from './Category';
-import { loadCategories, addCategory, removeCategory } from './actions';
+import { getCategories } from './reducers';
+import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
 
 class Categories extends Component {
 
   static propTypes = {
     categories: PropTypes.array,
     addCategory: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired,
     removeCategory: PropTypes.func.isRequired,
     loadCategories: PropTypes.func.isRequired
   };
@@ -20,7 +22,7 @@ class Categories extends Component {
   }
 
   render() {
-    const { categories, addCategory, removeCategory } = this.props;
+    const { categories, addCategory, updateCategory, removeCategory } = this.props;
     if(!categories) return null;
 
     return (
@@ -31,6 +33,7 @@ class Categories extends Component {
           {categories.map(category => <Category 
             key={category.name} 
             onRemove={removeCategory} 
+            onUpdate={updateCategory} 
             category={category}
           />)}
         </ul>
@@ -40,6 +43,6 @@ class Categories extends Component {
 }
 
 export default connect(
-  state => ({ categories: state.categories }),
-  { loadCategories, addCategory, removeCategory }
+  state => ({ categories: getCategories(state) }),
+  { loadCategories, addCategory, updateCategory, removeCategory }
 )(Categories);

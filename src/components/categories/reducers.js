@@ -6,6 +6,8 @@ export const EXPENSE_ADD = 'EXPENSE_ADD';
 export const EXPENSE_UPDATE = 'EXPENSE_ADD';
 export const EXPENSE_DELETE = 'EXPENSE_ADD';
 
+export const getCategories = state => state.categories;
+
 export function categories(state = [], { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
