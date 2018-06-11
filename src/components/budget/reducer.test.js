@@ -9,7 +9,7 @@ import {
   LINEITEM_ADD } from './reducers';
 
 
-describe('categories reducer', () => {
+describe.only('categories reducer', () => {
 
   it('categories has a default value of empty array', () => {
     const state = categories(undefined, {});
@@ -56,7 +56,7 @@ describe('categories reducer', () => {
 
 });
 
-describe('lineItemsByCategory reducer', () => {
+describe.only('lineItemsByCategory reducer', () => {
 
   it('has a default value of empty object', () => {
     const state = lineItemByCategory(undefined, {});
@@ -120,7 +120,7 @@ describe('lineItemsByCategory reducer', () => {
 
 });
 
-describe('selectors', () => {
+describe.only('selectors', () => {
 
   it('gets a line item for a category id', () => {
     const lineItems = [
