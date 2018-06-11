@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import Categories from './Categories';
 
-const categories = [
-  { name: 'Phone Bill', budget: 85 },
-  { name: 'Car Insurance', budget: 114 },
-  { name: 'Student Loan', budget: 95 }
-];
-
 export default class CategoryItem extends Component {
 
     state = {
@@ -14,7 +8,7 @@ export default class CategoryItem extends Component {
     };
 
     componentDidMount() {
-      Promise.resolve(categories)
+      Promise.resolve()
         .then(categories => this.setState({ categories }));
     }
 

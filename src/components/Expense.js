@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExpense } from './actions';
-import { getExpenseByCategory } from './reducers';
+import { addExpense } from './action';
+import { getExpenseByCategory } from './reducer';
 import ExpenseForm from './ExpenseForm';
 
-class Expenses extends Component {
+class Expense extends Component {
 
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
@@ -13,9 +13,9 @@ class Expenses extends Component {
     addExpense: PropTypes.func.isRequired
   }
 
-  handleAdd = (name, expense) => {
+  handleAdd = (body) => {
     const { categoryId, addExpense } = this.props;
-    addExpense(categoryId, { name }, { expense });
+    addExpense(categoryId, { body });
   }
 
   render() {
@@ -47,4 +47,4 @@ export default connect(
     };
   },
   { addExpense }
-)(Expenses);
+)(Expense);

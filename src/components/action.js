@@ -17,8 +17,8 @@ const categories = () => [
         expense: '50' }
     ]
   }).payload,
-  addCategories({ name: 'Car', budget: '500', expenses: [] }).payload,
-  addCategories({ name: 'Dog', budget: '100', expenses: [] }).payload
+  addCategories({ name: 'Car', budget: '500', expense: [] }).payload,
+  addCategories({ name: 'Dog', budget: '100', expense: [] }).payload
 ];
 
 export const loadCategories = () => ({
@@ -46,7 +46,7 @@ export const removeCategories = categories => ({
   payload: categories
 });
 
-export const addExpenses = (categoryId, expense) => {
+export const addExpense = (categoryId, expense) => {
   expense.id = shortid.generate();
   expense.timestamp = new Date();
 

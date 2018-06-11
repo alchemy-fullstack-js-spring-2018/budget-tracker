@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const defaultState = {
+  id: '',
+  categoryId: '',
+  timestamp: '',
   name: '',
   expense: ''
 };
 
-export default class AddExpense extends Component {
+export default class ExpenseForm extends Component {
 
   static propTypes = {
     onAdd: PropTypes.func.isRequired,
@@ -16,7 +19,7 @@ export default class AddExpense extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
-  }
+  };
   
   handleSubmit = event => {
     event.preventDefault();

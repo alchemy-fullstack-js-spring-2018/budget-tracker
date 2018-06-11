@@ -12,7 +12,7 @@ export default class CategoryForm extends Component {
     static propTypes = {
       category: PropTypes.object,
       onComplete: PropTypes.func.isRequired,
-      onCancel: PropTypes.func.isRequired,
+      onCancel: PropTypes.func,
       label: PropTypes.string.isRequired
     };
 
