@@ -130,6 +130,14 @@ describe('Expense Reducers', () => {
 
   });
 
+  it('Updates an Expense', () => {
+    const state = expensesByCategory(
+      { 123: [{ id: 456, name: 'Expense', price: 1000 }] },
+      { type: EXPENSE_UPDATE, payload: { 
+        categoryId: 123, expense: { id: 456, name: 'Expense', price: 2000 } } });
+    expect(state).toEqual({ 123: [{ id: 456, name: 'Expense', price: 2000 }] });
+  });
+
 
   // it('Creates an Expense', () => {
   //   const prevState = [];
