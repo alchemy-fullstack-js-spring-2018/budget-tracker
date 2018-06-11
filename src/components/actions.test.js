@@ -3,14 +3,18 @@ import {
   CATEGORY_ADD,
   CATEGORY_UPDATE,
   CATEGORY_REMOVE, 
-  EXPENSE_CREATE } from './reducers';
+  EXPENSE_CREATE, 
+  EXPENSE_UPDATE,
+  EXPENSE_DELETE } from './reducers';
 
 import {
   loadCategories,
   addCategory,
   updateCategory,
   removeCategory,
-  addExpense } from './actions';
+  addExpense,
+  updateExpense,
+  removeExpense } from './actions';
 
 describe('action creator', () => {
   it('creates a load category action', () => {
@@ -58,5 +62,19 @@ describe('action creator', () => {
     expect(price).toBe(expenseData.price);
     expect(id).toBeTruthy();
     expect(timestamp).toBeTruthy();
+  });
+
+  it('updates an expense', () => {
+    const parentId = '123';
+    const expenseData = { name: 'pizza', price: 5, id: '1' };
+
+    const { type, payload } = updateExpense(parentId, expenseData);
+    expect(type).toBe(EXPENSE_UPDATE);
+
+    const { categoryId, expense } = payload;
+    expect(categoryId).toBe(parentId);
+
+    const { id } = expense;
+    expect(id).toBe(expenseData.id);
   });
 });

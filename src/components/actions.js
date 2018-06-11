@@ -51,3 +51,11 @@ export const addExpense = (categoryId, expense) => {
     payload: { categoryId, expense }
   };
 };
+
+export const updateExpense = (categoryId, expense) => {
+  
+  return {
+    type: EXPENSE_UPDATE,
+    payload: { categoryId, expense }
+  };
+};
