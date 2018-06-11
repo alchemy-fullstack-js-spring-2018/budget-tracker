@@ -3,27 +3,27 @@ import { getCategories, postCategory, putCategory, deleteCategory, postLineItem 
 import { ERROR, LOADING_START, LOADING_END } from '../app/reducers';
 import shortid from 'shortid';
 
-const initCategories = () => [
-  addCategory({ 
-    name: 'rent',
-    budget: 500.00,
-    lineItems: [
-      { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
-    ]
-  }).payload,
-  addCategory({
-    name: 'food',
-    budget: 200.00,
-    lineItems: [
-      { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
-    ]
-  }).payload,
-  addCategory({
-    name: 'utilities',
-    budget: 300.00,
-    lineItems: []
-  }).payload
-];
+// const initCategories = () => [
+//   addCategory({ 
+//     name: 'rent',
+//     budget: 500.00,
+//     lineItems: [
+//       { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
+//     ]
+//   }).payload,
+//   addCategory({
+//     name: 'food',
+//     budget: 200.00,
+//     lineItems: [
+//       { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
+//     ]
+//   }).payload,
+//   addCategory({
+//     name: 'utilities',
+//     budget: 300.00,
+//     lineItems: []
+//   }).payload
+// ];
 
 export const loadCategories = () => {
   return dispatch => {
@@ -50,7 +50,6 @@ export const loadCategories = () => {
 };
 
 export const addCategory = category => dispatch => {
-  category.id = shortid.generate();
 
   postCategory(category)
     .then(
