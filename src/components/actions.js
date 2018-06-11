@@ -11,54 +11,56 @@ import {
 import {
   getCategories,
   postCategory,
-  putCategory } from '../services/api';
+  putCategory,
+  deleteCategory } from '../services/api';
 
 export const loadCategories = () => {
   return dispatch => {
     getCategories()
-      .then(
-        categories => {
-          dispatch({
-            type: CATEGORIES_LOAD,
-            payload: categories
-          });
-        }
-      );
+      .then(categories => {
+        dispatch({
+          type: CATEGORIES_LOAD,
+          payload: categories
+        });
+      });
   };
 };
 
 export const addCategory = category => {
   return dispatch => {
     postCategory(category)
-      .then(
-        category => {
-          dispatch({
-            type: CATEGORY_ADD,
-            payload: category
-          });
-        }
-      );
+      .then(category => {
+        dispatch({
+          type: CATEGORY_ADD,
+          payload: category
+        });
+      });
   };
 };
 
 export const updateCategory = category => {
   return dispatch => {
     putCategory(category)
-      .then(
-        category => {
-          dispatch({
-            type: CATEGORY_UPDATE,
-            payload: category
-          });
-        }
-      );
+      .then(category => {
+        dispatch({
+          type: CATEGORY_UPDATE,
+          payload: category
+        });
+      });
   };
 };
 
-export const removeCategory = category => ({
-  type: CATEGORY_REMOVE,
-  payload: category
-});
+export const removeCategory = category => {
+  return dispatch => {
+    deleteCategory(category.id)
+      .then(() => {
+        dispatch({
+          type: CATEGORY_REMOVE,
+          payload: category
+        });
+      });
+  };
+};
 
 export const addExpense = (categoryId, expense) => {
   expense.id = shortid.generate();

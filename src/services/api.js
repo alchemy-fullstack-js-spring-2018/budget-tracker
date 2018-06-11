@@ -18,3 +18,8 @@ export const putCategory = category => {
     .send(category)
     .then(({ body }) => body);
 };
+
+export const deleteCategory = id => {
+  return request.delete(`${baseURL}/${id}`)
+    .then(({ deleted }) => deleted);
+};
