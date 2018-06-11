@@ -6,7 +6,8 @@ export const getCategories = () => {
       'content-type': 'application/json'
     },
     method: 'GET'
-  });
+  })
+    .then(res => res.json());
 };
 
 export const postCategory = category => {
@@ -16,7 +17,8 @@ export const postCategory = category => {
       'content-type': 'application/json'
     },
     method: 'POST'
-  });
+  })
+    .then(({ body }) => body);
 };
 
 export const putCategory = category => {
@@ -26,7 +28,9 @@ export const putCategory = category => {
       'content-type': 'application/json'
     },
     method: 'PUT'
-  });
+  })
+    .then(({ body }) => body);
+
 };
 
 export const deleteCategory = id => {
@@ -39,5 +43,6 @@ export const postLineItem = (categoryId, lineItem) => {
   return fetch(`${BASE_URL}/${categoryId}/lineItems`, {
     body: JSON.stringify(lineItem),
     method: 'POST'
-  });
+  })
+    .then(({ deleted }) => deleted);
 };
