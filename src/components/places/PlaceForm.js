@@ -23,7 +23,7 @@ export default class PlaceForm extends Component {
     event.preventDefault();
     this.props.onComplete(this.state);
     this.setState(defaultState);
-  }
+  };
 
   render() {
     const { name, toSee } = this.state;
@@ -32,8 +32,8 @@ export default class PlaceForm extends Component {
     return (
       <form>
         <label>
-          Name:
-          <input name="name" value={name} onChange={this.handleChange}/>
+          Name: 
+          <input name="name" value={name} onChange={this.handleChange}/>&nbsp;
         </label>
         <label>
           to See:
