@@ -9,7 +9,7 @@ const places = [
 
 export default class PlaceContainer extends Component {
   state = {
-    places: []
+    places: places
   };
 
   componentDidMount() {
