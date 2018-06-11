@@ -41,7 +41,7 @@ export default class CategoryItem extends Component {
           </div>
         </li>
         {editing && <CategoryForm name={name} budget={budget} id={id} onComplete={this.handleUpdate} label="UPDATE"/>} 
-        <Expenses categoryName={name} categoryId={id}/>
+        <Expenses categoryId={id}/>
       </div>
 
     );
