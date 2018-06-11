@@ -9,7 +9,7 @@ class Error extends PureComponent {
   static propTypes = {
     error: PropTypes.any,
     clearError: PropTypes.func.isRequired
-  }
+  };
 
   componentDidUpdate() {
     if(!this.props.error) return;

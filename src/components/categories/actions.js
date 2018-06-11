@@ -98,7 +98,6 @@ export const updateExpense = expense => dispatch => {
   putExpense(expense)
     .then(
       updated => {
-        console.log('DA UPDATED', JSON.parse(updated.text));
         dispatch({
           type: EXPENSE_UPDATE,
           payload: JSON.parse(updated.text)
@@ -115,8 +114,7 @@ export const updateExpense = expense => dispatch => {
 export const removeExpense = expense => dispatch => {
   deleteExpense(expense)
     .then(
-      deleted => {
-        console.log('DA DELETED', JSON.parse(deleted.text));
+      () => {
         dispatch({
           type: EXPENSE_DELETE,
           payload: expense
