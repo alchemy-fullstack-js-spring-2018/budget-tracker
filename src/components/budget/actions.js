@@ -87,17 +87,17 @@ export const removeCategory = category => dispatch => {
     });
 };
 
-export const addLineItem = (categoryId, lineItem) => {
-  lineItem.id = shortid.generate();
-  lineItem.date = lineItem.date ? lineItem.date : new Date();
+export const addExpense = (categoryId, expense) => {
+  expense.id = shortid.generate();
+  expense.date = expense.date ? expense.date : new Date();
   console.log('ID', categoryId);
-  console.log('lineItem', lineItem);
+  console.log('expense', expense);
 
   return {
     type: LINEITEM_ADD,
     payload: {
       categoryId,
-      lineItem
+      expense
     }
   };
 };

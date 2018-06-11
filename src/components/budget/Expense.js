@@ -9,7 +9,7 @@ export default class LineItem extends PureComponent {
   };
 
   static propTypes = {
-    lineItem: PropTypes.object,
+    expense: PropTypes.object,
     // onRemove: PropTypes.func.isRequired,
     // onUpdate: PropTypes.func.isRequired
   };
@@ -29,21 +29,21 @@ export default class LineItem extends PureComponent {
     
   render() {
     const { editing } = this.state;
-    const { lineItem, onRemove } = this.props;
-    const { description, amount, date } = lineItem;
+    const { expense, onRemove } = this.props;
+    const { name, price, timestamp } = expense;
 
     return (
-      <li key={description} style={{ backgroundColor: 'teal', color: 'white' }} >
-        <h2>{description}</h2>
-        <h2>${amount}</h2>
-        <h2>{date.toLocaleString()}</h2>
+      <li key={name} style={{ backgroundColor: 'teal', color: 'white' }} >
+        <h2>{name}</h2>
+        <h2>${price}</h2>
+        <h2>{timestamp.toLocaleString()}</h2>
         {editing || <button onClick={this.handleEdit}>✐</button>}
-        <button onClick={() => onRemove(lineItem)}>X</button>
+        <button onClick={() => onRemove(expense)}>X</button>
         {editing && 
           <div>
             <BudgetForm
               label="Update"
-              lineItem={lineItem}
+              expense={expense}
               onComplete={this.handleUpdate}
               // onCancel={this.handleCancel}
             />

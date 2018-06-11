@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Category from './Category';
-// import Expenses from './Expenses';
+import Expenses from './Expenses';
 
 export default class Categories extends PureComponent {
 
@@ -27,7 +27,7 @@ export default class Categories extends PureComponent {
           />)
           }
         </ul>
-        {/* {categories && <Expenses categories={categories}/>} */}
+        {categories && <Expenses categories={categories}/>}
       </div>
     );
   }

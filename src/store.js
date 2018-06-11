@@ -1,13 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { categories, lineItemByCategory } from './components/budget/reducers';
+import { categories, expenseByCategory } from './components/budget/reducers';
 import { error, loading } from './components/app/reducers';
 
 const rootReducer = combineReducers({
   error,
   loading,
   categories,
-  lineItemByCategory
+  expenseByCategory
 });
 
 const logger = () => next => action => {

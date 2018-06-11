@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
 import Expense from './Expense';
-import { addLineItem } from './actions';
-import { getLineItemByCategory } from './reducers';
+import { addExpense } from './actions';
+import { getExpenseByCategory } from './reducers';
 // import Categories from './Categories';
 
 class Expenses extends PureComponent {
 
   static propTypes = {
     categories: PropTypes.array,
-    addLineItem: PropTypes.func
+    addExpense: PropTypes.func
   };
 
   state = {
@@ -24,7 +24,7 @@ class Expenses extends PureComponent {
   handleAdd = event => {
     const { name, price, timestamp, categoryId } = event.edit;
     this.setState({ name, price, timestamp });
-    addLineItem(categoryId, { name, price, timestamp });
+    addExpense(categoryId, { name, price, timestamp });
   };
 
   render() {
@@ -33,17 +33,17 @@ class Expenses extends PureComponent {
 
     return (
       <div>
-        <h2>Add a Line Item</h2>
+        <h2>Add an Expense</h2>
         <BudgetForm onComplete={this.handleAdd} categories={categories} label="Add"/>
         <div>
           {categories.map(category => <div key={category.name}>
             <h3>{category.name}</h3>
             <ul>
-              {category.lineItems && category.lineItems.map(lineItem => <Expense
-                key={lineItem.name}
+              {category.expenses && category.expenses.map(expense => <Expense
+                key={expense.name}
                 // onRemove={removeLineItem}
                 // onUpdate={updateLineItem}
-                lineItem={lineItem}
+                expense={expense}
               />)
               }
             </ul>
@@ -57,10 +57,9 @@ class Expenses extends PureComponent {
 
 export default connect(
   (state, { categoryId }) => {
-    console.log('state', state);
     return {
-      lineItems: getLineItemByCategory(categoryId, state)
+      lineItems: getExpenseByCategory(categoryId, state)
     };
   },
-  { addLineItem }
+  { addExpense }
 )(Expenses);

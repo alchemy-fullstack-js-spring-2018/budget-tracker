@@ -2,11 +2,11 @@ export const CATEGORIES_LOAD = 'CATEGORIES_LOAD';
 export const CATEGORY_ADD = 'CATEGORY_ADD';
 export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
 export const CATEGORY_REMOVE = 'CATEGORY_REMOVE';
-export const LINEITEM_ADD = 'LINEITEM_ADD';
+export const EXPENSE_ADD = 'EXPENSE_ADD';
 
 export const getCategories = state => state.categories;
-export const getLineItems = state => state.lineItemByCategory;
-export const getLineItemByCategory = (categoryId, state) => getLineItems(state)[categoryId];
+export const getExpenses = state => state.expenseByCategory;
+export const getExpenseByCategory = (categoryId, state) => getExpenses(state)[categoryId];
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
@@ -23,11 +23,11 @@ export function categories(state = [], { type, payload }) {
   }
 }
 
-export function lineItemByCategory(state = {}, { type, payload }) {
+export function expenseByCategory(state = {}, { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
       return payload.reduce((map, category) =>{
-        map[category.id] = category.lineItems;
+        map[category.id] = category.expenses;
         return map;
       }, {});
     case CATEGORY_ADD:
@@ -40,12 +40,12 @@ export function lineItemByCategory(state = {}, { type, payload }) {
       delete copy[payload.id];
       return copy;
     }
-    case LINEITEM_ADD: {
+    case EXPENSE_ADD: {
       return {
         ...state,
         [payload.categoryId]: [
           ...state[payload.categoryId],
-          payload.lineItem
+          payload.expense
         ]
       };
     }
