@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
-import LineItem from './LineItem';
+import Expense from './Expense';
 import { addLineItem } from './actions';
 import { getLineItemByCategory } from './reducers';
 // import Categories from './Categories';
 
-class LineItems extends PureComponent {
+class Expenses extends PureComponent {
 
   static propTypes = {
     categories: PropTypes.array,
@@ -15,16 +15,16 @@ class LineItems extends PureComponent {
   };
 
   state = {
-    description: '',
-    amount: 0,
-    date: null,
+    name: '',
+    price: 0,
+    timestamp: null,
     categoryId: null
   };
 
   handleAdd = event => {
-    const { description, amount, date, categoryId } = event.edit;
-    this.setState({ description, amount, date });
-    addLineItem(categoryId, { description, amount, date });
+    const { name, price, timestamp, categoryId } = event.edit;
+    this.setState({ name, price, timestamp });
+    addLineItem(categoryId, { name, price, timestamp });
   };
 
   render() {
@@ -39,8 +39,8 @@ class LineItems extends PureComponent {
           {categories.map(category => <div key={category.name}>
             <h3>{category.name}</h3>
             <ul>
-              {category.lineItems && category.lineItems.map(lineItem => <LineItem
-                key={lineItem.description}
+              {category.lineItems && category.lineItems.map(lineItem => <Expense
+                key={lineItem.name}
                 // onRemove={removeLineItem}
                 // onUpdate={updateLineItem}
                 lineItem={lineItem}
@@ -63,4 +63,4 @@ export default connect(
     };
   },
   { addLineItem }
-)(LineItems);
+)(Expenses);
