@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { thunk } from 'redux-thunk';
 import { categories, lineItemByCategory } from './components/budget/reducers';
 import { error, loading } from './components/app/reducers';
 
