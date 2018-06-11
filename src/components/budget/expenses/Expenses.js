@@ -12,11 +12,11 @@ class Expenses extends Component {
     addExpense: PropTypes.func.isRequired,
     updateExpense: PropTypes.func.isRequired,
     removeExpense: PropTypes.func.isRequired,
-    categoryId: PropTypes.number.isRequired
+    categoryId: PropTypes.number.isRequired,
   };
 
   render() {
-    const { expenses, removeExpense, updateExpense, addExpense, categoryId } = this.props;
+    const { expenses, removeExpense, addExpense, updateExpense, categoryId } = this.props;
 
     return (
       <div>

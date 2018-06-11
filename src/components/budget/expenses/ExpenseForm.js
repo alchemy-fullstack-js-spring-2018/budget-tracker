@@ -7,10 +7,11 @@ export default class ExpenseForm extends Component {
   static propTypes = {
     onComplete: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
-    categoryId: PropTypes.number.isRequired
+    categoryId: PropTypes.number.isRequired,
+    expense: PropTypes.object
   };
   
-  defaultState = {
+  defaultState = this.props.expense || {
     id: '',
     timestamp: '',
     name: '',
