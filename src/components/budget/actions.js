@@ -67,10 +67,15 @@ export const addCategory = category => dispatch => {
       });
 };
 
-export const updateCategory = category => ({
-  type: CATEGORY_UPDATE,
-  payload: category
-});
+export const updateCategory = category => dispatch => {
+  putCategory(category)
+    .then(updated => {
+      dispatch({
+        type: CATEGORY_UPDATE,
+        payload: updated
+      });
+    });
+};
 
 export const removeCategory = category => dispatch => {
   deleteCategory(category.id)
