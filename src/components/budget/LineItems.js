@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BudgetForm from './BudgetForm';
@@ -7,7 +7,7 @@ import { addLineItem } from './actions';
 import { getLineItemByCategory } from './reducers';
 // import Categories from './Categories';
 
-class LineItems extends Component {
+class LineItems extends PureComponent {
 
   static propTypes = {
     categories: PropTypes.array,

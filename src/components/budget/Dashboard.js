@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
 import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
 
-class Dashboard extends Component {
+class Dashboard extends PureComponent {
 
   static propTypes = {
     categories: PropTypes.array,
@@ -21,7 +21,6 @@ class Dashboard extends Component {
 
   render() {
     const { categories, addCategory, removeCategory, updateCategory } = this.props;
-    if(!categories) return null;
 
     return (
       <main>

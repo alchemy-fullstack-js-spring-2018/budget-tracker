@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 const defaultState = {
@@ -7,7 +7,7 @@ const defaultState = {
   lineItemId: []
 };
 
-export default class CategoryForm extends Component {
+export default class CategoryForm extends PureComponent {
   static propTypes = {
     onComplete: PropTypes.func.isRequired,
     onCancel: PropTypes.func,

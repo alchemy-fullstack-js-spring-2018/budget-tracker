@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 const defaultState = {
@@ -8,7 +8,7 @@ const defaultState = {
   categoryId: null
 };
 
-export default class BudgetForm extends Component {
+export default class BudgetForm extends PureComponent {
   static propTypes = {
     categories: PropTypes.array,
     onComplete: PropTypes.func.isRequired,

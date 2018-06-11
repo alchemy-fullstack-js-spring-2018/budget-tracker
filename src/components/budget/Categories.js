@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Category from './Category';
 import LineItems from './LineItems';
 
-export default class Categories extends Component {
+export default class Categories extends PureComponent {
 
   static propTypes = {
     categories: PropTypes.array,
@@ -13,6 +13,7 @@ export default class Categories extends Component {
 
   render() {
     const { categories, removeCategory, updateCategory } = this.props;
+    if(!categories) return null;
 
     return (
       <div>
@@ -26,7 +27,7 @@ export default class Categories extends Component {
           />)
           }
         </ul>
-        <LineItems categories={categories}/>
+        {categories && <LineItems categories={categories}/>}
       </div>
     );
   }
