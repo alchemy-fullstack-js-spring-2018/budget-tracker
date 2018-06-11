@@ -10,7 +10,8 @@ import {
 
 import {
   getCategories,
-  postCategory } from '../services/api';
+  postCategory,
+  putCategory } from '../services/api';
 
 export const loadCategories = () => {
   return dispatch => {
@@ -41,10 +42,16 @@ export const addCategory = category => {
 };
 
 export const updateCategory = category => {
-  
-  return {
-    type: CATEGORY_UPDATE,
-    payload: category
+  return dispatch => {
+    putCategory(category)
+      .then(
+        category => {
+          dispatch({
+            type: CATEGORY_UPDATE,
+            payload: category
+          });
+        }
+      );
   };
 };
 
