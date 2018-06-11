@@ -67,7 +67,7 @@ describe('Expense reducers', () => {
     categoryId: 3,
     timestamp: new Date(),
     name: 'Water',
-    amount: 50,
+    cost: 50,
   };
 
   const power = {
@@ -75,7 +75,7 @@ describe('Expense reducers', () => {
     categoryId: 5,
     timestamp: new Date(),
     name: 'Power',
-    amount: 150,
+    cost: 150,
   };
 
   it('Has a default of an empty object', () => {
@@ -121,29 +121,30 @@ describe('Expense reducers', () => {
 
   it('Updates an expense', () => {
     const state = expensesByCategory(
-      [{ 5: [water] },
-        {
-          type: EXPENSE_UPDATE,
-          payload: { 5: [{ ...water, amount: 60 }]  }
-        }]
+      { 5: [water] },
+      {
+        type: EXPENSE_UPDATE,
+        payload: { 
+          categoryId: 5,
+          expense: { ...water, cost: 60 }  
+        }
+      }
     );
-    expect(state).toEqual([{ 5: [{ ...water, amount: 60 }] }]);
+    expect(state).toEqual({ 5: [{ ...water, cost: 60 }] });
   });
 
   it('Removes an expense', () => {
     const state = expensesByCategory(
-      [{ 5: [water] },
-        {
-          type: EXPENSE_UPDATE,
-          payload: { ...water, amount: 60  }
-        }]
+      { 5: [water] },
+      {
+        type: EXPENSE_REMOVE,
+        payload: { 
+          categoryId: 5,
+          expense: water 
+        }
+      }
     );
-    expect(state).toEqual([{ 5: [{ ...water, amount: 60 }] }]);
-  });
-
-  it('removes an expense', () => {
-    const state = expensesByCategory([water, power], { type: EXPENSE_REMOVE, payload: water });
-    expect(state).toEqual([power]);
+    expect(state).toEqual({ 5: [] });
   });
 
 });

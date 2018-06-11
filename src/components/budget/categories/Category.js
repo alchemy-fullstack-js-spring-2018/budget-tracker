@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Expenses from '../expenses/Expenses';
 
 export default class Category extends Component {
 
@@ -10,12 +11,13 @@ export default class Category extends Component {
 
   render() {
     const { category, onRemove } = this.props;
-    const { name, budget } = category;
+    const { name, budget, expenses, id } = category;
 
     return (
       <li key={name}>
-        {name} | {budget}
+        Category: {name} ---- Budget: {budget}
         <button onClick={() => onRemove(category)}>X</button>
+        <Expenses categoryId={id} expenses={expenses}/>
       </li>
     );
   }

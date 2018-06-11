@@ -7,7 +7,7 @@ export default class App extends Component {
     return (
       <main>
         <h1>Redux Demo</h1>
-        <Categories/>
+        <Budget/>
       </main>
     );
   }

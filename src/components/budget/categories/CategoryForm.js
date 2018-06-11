@@ -6,6 +6,7 @@ const defaultState = {
   timestamp: '',
   name: '',
   budget: '',
+  expenses: []
 };
 
 export default class CategoryForm extends Component {

@@ -8,12 +8,20 @@ const categories = [
     timestamp: new Date(),
     name: 'Monthly Utilities',
     budget: 200,
+    expenses: [{
+      id: 1,
+      categoryId: 1,
+      timestamp: new Date(),
+      name: 'Water',
+      cost: 50
+    }],
   },
   {
     id: 2,
     timestamp: new Date(),
     name: 'Groceries + Produce',
     budget: 350,
+    expenses: [],
   } 
 ];
 
@@ -42,22 +50,28 @@ export const removeCategory = category => ({
   payload: category
 });
 
-export const addExpense = expense => {
+export const addExpense = (categoryId, expense) => {
   expense.id = shortid.generate();
   expense.timestamp = new Date();
 
   return {
     type: EXPENSE_ADD,
-    payload: expense
+    payload: { categoryId, expense }
   };
 };
 
-export const updateExpense = expense => ({
-  type: EXPENSE_UPDATE,
-  payload: expense
-});
+export const updateExpense = (categoryId, expense) => {
+  
+  return {
+    type: EXPENSE_UPDATE,
+    payload: { categoryId, expense }
+  };
+};
 
-export const removeExpense = expense => ({
-  type: EXPENSE_REMOVE,
-  payload: expense
-});
+export const removeExpense = (categoryId, expense) => {
+  
+  return {
+    type: EXPENSE_REMOVE,
+    payload: { categoryId, expense }
+  };
+};
