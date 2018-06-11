@@ -2,7 +2,7 @@ import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from 
 import { EXPENSE_CREATE, EXPENSE_UPDATE, EXPENSE_DELETE } from './reducers';
 
 import shortid from 'shortid';
-import { postCategory } from '../../services/api';
+import { postCategory, getCategories } from '../../services/api';
 
 const categories = [
   { name: 'Perfect Vacation ', budget: 5000, id: shortid.generate(), timestamp: new Date() },
@@ -28,10 +28,20 @@ categories[1].expenses = [
   }
 ];
 
-export const loadCategories = () => ({ 
-  type: CATEGORIES_LOAD,
-  payload: categories
-});
+export const loadCategories = () => dispatch => { 
+  getCategories()
+    .then(
+      categories => {
+        console.log('GET ALL RESPONSE:', categories);
+        dispatch({
+          type: CATEGORIES_LOAD,
+          payload: JSON.parse(categories.text)
+        });
+      },
+      err => {
+        console.log('GET ERROR:', err);
+      });
+};
 
 export const addCategory = category => dispatch => {
   postCategory(category)

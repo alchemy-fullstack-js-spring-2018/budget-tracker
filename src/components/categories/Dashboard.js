@@ -29,7 +29,7 @@ class Dashboard extends Component {
         <CategoryForm onComplete={addCategory} label="Add"/>
         <ul>
           {categories.map(category => <Categories
-            key={category.name}
+            key={category.id}
             onRemove={removeCategory}
             category={category} 
             onUpdate={updateCategory}

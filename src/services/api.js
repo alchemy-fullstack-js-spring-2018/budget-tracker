@@ -6,3 +6,8 @@ export const postCategory = category => {
     .post(BASE_URL)
     .send(category);
 };
+
+export const getCategories = () => {
+  return request
+    .get(BASE_URL);
+};
