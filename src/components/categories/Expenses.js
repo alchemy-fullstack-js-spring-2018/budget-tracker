@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addExpense } from './actions';
 import { getExpensesByCategory } from './reducers';
 import ExpenseItem from './ExpenseItem';
+import ExpensesForm from './ExpenseForm';
 
 class Expenses extends PureComponent {
 
@@ -14,15 +15,17 @@ class Expenses extends PureComponent {
   };
 
   render() {
-    const { expenses } = this.props;
+    const { expenses, addExpense } = this.props;
 
     return (
       <div>
         <h2>Expenses:</h2>
+        <ExpensesForm onComplete={addExpense} label="Add"/>
         <ul>
           {expenses.map(expense => <ExpenseItem
             key={expense.id}
             expense={expense}
+            // onUpdate={this.handleUpdate}
           />)}     
         </ul>
       </div>
