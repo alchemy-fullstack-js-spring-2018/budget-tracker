@@ -1,34 +1,11 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
 import { EXPENSE_CREATE, EXPENSE_UPDATE, EXPENSE_DELETE } from './reducers';
-
-import shortid from 'shortid';
 import { postCategory, getCategories, deleteCategory, putCategory, postExpense, putExpense, deleteExpense } from '../../services/api';
+import { ERROR, LOADING_START, LOADING_END } from '../app/reducers';
 
-const categories = [
-  { name: 'Perfect Vacation ', budget: 5000, id: shortid.generate(), timestamp: new Date() },
-  { name: 'Perfect Home', budget: 100000, id: shortid.generate(), timestamp: new Date() }
-];
-
-categories[0].expenses = [
-  { 
-    id: shortid.generate(), 
-    categoryID: categories[0].id, 
-    timestamp: new Date(), 
-    name: 'Clothes',
-    price: 500
-  }];
-
-categories[1].expenses = [
-  {
-    id: shortid.generate(), 
-    categoryID: categories[1].id, 
-    timestamp: new Date(), 
-    name: 'Furniture',
-    price: 2000
-  }
-];
-
-export const loadCategories = () => dispatch => { 
+export const loadCategories = () => dispatch => {
+  dispatch({ type: LOADING_START });
+ 
   getCategories()
     .then(
       categories => {
@@ -38,8 +15,14 @@ export const loadCategories = () => dispatch => {
         });
       },
       err => {
-        console.log('GET ERROR:', err);
-      });
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      })
+    .then(() => {
+      dispatch({ type: LOADING_END });
+    });
 };
 
 export const addCategory = category => dispatch => {
@@ -52,11 +35,10 @@ export const addCategory = category => dispatch => {
         });
       },
       err => {
-        console.log('POST ERROR:', err);
-        // dispatch({
-        //   type: ERROR,
-        //   payload: err
-        // });
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
       });
 };
 
@@ -71,7 +53,10 @@ export const removeCategory = category => dispatch => {
         });
       },
       err => {
-        console.log('DELETE ERROR:', err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
       });
 };
 
@@ -85,7 +70,10 @@ export const updateCategory = category => dispatch => {
         });
       },
       err => {
-        console.log('UPDATE ERROR:', err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
       });
 };
 
@@ -99,7 +87,10 @@ export const addExpense = expense => dispatch => {
         });
       },
       err => {
-        console.log('POST ERROR:', err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
       });
 };
   
@@ -114,7 +105,10 @@ export const updateExpense = expense => dispatch => {
         });
       },
       err => {
-        console.log('POST ERROR:', err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
       });
 };
 
@@ -129,7 +123,10 @@ export const removeExpense = expense => dispatch => {
         });
       },
       err => {
-        console.log('POST ERROR:', err);
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
       });
 };
 

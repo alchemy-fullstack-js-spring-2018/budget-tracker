@@ -14,7 +14,7 @@ class Loading extends PureComponent {
     if(!loading) return null;
 
     return (
-      <div>Loading...</div>
+      <div><h1>Loading...</h1></div>
     );
   }
 }
