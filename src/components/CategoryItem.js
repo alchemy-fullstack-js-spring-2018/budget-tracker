@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CategoryForm from './CategoryForm';
+import Expenses from './Expenses';
 import styles from './CategoryItem.css';
 
 export default class CategoryItem extends Component {
@@ -40,6 +41,7 @@ export default class CategoryItem extends Component {
           </div>
         </li>
         {editing && <CategoryForm name={name} budget={budget} id={id} onComplete={this.handleUpdate} label="UPDATE"/>} 
+        <Expenses categoryName={name} categoryId={id}/>
       </div>
 
     );

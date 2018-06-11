@@ -9,7 +9,7 @@ import {
   EXPENSE_DELETE } from './reducers';
 
 const categories = () => [
-  addCategory({ name: 'food', budget: 500, expenses: [{ name: 'Trader Joe\'s', price: 40 }] }).payload,
+  addCategory({ name: 'food', budget: 500, expenses: [{ id: '123', name: 'Trader Joe\'s', price: 40 }] }).payload,
   addCategory({ name: 'shelter', budget: 1500, expenses: [] }).payload,
   addCategory({ name: 'transportation', budget: 50, expenses: [] }).payload
 ];
