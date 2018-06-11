@@ -2,7 +2,7 @@ import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from 
 import { EXPENSE_CREATE, EXPENSE_UPDATE, EXPENSE_DELETE } from './reducers';
 
 import shortid from 'shortid';
-import { postCategory, getCategories, deleteCategory, putCategory, postExpense } from '../../services/api';
+import { postCategory, getCategories, deleteCategory, putCategory, postExpense, putExpense, deleteExpense } from '../../services/api';
 
 const categories = [
   { name: 'Perfect Vacation ', budget: 5000, id: shortid.generate(), timestamp: new Date() },
@@ -90,13 +90,42 @@ export const updateCategory = category => dispatch => {
 };
 
 export const addExpense = expense => dispatch => {
-  console.log('DA EXPENSE', expense);
   postExpense(expense)
     .then(
       saved => {
         dispatch({
           type: EXPENSE_CREATE,
           payload: JSON.parse(saved.text)
+        });
+      },
+      err => {
+        console.log('POST ERROR:', err);
+      });
+};
+  
+export const updateExpense = expense => dispatch => {
+  putExpense(expense)
+    .then(
+      updated => {
+        console.log('DA UPDATED', JSON.parse(updated.text));
+        dispatch({
+          type: EXPENSE_UPDATE,
+          payload: JSON.parse(updated.text)
+        });
+      },
+      err => {
+        console.log('POST ERROR:', err);
+      });
+};
+
+export const removeExpense = expense => dispatch => {
+  deleteExpense(expense)
+    .then(
+      deleted => {
+        console.log('DA DELETED', JSON.parse(deleted.text));
+        dispatch({
+          type: EXPENSE_DELETE,
+          payload: expense
         });
       },
       err => {

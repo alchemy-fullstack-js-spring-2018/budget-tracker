@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ExpenseForm from './ExpenseForm';
 
-export default class ExpenseItem extends Component {
+export default class ExpenseItem extends PureComponent {
 
   static propTypes = {
     expense: PropTypes.object.isRequired,
-    // onUpdate: PropTypes.func.isRequired,
-    // onRemove: PropTypes.func.isRequired
+    onUpdate: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired
   };
 
   state = {
@@ -36,7 +36,7 @@ export default class ExpenseItem extends Component {
   render() {
     const { expense, onRemove } = this.props;
     const { editing } = this.state;
-    const { id, name, price, timestamp } = expense;
+    const { id, name, price, timestamp, categoryId } = expense;
 
     return (
       <div>
@@ -56,6 +56,7 @@ export default class ExpenseItem extends Component {
               expense={expense}
               onComplete={this.handleUpdate}
               onCancel={this.handleCancel}
+              categoryId={categoryId}
             />
           </div>
           }

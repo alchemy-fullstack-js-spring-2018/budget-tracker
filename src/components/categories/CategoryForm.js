@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CategoryForm.css';
 
@@ -7,7 +7,7 @@ const defaultState = {
   budget: ''
 };
 
-export default class CategoryForm extends Component {
+export default class CategoryForm extends PureComponent {
 
   static propTypes = {
     category: PropTypes.object,

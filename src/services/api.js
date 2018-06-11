@@ -28,3 +28,15 @@ export const postExpense = expense => {
     .post(`${BASE_URL}/${expense.categoryId}/expenses`)
     .send(expense);
 };
+
+export const putExpense = expense => {
+  return request
+    .put(`${BASE_URL}/${expense.categoryId}/expenses/${expense.id}`)
+    .send(expense);
+};
+
+export const deleteExpense = expense => {
+  return request
+    .del(`${BASE_URL}/${expense.categoryId}/expenses/${expense.id}`)
+    .send(expense);
+};

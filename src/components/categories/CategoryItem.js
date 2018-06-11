@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CategoryForm from './CategoryForm';
 import Expenses from './Expenses';
 
-export default class CategoryItem extends Component {
+export default class CategoryItem extends PureComponent {
 
   static propTypes = {
     category: PropTypes.object.isRequired,

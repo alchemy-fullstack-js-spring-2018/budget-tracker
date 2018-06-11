@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CategoryItem from './CategoryItem';
 import styles from './Categories.css';
 
-export default class Categories extends Component {
+export default class Categories extends PureComponent {
 
   static propTypes = {
     category: PropTypes.object,
