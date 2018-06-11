@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Categories from '../app/Categories';
+import Categories from '../categories/Categories';
 
 export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <main>
         <Categories />
-      </div> 
+      </main> 
     );
   }
 }
