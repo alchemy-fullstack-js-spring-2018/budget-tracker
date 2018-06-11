@@ -11,8 +11,7 @@ export default class ExpenseItem extends Component {
 
     return (
       <li>
-        Description: {name}<br/>
-        Price: ${price}
+        {name}: ${price}
       </li>
     );
   }

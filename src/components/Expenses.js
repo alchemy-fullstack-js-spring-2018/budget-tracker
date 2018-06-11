@@ -16,7 +16,7 @@ class Expenses extends Component {
 
     return (
       <ul>
-        <h3>Expenses: </h3>        
+        <h3>Expenses</h3>        
         {expenses.map(expense => <ExpenseItem
           key={expense.id}
           expense={expense}/>)}
