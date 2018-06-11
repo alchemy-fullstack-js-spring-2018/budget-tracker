@@ -43,7 +43,7 @@ export function expenses(state = {}, { type, payload }) {
         ...state,
         [payload.categoryId]: [
           ...state[payload.categoryId],
-          { name: payload.name, price: payload.price }
+          payload.expense
         ]
       };
     }
@@ -51,13 +51,13 @@ export function expenses(state = {}, { type, payload }) {
       return {
         ...state,
         [payload.categoryId]:
-          state[payload.categoryId].map(expense => expense.id === payload.id ? { name: payload.name, price: payload.price, id: payload.id } : expense)
+          state[payload.categoryId].map(expense => expense.id === payload.expense.id ? payload.expense : expense)
       };
     case EXPENSE_DELETE:
       return {
         ...state,
         [payload.categoryId]:
-        state[payload.categoryId].filter(expense => expense.id !== payload.id)
+        state[payload.categoryId].filter(expense => expense.id !== payload.expense.id)
       };
     default:
       return state;

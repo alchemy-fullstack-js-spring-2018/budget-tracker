@@ -96,7 +96,10 @@ describe('expenses reducer', () => {
   it('adds an expense to a category', () => {
     const state = expenses({ '123': [] }, {
       type: EXPENSE_CREATE,
-      payload: { categoryId: '123', name: 'pizza', price: 4 }
+      payload: {
+        categoryId: '123',
+        expense: { name: 'pizza', price: 4 }
+      }
     });
     expect(state).toEqual({ '123': [{ name: 'pizza', price: 4 }] });
   });
@@ -110,7 +113,10 @@ describe('expenses reducer', () => {
       '456': []
     }, {
       type: EXPENSE_UPDATE,
-      payload: { categoryId: '123', id: '1', name: 'pizza', price: 5 }
+      payload: {
+        categoryId: '123',
+        expense: { name: 'pizza', price: 5, id: '1' }
+      }
     });
     expect(state).toEqual({
       '123': [
@@ -130,7 +136,10 @@ describe('expenses reducer', () => {
       '456': []
     }, {
       type: EXPENSE_DELETE,
-      payload: { categoryId: '123', id: '1', name: 'pizza', price: 4 }
+      payload: {
+        categoryId: '123',
+        expense: { name: 'pizza', price: 4, id: '1' }
+      }
     });
     expect(state).toEqual({
       '123': [
