@@ -72,10 +72,15 @@ export const updateCategory = category => ({
   payload: category
 });
 
-export const removeCategory = category => ({
-  type: CATEGORY_REMOVE,
-  payload: category
-});
+export const removeCategory = category => dispatch => {
+  deleteCategory(category.id)
+    .then(() => {
+      dispatch({
+        type: CATEGORY_REMOVE,
+        payload: category
+      });
+    });
+};
 
 export const addLineItem = (categoryId, lineItem) => {
   lineItem.id = shortid.generate();
