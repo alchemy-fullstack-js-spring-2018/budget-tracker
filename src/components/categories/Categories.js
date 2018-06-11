@@ -24,7 +24,7 @@ class Categories extends Component {
 
     return (
       <div>
-        <h1>Categories</h1>
+        <h1>My Budget</h1>
         <CategoryForm onComplete={addCategory} label="Add" />
         <ul>
           {categories.map(category => <Category

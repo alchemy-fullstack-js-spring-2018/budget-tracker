@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const defaultState = {
   name: '',
-  budget: 1
+  budget: ''
 };
 
 export default class CategoryForm extends Component {
