@@ -11,3 +11,8 @@ export const getCategories = () => {
   return request
     .get(BASE_URL);
 };
+
+export const deleteCategory = category => {
+  return request
+    .del(`${BASE_URL}/${category.id}`);
+};
