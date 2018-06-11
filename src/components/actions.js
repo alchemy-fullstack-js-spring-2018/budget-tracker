@@ -8,15 +8,15 @@ import {
   EXPENSE_UPDATE,
   EXPENSE_DELETE } from './reducers';
 
-const categories = [
-  { id: '1', name: 'food', budget: 500 },
-  { id: '2', name: 'shelter', budget: 1500 },
-  { id: '3', name: 'transportation', budget: 50 }
+const categories = () => [
+  addCategory({ name: 'food', budget: 500, expenses: [{ name: 'Trader Joe\'s', price: 40 }] }).payload,
+  addCategory({ name: 'shelter', budget: 1500, expenses: [] }).payload,
+  addCategory({ name: 'transportation', budget: 50, expenses: [] }).payload
 ];
 
 export const loadCategories = () => ({
   type: CATEGORIES_LOAD,
-  payload: categories
+  payload: categories()
 });
 
 export const addCategory = category => {
