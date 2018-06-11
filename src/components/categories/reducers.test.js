@@ -1,4 +1,4 @@
-import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, expensesByCategory, EXPENSE_CREATE } from './reducers';
+import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, expensesByCategory, EXPENSE_CREATE, EXPENSE_DELETE } from './reducers';
 it('has a default value of empty array', () => {
   const state = categories(undefined, {});
   expect(state).toEqual([]);
@@ -56,6 +56,11 @@ describe(' expensesByCategory reducer', () => {
   it('adds an entry on expense add', () => {
     const state = expensesByCategory({}, { type: EXPENSE_CREATE, payload: { id: 123 } });
     expect(state).toEqual({ 123: [] });
+  });
+
+  it('removes an expense on Category remove', () => {
+    const state = expensesByCategory({ 123: [], 456: [] }, { type: EXPENSE_DELETE, payload: { id: 123 } });
+    expect(state).toEqual({ 456: [] });
   });
 
 
