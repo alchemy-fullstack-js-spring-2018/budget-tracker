@@ -1,7 +1,7 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
 import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
 
-import { EXPENSES_LOAD, EXPENSES_CREATE, EXPENSES_UPDATE, EXPENSES_DELETE } from './reducers';
+import { EXPENSE_CREATE, EXPENSE_UPDATE, EXPENSE_DELETE } from './reducers';
 import { loadExpenses } from './actions';
 
 describe('Categories Actions', () => {
@@ -47,10 +47,22 @@ describe('Categories Actions', () => {
 
 describe('Expenses Actions', () => {
   
-  it('Creates a Load Action', () => {
-    const { type, payload } = loadExpenses();
-    expect(type).toBe(EXPENSES_LOAD);
-    expect(payload.length).toBe(2);
+  it('Create an Add Action', () => {
+    const parentId = 123;
+    const data = { name: 'Expense', price: 50 };
+
+    const { type, payload } = addExpense(parentId, data);
+    expect(type).toBe(EXPENSE_CREATE);
+
+    const { categoryId, expense } = payload;
+    expect(categoryId).toBe(parentId);
+
+    const { id, timestamp, name, price } = expense;
+    expect(id).toBeTruthy();
+    expect(expense.categoryId).toBe(parentId);
+    expect(timestamp).toBeTruthy();
+    expect(name).toBe(data.name);
+    expect(price).toBe(data.price);
   });
 
 });

@@ -5,7 +5,6 @@ import {
   CATEGORY_REMOVE,
   CATEGORY_UPDATE,
   expensesByCategory,
-  EXPENSES_LOAD,
   EXPENSE_CREATE,
   EXPENSE_UPDATE,
   EXPENSE_DELETE,
@@ -79,14 +78,6 @@ describe('Expense Reducers', () => {
     name: 'Furniture',
     price: 2000
   };
-
-  // const category1 = {
-  //   id: 1,
-  //   timestamp: new Date(),
-  //   name: 'Trip to Copenhagen',
-  //   budget: 5000,
-  //   expenses: [{ id: 2 }]
-  // };
 
   it('Has a Default Value of Empty Object', () => {
     const state = expensesByCategory(undefined, {});
