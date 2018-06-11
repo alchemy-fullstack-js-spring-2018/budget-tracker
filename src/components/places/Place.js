@@ -16,9 +16,10 @@ export default class Place extends Component {
 
      return (
        <li key={name}>
-         {name}
-         {toSee}
-         <button style={{ color: 'blue' }} onClick={() => onRemove(place)}>X</button>
+         <h2>{name}
+           {toSee}
+           <button style={{ color: 'black' }} onClick={() => onRemove(place)}>X</button>
+         </h2>
        </li>
      );
    }
