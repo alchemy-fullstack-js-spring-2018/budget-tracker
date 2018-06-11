@@ -53,6 +53,12 @@ export function expenses(state = {}, { type, payload }) {
         [payload.categoryId]:
           state[payload.categoryId].map(expense => expense.id === payload.id ? { name: payload.name, price: payload.price, id: payload.id } : expense)
       };
+    case EXPENSE_DELETE:
+      return {
+        ...state,
+        [payload.categoryId]:
+        state[payload.categoryId].filter(expense => expense.id !== payload.id)
+      };
     default:
       return state;
   } 

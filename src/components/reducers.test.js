@@ -120,4 +120,23 @@ describe('expenses reducer', () => {
       '456': []
     });
   });
+
+  it('deletes an expense', () => {
+    const state = expenses({
+      '123': [
+        { name: 'pizza', price: 4, id: '1' },
+        { name: 'salad', price: 8, id: '2' }
+      ], 
+      '456': []
+    }, {
+      type: EXPENSE_DELETE,
+      payload: { categoryId: '123', id: '1', name: 'pizza', price: 4 }
+    });
+    expect(state).toEqual({
+      '123': [
+        { name: 'salad', price: 8, id: '2' }
+      ], 
+      '456': []
+    });
+  });
 });
