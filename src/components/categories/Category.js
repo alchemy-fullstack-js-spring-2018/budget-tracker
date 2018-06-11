@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CategoryForm from './CategoryForm';
+import Expenses from './Expenses';
 
 
-export default class Category extends Component {
+export default class Category extends PureComponent {
 
   state = {
     editing: false
@@ -52,6 +53,7 @@ export default class Category extends Component {
             />
           </div>
         }
+        <Expenses categoryId={category.id}/>
       </li>
     );
   }

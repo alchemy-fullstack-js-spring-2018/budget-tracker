@@ -1,17 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { error, loading } from './components/app/reducers';
-import { categories, expenseByCategory } from './components/categories/reducers';
+import { categories, expensesByCategory } from './components/categories/reducers';
 
 const rootReducer = combineReducers({
   error,
   loading,
   categories,
-  expenseByCategory
+  expensesByCategory
 });
 
 const logger = () => next => action => {
-  console.log('redux logger received action', action);
   const result = next(action);
   return result;
 };
