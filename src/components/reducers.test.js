@@ -57,4 +57,26 @@ describe('expenses reducer', () => {
     expect(state).toEqual({});
   });
 
+  it('adds an expense array for each category loaded', () => {
+    const state = expenses({}, {
+      type: CATEGORIES_LOAD,
+      payload: [{
+        id: '123',
+        expenses: [
+          { name: 'pizza', price: 4 },
+          { name: 'salad', price: 8 }
+        ]
+      }, {
+        id: '456',
+        expenses: []
+      }]
+    });
+    expect(state).toEqual({
+      '123': [
+        { name: 'pizza', price: 4 },
+        { name: 'salad', price: 8 }
+      ],
+      '456': []
+    });
+  });
 });

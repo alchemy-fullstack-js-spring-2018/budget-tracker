@@ -23,7 +23,11 @@ export function categories(state = [], { type, payload }) {
 
 export function expenses(state = {}, { type, payload }) {
   switch(type) {
-    
+    case CATEGORIES_LOAD:
+      return payload.reduce((expenses, category) => {
+        expenses[category.id] = category.expenses;
+        return expenses;
+      }, {});
     default:
       return state;
   } 
