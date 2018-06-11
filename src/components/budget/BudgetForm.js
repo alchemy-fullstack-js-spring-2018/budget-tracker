@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 const defaultState = {
-  date: '',
-  description: '',
-  amount: 0,
+  timestamp: '',
+  name: '',
+  price: 0,
   categoryId: null
 };
 
@@ -59,15 +59,15 @@ export default class BudgetForm extends PureComponent {
   };
 
   render() {
-    const { date, description, amount } = this.state;
+    const { timestamp, name, price } = this.state;
     const { label, onCancel, categories } = this.props;
     if(!categories) return;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input placeholder="description" value={description} onChange={this.handleChange}/>
-        <input placeholder="amount" value={amount} onChange={this.handleChange}/>
-        <input type="date" placeholder="date" value={date} onChange={this.handleChange}/>
+        <input placeholder="name" value={name} onChange={this.handleChange}/>
+        <input placeholder="price" value={price} onChange={this.handleChange}/>
+        <input type="date" placeholder="timestamp" value={timestamp} onChange={this.handleChange}/>
         <select onChange={this.handleSelect}>
           <option>Category</option>
           {categories.map(category => <option key={category.name} value={category.id}>
