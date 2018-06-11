@@ -23,6 +23,7 @@ export function expensesByCategory(state = {}, { type, payload }) {
   switch (type) {
     case EXPENSE_CREATE:
       return [...state, payload];
+      
 
     default:
       return state;
