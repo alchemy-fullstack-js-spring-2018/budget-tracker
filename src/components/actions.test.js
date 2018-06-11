@@ -16,7 +16,7 @@ import {
   updateExpense,
   removeExpense } from './actions';
 
-describe('action creator', () => {
+describe.skip('action creator', () => {
   it('creates a load category action', () => {
     const { type, payload } = loadCategories();
     expect(type).toBe(CATEGORIES_LOAD);
