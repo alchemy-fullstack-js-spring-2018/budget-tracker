@@ -21,13 +21,12 @@ export class Expenses extends PureComponent {
   };
 
   handleUpdate = data => {
-    console.log('THE DATA', data);
     this.props.updateExpense(data);
   };
 
   handleRemoveExpense = expense => {
     this.props.removeExpense(expense);
-  }
+  };
 
   render() {
     const { expenses, categoryId } = this.props;
