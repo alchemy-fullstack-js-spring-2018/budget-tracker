@@ -36,7 +36,8 @@ export const putCategory = category => {
 export const deleteCategory = id => {
   return fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE'
-  });
+  })
+    .then(res => res.json());
 };
 
 export const postLineItem = (categoryId, lineItem) => {
