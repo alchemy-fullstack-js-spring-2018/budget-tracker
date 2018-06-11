@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const defaultState = {
   name: '',
   budget: 0,
-  lineItemId: []
+  expenses: []
 };
 
 export default class CategoryForm extends PureComponent {

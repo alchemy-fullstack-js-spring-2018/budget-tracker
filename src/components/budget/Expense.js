@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import BudgetForm from './BudgetForm';
 
-export default class LineItem extends PureComponent {
+export default class Expense extends PureComponent {
 
   state = {
     editing: false

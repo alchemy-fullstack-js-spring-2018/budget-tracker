@@ -42,8 +42,8 @@ class Expenses extends PureComponent {
             <ul>
               {category.expenses && category.expenses.map(expense => <Expense
                 key={expense.name}
-                // onRemove={removeLineItem}
-                // onUpdate={updateLineItem}
+                // onRemove={removeExpense}
+                // onUpdate={updateExpense}
                 expense={expense}
               />)
               }
