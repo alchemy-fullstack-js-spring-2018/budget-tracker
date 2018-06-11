@@ -11,14 +11,14 @@ export default class Expense extends Component {
     text: ''
   };
 
+  handleChange = ({ target }) => {
+    this.setState({ text: target.value });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
     this.props.onAdd(this.state.text);
     this.setState({ text: '' });
-  };
-
-  handleChange = ({ target }) => {
-    this.setState({ text: target.value });
   };
 
   render() {

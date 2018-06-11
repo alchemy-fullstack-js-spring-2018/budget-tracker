@@ -9,11 +9,14 @@ const defaultState = {
 export default class CategoryForm extends Component {
 
   static propTypes = {
+    category: PropTypes.object,
     onComplete: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired
   };
 
-  state = defaultState;
+  state = {
+    edit: null
+  };
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });

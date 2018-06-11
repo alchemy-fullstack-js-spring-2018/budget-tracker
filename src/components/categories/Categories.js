@@ -27,7 +27,7 @@ class Categories extends Component {
       <div>
         <h1>My Budget</h1>
         <CategoryForm onComplete={addCategory} label="Add New Category" />
-        <ul>
+        <ul>  
           {categories.map(category => <Category
             key={category.name}
             onRemove={removeCategory}

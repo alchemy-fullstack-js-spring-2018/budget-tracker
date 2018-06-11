@@ -33,7 +33,7 @@ class Expenses extends Component {
             );
           })}
         </ul>
-        <AddExpense onAdd={this.handleExpense}/>
+        <AddExpense onAdd={this.handleAdd}/>
       </div>
     );
   }

@@ -12,15 +12,15 @@ const categories = () => [
     expenses: [
       { id: 123, name: 'burger', price: 10 }
     ]
-  }),
-  addCategory({ name: 'rent', budget: 1000 }),
+  }).payload,
+  addCategory({ name: 'rent', budget: 1000 }).payload,
   addCategory({
     name: 'fun',
     budget: 500,
     expenses: [
       { id: 321, name: 'games n stuff', price: 100 }
     ]
-  })
+  }).payload
 ];
 
 export const loadCategories = () => ({

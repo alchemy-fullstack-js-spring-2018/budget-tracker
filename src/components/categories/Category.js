@@ -10,7 +10,7 @@ export default class Category extends Component {
 
   static propTypes = {
     category: PropTypes.object,
-    onRemove: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired
   };
 
   render() {

@@ -5,7 +5,7 @@ export const EXPENSE_ADD = 'EXPENSE_ADD';
 
 export const getCategories = state => state.categories;
 export const getExpenses = state => state.expensesByCategory;
-export const getCommentsByFruit = (categoryId, state) => getExpenses(state)[categoryId];
+export const getExpensesByCategory = (categoryId, state) => getExpenses(state)[categoryId];
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
