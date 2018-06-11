@@ -8,16 +8,24 @@ import {
   EXPENSE_UPDATE,
   EXPENSE_DELETE } from './reducers';
 
-const categories = () => [
-  addCategory({ name: 'food', budget: 500, expenses: [{ id: '123', name: 'Trader Joe\'s', price: 40 }] }).payload,
-  addCategory({ name: 'shelter', budget: 1500, expenses: [] }).payload,
-  addCategory({ name: 'transportation', budget: 50, expenses: [] }).payload
-];
+import {
+  getCategories
+} from '../services/api';
 
-export const loadCategories = () => ({
-  type: CATEGORIES_LOAD,
-  payload: categories()
-});
+export const loadCategories = () => {
+  return dispatch => {
+    getCategories()
+      .then(
+        categories => {
+          console.log(categories);
+          dispatch({
+            type: CATEGORIES_LOAD,
+            payload: categories
+          });
+        }
+      );
+  };
+};
 
 export const addCategory = category => {
   category.id = shortid.generate();
