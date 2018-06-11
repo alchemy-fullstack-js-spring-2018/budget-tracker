@@ -24,7 +24,7 @@ export function expensesByCategory(state = {}, { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
       return payload.reduce((map, category) => {
-        map[category.id] = category.comments;
+        map[category.id] = category.expenses;
         return map;
       }, {});
     case CATEGORY_REMOVE: {
