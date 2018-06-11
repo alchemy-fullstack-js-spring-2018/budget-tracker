@@ -63,5 +63,24 @@ describe(' expensesByCategory reducer', () => {
     expect(state).toEqual({ 456: [] });
   });
 
+  it('creates expenses for all loaded categories', () => {
+    const state = expensesByCategory({}, { 
+      type: CATEGORIES_LOAD, 
+      payload: [{ 
+        id: 123, 
+        expenses: [
+          { text: 'one' }, 
+          { text: 'two' }
+        ] 
+      }, {
+        id: 456,
+        expenses: []
+      }] 
+    });
+    expect(state).toEqual({ 
+      123: [{ text: 'one' }, { text: 'two' }],
+      456: []
+    });
+  });
 
 });
