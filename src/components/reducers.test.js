@@ -84,4 +84,9 @@ describe('expenses reducer', () => {
     const state = expenses({}, { type: CATEGORY_ADD, payload: { id: '123' } });
     expect(state).toEqual({ '123':[] });
   });
+
+  it('removes the expense property when a category is removed', () => {
+    const state = expenses({ '123': [], '456': [] }, { type: CATEGORY_REMOVE, payload: { id: '456' } });
+    expect(state).toEqual({ '123': [] });
+  });
 });

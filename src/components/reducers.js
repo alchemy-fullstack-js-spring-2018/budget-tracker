@@ -33,6 +33,11 @@ export function expenses(state = {}, { type, payload }) {
         ...state,
         [payload.id]: []
       };
+    case CATEGORY_REMOVE: {
+      const stateCopy = { ...state };
+      delete stateCopy[payload.id];
+      return stateCopy;
+    }
     default:
       return state;
   } 
