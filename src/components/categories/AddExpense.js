@@ -13,7 +13,7 @@ export default class AddExpense extends PureComponent {
 
   handleChange = ({ target }) => {
     this.setState({ text: target.value });
-  }
+  };
   
   handleSubmit = event => {
     event.preventDefault();
