@@ -59,3 +59,11 @@ export const updateExpense = (categoryId, expense) => {
     payload: { categoryId, expense }
   };
 };
+
+export const removeExpense = (categoryId, expense) => {
+  
+  return {
+    type: EXPENSE_DELETE,
+    payload: { categoryId, expense }
+  };
+};

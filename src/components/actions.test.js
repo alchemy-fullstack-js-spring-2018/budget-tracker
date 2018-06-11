@@ -77,4 +77,18 @@ describe('action creator', () => {
     const { id } = expense;
     expect(id).toBe(expenseData.id);
   });
+
+  it('deletes an expense', () => {
+    const parentId = '123';
+    const expenseData = { name: 'pizza', price: 5, id: '1' };
+
+    const { type, payload } = removeExpense(parentId, expenseData);
+    expect(type).toBe(EXPENSE_DELETE);
+
+    const { categoryId, expense } = payload;
+    expect(categoryId).toBe(parentId);
+
+    const { id } = expense;
+    expect(id).toBe(expenseData.id);
+  });
 });
