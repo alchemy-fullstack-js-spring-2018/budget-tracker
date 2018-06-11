@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Categories from './Categories';
 
 const categories = [
-  { name: 'food', color: 'red' },
-  { name: 'rent', color: 'orange' },
-  { name: 'fun', color: 'yellow' }
+  { name: 'food', budget: 320 },
+  { name: 'rent', budget: 1000 },
+  { name: 'fun', budget: 500 }
 ];
 
 export default class CategoriesContainer extends Component {

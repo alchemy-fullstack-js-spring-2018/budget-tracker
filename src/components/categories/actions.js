@@ -1,10 +1,10 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE } from './reducers';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
 import shortid from 'shortid';
 
 const categories = [
-  { name: 'food', color: 'red' },
-  { name: 'rent', color: 'orange' },
-  { name: 'fun', color: 'yellow' }
+  { name: 'food', budget: 320 },
+  { name: 'rent', budget: 1000 },
+  { name: 'fun', budget: 500 }
 ];
 
 export const loadCategories = () => ({
@@ -21,11 +21,6 @@ export const addCategory = category => {
     payload: category
   };  
 };
-
-export const updateCategory = category => ({
-  type: CATEGORY_UPDATE,
-  payload: category
-});
 
 export const removeCategory = category => ({
   type: CATEGORY_REMOVE,

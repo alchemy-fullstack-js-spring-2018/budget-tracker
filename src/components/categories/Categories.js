@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Category from './Category';
-import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
+import { loadCategories, addCategory, removeCategory } from './actions';
 
 class Categories extends Component {
 
@@ -30,7 +30,6 @@ class Categories extends Component {
           {categories.map(category => <Category
             key={category.name}
             onRemove={removeCategory}
-            onUpdate={updateCategory}
             category={category}
           />)}
         </ul>
@@ -41,5 +40,5 @@ class Categories extends Component {
 
 export default connect(
   state => ({ categories: state.categories }),
-  { loadCategories, addCategory, updateCategory, removeCategory }
+  { loadCategories, addCategory, removeCategory }
 )(Categories);

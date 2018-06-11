@@ -3,19 +3,18 @@ import PropTypes from 'prop-types';
 
 export default class Category extends Component {
 
-  static PropTypes = {
+  static propTypes = {
     category: PropTypes.object,
     onRemove: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired
   };
 
   render() {
-    const { category, onRemove, onUpdate } = this.props;
-    const { name, color } = category;
+    const { category, onRemove } = this.props;
+    const { name, budget } = category;
 
     return (
-      <li key={name} style={{ color }}>
-        {name}
+      <li key={name}>
+        {name}: ${budget}
         <button style={{ color: 'black' }} onClick={() => onRemove(category)}>X</button>
       </li>
     );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const defaultState = {
   name: '',
-  color: ''
+  budget: 1
 };
 
 export default class CategoryForm extends Component {
@@ -26,7 +26,7 @@ export default class CategoryForm extends Component {
   };
 
   render() {
-    const { name, color } = this.state;
+    const { name, budget } = this.state;
     const { label } = this.props;
 
     return (
@@ -37,8 +37,8 @@ export default class CategoryForm extends Component {
         </label>
 
         <label>
-          Color:
-          <input name="color" value={color} onChange={this.handleChange} />
+          Budget:
+          <input name="budget" value={budget} onChange={this.handleChange} />
         </label>
         <button type="submit">{label}</button>
       </form>
