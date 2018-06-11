@@ -3,7 +3,7 @@ import { getCategories, postCategory, putCategory, deleteCategory, postLineItem 
 import { ERROR, LOADING_START, LOADING_END } from '../app/reducers';
 import shortid from 'shortid';
 
-const categories = () => [
+const initCategories = () => [
   addCategory({ 
     name: 'rent',
     budget: 500.00,
@@ -25,11 +25,29 @@ const categories = () => [
   }).payload
 ];
 
-export const loadCategories = () => ({
+export const loadCategories = () => {
+  return dispatch => {
+    dispatch({ type: LOADING_START });
 
-  type: CATEGORIES_LOAD,
-  payload: categories()
-});
+    getCategories()
+      .then(
+        categories => {
+          dispatch({
+            type: CATEGORIES_LOAD,
+            payload: categories
+          });
+        },
+        err => {
+          dispatch({
+            type: ERROR,
+            payload: err
+          });
+        })
+      .then(() => {
+        dispatch({ type: LOADING_END });
+      });
+  };
+};
 
 export const addCategory = category => dispatch => {
   category.id = shortid.generate();
