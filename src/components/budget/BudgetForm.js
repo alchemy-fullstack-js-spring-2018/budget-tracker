@@ -16,11 +16,11 @@ export default class BudgetForm extends PureComponent {
     label: PropTypes.string.isRequired,
   };
 
-  static getDerivedStateFromProps({ lineItem }, { edit }) {
+  static getDerivedStateFromProps({ expense }, { edit }) {
     if(edit) return null;
 
     return {
-      edit: lineItem ? { ...lineItem } : { ... defaultState }
+      edit: expense ? { ...expense } : { ... defaultState }
     };
   }
 

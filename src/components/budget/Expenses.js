@@ -25,6 +25,7 @@ class Expenses extends PureComponent {
     const { name, price, timestamp, categoryId } = event.edit;
     this.setState({ name, price, timestamp });
     addExpense(categoryId, { name, price, timestamp });
+    console.log('here in the Handle add');
   };
 
   render() {
@@ -58,7 +59,7 @@ class Expenses extends PureComponent {
 export default connect(
   (state, { categoryId }) => {
     return {
-      lineItems: getExpenseByCategory(categoryId, state)
+      expenses: getExpenseByCategory(categoryId, state)
     };
   },
   { addExpense }

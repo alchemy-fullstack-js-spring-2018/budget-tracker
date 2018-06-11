@@ -40,7 +40,7 @@ export const deleteCategory = id => {
     .then(res => res.json());
 };
 
-export const postLineItem = (categoryId, lineItem) => {
+export const postExpense = (categoryId, lineItem) => {
   return fetch(`${BASE_URL}/${categoryId}/lineItems`, {
     body: JSON.stringify(lineItem),
     method: 'POST'

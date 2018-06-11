@@ -1,29 +1,7 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, LINEITEM_ADD } from './reducers';
-import { getCategories, postCategory, putCategory, deleteCategory, postLineItem } from '../../services/api';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, EXPENSE_ADD } from './reducers';
+import { getCategories, postCategory, putCategory, deleteCategory, postExpense } from '../../services/api';
 import { ERROR, LOADING_START, LOADING_END } from '../app/reducers';
-import shortid from 'shortid';
-
-// const initCategories = () => [
-//   addCategory({ 
-//     name: 'rent',
-//     budget: 500.00,
-//     lineItems: [
-//       { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
-//     ]
-//   }).payload,
-//   addCategory({
-//     name: 'food',
-//     budget: 200.00,
-//     lineItems: [
-//       { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
-//     ]
-//   }).payload,
-//   addCategory({
-//     name: 'utilities',
-//     budget: 300.00,
-//     lineItems: []
-//   }).payload
-// ];
+// import shortid from 'shortid';
 
 export const loadCategories = () => {
   return dispatch => {
@@ -87,17 +65,16 @@ export const removeCategory = category => dispatch => {
     });
 };
 
-export const addExpense = (categoryId, expense) => {
-  expense.id = shortid.generate();
-  expense.date = expense.date ? expense.date : new Date();
-  console.log('ID', categoryId);
-  console.log('expense', expense);
-
-  return {
-    type: LINEITEM_ADD,
-    payload: {
-      categoryId,
-      expense
-    }
-  };
+export const addExpense = (categoryId, expense) => dispatch => {
+  console.log('here');
+  postExpense(categoryId, expense)
+    .then(saved => {
+      dispatch({
+        type: EXPENSE_ADD,
+        payload: {
+          categoryId,
+          expense: saved
+        }
+      });
+    });
 };

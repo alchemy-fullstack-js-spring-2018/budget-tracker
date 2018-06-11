@@ -36,7 +36,7 @@ export default class LineItem extends PureComponent {
       <li key={name} style={{ backgroundColor: 'teal', color: 'white' }} >
         <h2>{name}</h2>
         <h2>${price}</h2>
-        <h2>{timestamp.toLocaleString()}</h2>
+        {timestamp && <h2>{timestamp.toLocaleString()}</h2>}
         {editing || <button onClick={this.handleEdit}>✐</button>}
         <button onClick={() => onRemove(expense)}>X</button>
         {editing && 
