@@ -15,7 +15,7 @@ export default class Category extends Component {
 
   render() {
     const { category, onRemove } = this.props;
-    const { name, budget } = category;
+    const { name, budget, expenses, id } = category;
 
     return (
       <li key={name}>
@@ -24,7 +24,7 @@ export default class Category extends Component {
           <span>{budget}</span>
           <button onClick={() => onRemove(category)}>X</button>
         </h4>
-        <Expenses categoryId={category.id}/>
+        <Expenses categoryId={id} expenses={expenses}/>
       </li>
     );
   }

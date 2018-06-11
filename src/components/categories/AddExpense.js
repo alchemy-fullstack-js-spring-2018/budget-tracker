@@ -30,7 +30,7 @@ export default class Expense extends Component {
           Add an expense:
           <input name="text" value={text} onChange={this.handleChange} />
         </label>
-        <button type="submit">Add Expense</button>
+        <button type="submit">Add</button>
       </form>
     );
   }
