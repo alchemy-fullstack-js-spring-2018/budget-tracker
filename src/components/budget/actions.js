@@ -1,4 +1,5 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, LINEITEM_ADD } from './reducers';
+import { getCategories, postCategory, putCategory, deleteCategory, postLineItem } from '../../services/api';
 import shortid from 'shortid';
 
 const categories = () => [
@@ -24,17 +25,28 @@ const categories = () => [
 ];
 
 export const loadCategories = () => ({
+
   type: CATEGORIES_LOAD,
   payload: categories()
 });
 
-export const addCategory = category => {
+export const addCategory = category => dispatch => {
   category.id = shortid.generate();
 
-  return {
-    type: CATEGORY_ADD,
-    payload: category
-  };
+  postCategory(category)
+    .then(
+      saved => {
+        dispatch({
+          type: CATEGORY_ADD,
+          payload: saved
+        });
+      },
+      err => {
+        dispatch({
+          type: ERROR,
+          payload: err
+        });
+      });
 };
 
 export const updateCategory = category => ({
