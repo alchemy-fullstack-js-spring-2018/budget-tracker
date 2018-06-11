@@ -53,12 +53,13 @@ export function expensesByCategory(state = {}, { type, payload }) {
         [payload.categoryId]:
           state[payload.categoryId].map(expense => expense.id === payload.expense.id ? payload.expense : expense)
       };
-    case EXPENSE_REMOVE:
+    case EXPENSE_REMOVE:{
+      const newPayload = payload.categoryId;
       return {
         ...state,
-        [payload.categoryId]:
-        state[payload.categoryId].filter(expense => expense.id !== payload.expense.id)
-      };
+        [newPayload.categoryId]:
+        state[newPayload.categoryId].filter(expense => expense.id !== newPayload.id)
+      };}
     default:
       return state;
   } 
