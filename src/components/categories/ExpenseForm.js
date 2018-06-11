@@ -1,26 +1,26 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styles from './CategoryForm.css';
 
 const defaultState = {
   name: '',
-  budget: ''
+  price: ''
 };
 
-export default class CategoryForm extends PureComponent {
+export default class ExpenseForm extends PureComponent {
 
   static propTypes = {
-    category: PropTypes.object,
+    expense: PropTypes.object,
+    categoryId: PropTypes.string.isRequired,
     onComplete: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
     label: PropTypes.string.isRequired
   };
 
-  static getDerivedStateFromProps({ category }, { edit }) {
+  static getDerivedStateFromProps({ expense }, { edit }) {
     if(edit) return null;
 
     return {
-      edit: category ? { ...category } : { ...defaultState }
+      edit: expense ? { ...expense } : { ...defaultState }
     };
   }
 
@@ -33,7 +33,8 @@ export default class CategoryForm extends PureComponent {
       return {
         edit: {
           ...edit,
-          [target.name]: target.value
+          [target.name]: target.value,
+          categoryId: this.props.categoryId
         }
       };
     });
@@ -48,19 +49,19 @@ export default class CategoryForm extends PureComponent {
   };
 
   render() {
-    const { name, budget } = this.state.edit;
+    const { name, price } = this.state.edit;
     const { label, onCancel } = this.props;
 
     return (
-      <form className={styles['category-form']} onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input name="name" value={name} onChange={this.handleChange}/>
         </label>
 
         <label>
-          Budget:
-          <input name="budget" value={budget} onChange={this.handleChange}/>
+          Price:
+          <input name="price" value={price} onChange={this.handleChange}/>
         </label>
         <button type="submit">{label}</button>
         {onCancel && <button type="reset" onClick={onCancel}>Cancel</button>}

@@ -1,11 +1,11 @@
-:local(.category) {
+:local(.categories) {
     background-color: lightgrey;
     padding: 5px 15px;
     border-top: 1px solid;
     border-bottom: 1px solid;
 
     button {
-      background-color: firebrick;
+      background-color: steelblue;
       color: white;
       padding: 5px 15px;
       margin-left: 5px;

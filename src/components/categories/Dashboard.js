@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
-import Category from './Category';
-import { loadCategories, addCategory, removeCategory } from './actions';
+import Categories from './Categories';
+import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
+import { getCategories } from './reducers';
 
-class Dashboard extends Component {
+class Dashboard extends PureComponent {
 
   static propTypes = {
     categories: PropTypes.array,
     addCategory: PropTypes.func.isRequired,
     removeCategory: PropTypes.func.isRequired,
-    loadCategories: PropTypes.func.isRequired
+    loadCategories: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -19,7 +21,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { categories, addCategory, removeCategory } = this.props;
+    const { categories, addCategory, removeCategory, updateCategory } = this.props;
     if(!categories) return null;
 
     return (
@@ -27,10 +29,11 @@ class Dashboard extends Component {
         <h2>Categories</h2>
         <CategoryForm onComplete={addCategory} label="Add"/>
         <ul>
-          {categories.map(category => <Category
-            key={category.name}
+          {categories.map(category => <Categories
+            key={category.id}
             onRemove={removeCategory}
-            category={category}  
+            category={category} 
+            onUpdate={updateCategory}
           />)}
         </ul>
       </div>
@@ -39,6 +42,6 @@ class Dashboard extends Component {
 }
 
 export default connect(
-  state => ({ categories: state.categories }),
-  { loadCategories, addCategory, removeCategory }
+  state => ({ categories: getCategories(state) }),
+  { loadCategories, addCategory, removeCategory, updateCategory }
 )(Dashboard);
