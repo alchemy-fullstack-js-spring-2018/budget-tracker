@@ -1,4 +1,4 @@
-import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE } from './reducers';
+import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
 
 it('has a default value of empty array', () => {
   const state = categories(undefined, {});
@@ -40,7 +40,7 @@ it('updates a category', () => {
   const state = categories([{ id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 50 }],
     {
       type: CATEGORY_UPDATE,
-      payload: {id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 30 }
+      payload: { id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 30 }
     }
   );
   expect(state).toEqual([{ id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 30 }]);
