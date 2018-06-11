@@ -20,7 +20,7 @@ export default class Categories extends PureComponent {
         <ul>
           <h2>Categories</h2>
           {categories.map(category => <Category 
-            key={category.name}
+            key={category.id}
             onRemove={removeCategory}
             onUpdate={updateCategory}
             category={category}
