@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const defaultState = {
-  id: '',
-  categoryId: '',
-  timestamp: '',
   name: '',
   expense: ''
 };

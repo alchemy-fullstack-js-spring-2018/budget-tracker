@@ -12,7 +12,7 @@ const categories = () => [
     name: 'Rent',
     budget: '1000',
     expenses: [
-      { id: 6,
+      { categoryId: '342',
         name: 'Utilities',
         expense: '50' }
     ]
@@ -23,7 +23,7 @@ const categories = () => [
 
 export const loadCategories = () => ({
   type: CATEGORIES_LOAD,
-  payload: categories
+  payload: categories()
 });
 
 export const addCategories = categories => {
