@@ -6,8 +6,10 @@
   "scripts": {
     "build": "webpack --mode --production",
     "start": "webpack-dev-server --hot --open --mode development",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
     "test": "jest",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run jest -- --watch"
   },
   "repository": {
     "type": "git",

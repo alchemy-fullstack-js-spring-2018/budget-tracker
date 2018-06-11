@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//import PlaceContainer from './PlaceContainer';
+//import PlaceForm from './PlaceForm';
 
 export default class Place extends Component {
 
    static propTypes = {
-     place: PropTypes.object,
-     onRemove: PropTypes.func.isRequired,
-     //   onUpdate: PropTypes.func.isRequired
+     place: PropTypes.array,
+     //onRemove: PropTypes.func.isRequired,
+     //onUpdate: PropTypes.func.isRequired
    };
 
    render() {
-     const { place, onRemove } = this.props;
-     const { name, toSee } = place;
+     const { place } = this.props;
+     //const { name, toSee } = place;
 
      return (
+     //  <li key={name} style={{ toSee }}>
        <li key={name}>
          {name}
-         {toSee}
-         <button style={{ color: 'blue' }} onClick={() => onRemove(place)}>X</button>
+         <button style={{ color: 'black' }} onClick={() => (place)}>X</button>
        </li>
      );
    }
