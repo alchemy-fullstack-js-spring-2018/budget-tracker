@@ -9,18 +9,24 @@ export default class CategoryItem extends Component {
   };
 
   static propTypes = {
-    name: PropTypes.string,
-    budget: PropTypes.number,
-    onRemove: PropTypes.func.isRequired
+    category: PropTypes.object,
+    onRemove: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired
   };
 
   handleEditToggle = () => {
     this.setState(({ editing }) => ({ editing: !editing }));
   };
 
+  handleUpdate = info => {
+    this.props.onUpdate(info);
+    this.setState({ editing: false });
+  };
+
   render() {
     const { editing } = this.state;
-    const { name, budget, onRemove } = this.props;
+    const { category, onRemove } = this.props;
+    const { name, budget, id } = category;
 
     return (
       <div className={styles['category-item']}>
@@ -33,7 +39,7 @@ export default class CategoryItem extends Component {
             <button className={editing ? 'edit active' : 'edit icon-button'} onClick={this.handleEditToggle}>✎</button>  
           </div>
         </li>
-        {editing && <CategoryForm name={name} budget={budget} onComplete={() => {}} label="UPDATE"/>} 
+        {editing && <CategoryForm name={name} budget={budget} id={id} onComplete={this.handleUpdate} label="UPDATE"/>} 
       </div>
 
     );

@@ -7,7 +7,8 @@ export default class CategoryForm extends Component {
     onComplete: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string,
-    budget: PropTypes.number
+    budget: PropTypes.number,
+    id: PropTypes.string
   };
 
   state = {
@@ -24,7 +25,7 @@ export default class CategoryForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if(this.state.name === '' || this.state.budget === '') return;
-    this.props.onComplete(this.state);
+    this.props.onComplete({ ...this.state, id: this.props.id });
     this.setState({ name: '', budget: '' });
   };
 

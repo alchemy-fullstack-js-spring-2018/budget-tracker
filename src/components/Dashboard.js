@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Categories from './Categories';
 import CategoryForm from './CategoryForm';
-import { loadCategories, addCategory, removeCategory } from './actions';
+import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
 import styles from './Dashboard.css';
 
 class Dashboard extends Component {
@@ -11,6 +11,7 @@ class Dashboard extends Component {
     categories: PropTypes.array,
     addCategory: PropTypes.func.isRequired,
     removeCategory: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired,
     loadCategories: PropTypes.func.isRequired,
   };
 
@@ -19,7 +20,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { categories, addCategory, removeCategory } = this.props;
+    const { categories, addCategory, removeCategory, updateCategory } = this.props;
 
     return (
       <div className={styles.dashboard}>
@@ -32,7 +33,7 @@ class Dashboard extends Component {
             <h2 className="table-heading">Actions</h2>
           </div>
           <CategoryForm onComplete={addCategory} label="ADD"/>      
-          <Categories categories={categories} onRemove={removeCategory}/>
+          <Categories categories={categories} onRemove={removeCategory} onUpdate={updateCategory}/>
         </div>
       </div>
     );
@@ -41,5 +42,5 @@ class Dashboard extends Component {
 
 export default connect(
   state => ({ categories: state.categories }),
-  { loadCategories, addCategory, removeCategory }
+  { loadCategories, addCategory, removeCategory, updateCategory }
 )(Dashboard);

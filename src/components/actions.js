@@ -6,9 +6,9 @@ import {
   CATEGORY_REMOVE } from './reducers';
 
 const categories = [
-  { id: 1, name: 'food', budget: 500 },
-  { id: 2, name: 'shelter', budget: 1500 },
-  { id: 3, name: 'transportation', budget: 50 }
+  { id: '1', name: 'food', budget: 500 },
+  { id: '2', name: 'shelter', budget: 1500 },
+  { id: '3', name: 'transportation', budget: 50 }
 ];
 
 export const loadCategories = () => ({
