@@ -5,7 +5,9 @@ import {
   CATEGORY_ADD,
   CATEGORY_UPDATE,
   CATEGORY_REMOVE, 
-  EXPENSE_CREATE } from './reducers';
+  EXPENSE_CREATE,
+  EXPENSE_UPDATE,
+  EXPENSE_DELETE } from './reducers';
 
 describe('categories reducer', () => {
   it('has a default value of an empty array', () => {
@@ -97,5 +99,25 @@ describe('expenses reducer', () => {
       payload: { categoryId: '123', name: 'pizza', price: 4 }
     });
     expect(state).toEqual({ '123': [{ name: 'pizza', price: 4 }] });
+  });
+
+  it('updates an expense', () => {
+    const state = expenses({
+      '123': [
+        { name: 'pizza', price: 4, id: '1' },
+        { name: 'salad', price: 8, id: '2' }
+      ], 
+      '456': []
+    }, {
+      type: EXPENSE_UPDATE,
+      payload: { categoryId: '123', id: '1', name: 'pizza', price: 5 }
+    });
+    expect(state).toEqual({
+      '123': [
+        { name: 'pizza', price: 5, id: '1' },
+        { name: 'salad', price: 8, id: '2' }
+      ], 
+      '456': []
+    });
   });
 });

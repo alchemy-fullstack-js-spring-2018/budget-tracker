@@ -47,6 +47,12 @@ export function expenses(state = {}, { type, payload }) {
         ]
       };
     }
+    case EXPENSE_UPDATE:
+      return {
+        ...state,
+        [payload.categoryId]:
+          state[payload.categoryId].map(expense => expense.id === payload.id ? { name: payload.name, price: payload.price, id: payload.id } : expense)
+      };
     default:
       return state;
   } 
