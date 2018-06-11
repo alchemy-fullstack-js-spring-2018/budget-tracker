@@ -9,9 +9,9 @@ class Categories extends Component {
 
   static propTypes = {
     categories: PropTypes.array,
-    addCategory: PropTypes.func.required,
-    removeCategory: PropTypes.func.required,
-    loadCategories: PropTypes.func.required
+    loadCategories: PropTypes.func.isRequired,
+    addCategory: PropTypes.func.isRequired,
+    removeCategory: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -25,7 +25,7 @@ class Categories extends Component {
     return (
       <div>
         <h1>My Budget</h1>
-        <CategoryForm onComplete={addCategory} label="Add" />
+        <CategoryForm onComplete={addCategory} label="Add New Category" />
         <ul>
           {categories.map(category => <Category
             key={category.name}
