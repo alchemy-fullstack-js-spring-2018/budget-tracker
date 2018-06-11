@@ -27,7 +27,7 @@ class Expenses extends Component {
           {expenses.map(expense => {
             return (
               <li key={expense.id}>
-                {expense.text}
+                {expense.name}
                 {expense.timestamp && <span> on {expense.timestamp.toLocaleString()} </span>}
               </li>
             );
