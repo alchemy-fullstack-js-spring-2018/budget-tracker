@@ -36,8 +36,10 @@ class Expenses extends Component {
 }
 
 export default connect(
-  // fn that maps state to props
-  null,
-  // list of actions to inject as props
+  (state, props) => {
+    return {
+      expenses: state.expensesByCategory[props.categoryId]
+    };
+  },
   { addExpense, removeExpense, updateExpense }
 )(Expenses);
