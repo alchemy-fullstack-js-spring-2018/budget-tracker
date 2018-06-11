@@ -7,6 +7,10 @@ export const EXPENSE_CREATE = 'EXPENSE_CREATE';
 export const EXPENSE_UPDATE = 'EXPENSE_UPDATE';
 export const EXPENSE_DELETE = 'EXPENSE_DELETE';
 
+export const getCategories = state => state.categories;
+export const getExpenses = state => state.expensesByCategory;
+export const getExpensesByCategory = (categoryId, state) => getExpenses(state)[categoryId];
+
 export function categories(state = [], { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:

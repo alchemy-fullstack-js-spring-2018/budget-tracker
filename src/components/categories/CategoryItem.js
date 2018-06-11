@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CategoryForm from './CategoryForm';
+import Expenses from './Expenses';
 
 export default class CategoryItem extends Component {
 
   static propTypes = {
     category: PropTypes.object.isRequired,
     onRemove: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired
+    onUpdate: PropTypes.func.isRequired,
   };
 
   state = {
@@ -47,6 +48,7 @@ export default class CategoryItem extends Component {
             />
           </div>
         }
+        <Expenses categoryId={category.id} expenses={category.expenses}/>
       </li>
     );
   }
