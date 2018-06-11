@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
 import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
-import { getCategories } from '../../services/api';
+import { getCategories } from '../budget/reducers';
 
 class Dashboard extends PureComponent {
 
@@ -35,6 +35,6 @@ class Dashboard extends PureComponent {
 }
 
 export default connect(
-  state => ({ categories: state.categories }),
+  state => ({ categories: getCategories(state) }),
   { loadCategories, addCategory, updateCategory, removeCategory }
 )(Dashboard);
