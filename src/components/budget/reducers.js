@@ -4,7 +4,7 @@ export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
 export const CATEGORY_REMOVE = 'CATEGORY_REMOVE';
 export const LINEITEM_ADD = 'LINEITEM_ADD';
 
-export const getCategory = state => state.categories;
+export const getCategories = state => state.categories;
 export const getLineItems = state => state.lineItemByCategory;
 export const getLineItemByCategory = (categoryId, state) => getLineItems(state)[categoryId];
 
