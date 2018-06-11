@@ -2,6 +2,9 @@ export const CATEGORIES_LOAD = 'CATEGORIES_LOAD';
 export const CATEGORY_ADD = 'CATEGORY_ADD';
 export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
 export const CATEGORY_REMOVE = 'CATEGORY_REMOVE';
+export const EXPENSE_CREATE = 'EXPENSE_CREATE';
+export const EXPENSE_UPDATE = 'EXPENSE_UPDATE';
+export const EXPENSE_DELETE = 'EXPENSE_DELETE';
 
 export function categories(state = [], { type, payload }) {
   switch(type) {
@@ -16,4 +19,12 @@ export function categories(state = [], { type, payload }) {
     default:
       return state;
   }
+}
+
+export function expenses(state = {}, { type, payload }) {
+  switch(type) {
+    
+    default:
+      return state;
+  } 
 }

@@ -1,11 +1,12 @@
 import {
   categories,
+  expenses,
   CATEGORIES_LOAD,
   CATEGORY_ADD,
   CATEGORY_UPDATE,
   CATEGORY_REMOVE } from './reducers';
 
-describe('categories', () => {
+describe('categories reducer', () => {
   it('has a default value of an empty array', () => {
     const state = categories(undefined, {});
     expect(state).toEqual([]);
@@ -35,17 +36,25 @@ describe('categories', () => {
 
   it('updates a category', () => {
     const state = categories(
-      [{ id: 1, name: 'shelter', budget: 1500 }],
+      [{ id: '1', name: 'shelter', budget: 1500 }],
       {
         type: CATEGORY_UPDATE,
-        payload: { id: 1, name: 'shelter', budget: 2000 }
+        payload: { id: '1', name: 'shelter', budget: 2000 }
       }
     );
-    expect(state).toEqual([{ id: 1, name: 'shelter', budget: 2000 }]);
+    expect(state).toEqual([{ id: '1', name: 'shelter', budget: 2000 }]);
   });
 
   it('removes a category', () => {
     const state = categories([food, shelter], { type: CATEGORY_REMOVE, payload: shelter });
     expect(state).toEqual([food]);
   });
+});
+
+describe('expenses reducer', () => {
+  it('has a default state of an empty object', () => {
+    const state = expenses(undefined, {});
+    expect(state).toEqual({});
+  });
+
 });
