@@ -2,6 +2,7 @@ export const CATEGORIES_LOAD = 'CATEGORIES_LOAD';
 export const CATEGORY_ADD = 'CATEGORY_ADD';
 export const CATEGORY_REMOVE = 'CATEGORY_REMOVE';
 export const CATEGORY_UPDATE = 'CATEGORY_UPDATE';
+export const EXPENSE_CREATE = 'EXPENSE_CREATE';
 
 export function categories(state = [], { type, payload }) {
   switch (type) {
@@ -18,10 +19,13 @@ export function categories(state = [], { type, payload }) {
   }
 }
 
-// export function expensesByCategory(state = {}, { type, payload }) {
-//   switch(type) {
-//     case EXPENSE_CREATE:
-//     return;
-//   }
+export function expensesByCategory(state = {}, { type, payload }) {
+  switch (type) {
+    case EXPENSE_CREATE:
+      return [...state, payload];
 
-// }
+    default:
+      return state;
+  }
+
+}

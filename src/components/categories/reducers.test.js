@@ -1,4 +1,4 @@
-import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
+import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, expensesByCategory } from './reducers';
 
 it('has a default value of empty array', () => {
   const state = categories(undefined, {});
@@ -44,5 +44,15 @@ it('updates a category', () => {
     }
   );
   expect(state).toEqual([{ id: 1, name: 'Meat', timestamp: '11/15/1990', budget: 30 }]);
+
+});
+
+describe(' expensesByCategory reducer', () => {
+
+  it('has a default value of empty object', () => {
+    const state = expensesByCategory(undefined, {});
+    expect(state).toEqual({});
+  });
+
 
 });
