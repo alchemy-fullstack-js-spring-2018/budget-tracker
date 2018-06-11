@@ -42,7 +42,7 @@ Create the following components and structure them according to the following di
 Provider
   App
     Dashboard
-      CategoryForm -- for creating categorys
+      CategoryForm -- for creating categories
       Categories -- list of categories
         Category Item -- display of category
 ```
@@ -53,16 +53,16 @@ The Provider should wrap App component in `index.js`
 
 #### Dashboard Component 
 
-* should use react-redux's `connect` to map state and dispatchable methods to props
+* should use react-redux's `connect` to map state and dispatch methods to props
 * should display a `CategoryForm` for adding categories to the app state
-* should display a `Catgories` component that displays `CategoryItem` for each category in the app state
+* should display a `Categories` component that displays `CategoryItem` for each category in the app state
 
 #### CategoryForm Component
 
 Only need to handle add for today!
 
 * should expect an `onComplete` prop to be a function
-  * that function should be invoked with the CategoryForm state when the form is submited
+  * that function should be invoked with the CategoryForm state when the form is submitted
 * should expect a `buttonText` prop to be configure the submit buttons text
 * should support and optional `category` prop that will initialize the state of the form
 

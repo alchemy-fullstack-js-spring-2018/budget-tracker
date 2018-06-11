@@ -1,0 +1,1 @@
+A simple budget tracker for travel, using redux.
