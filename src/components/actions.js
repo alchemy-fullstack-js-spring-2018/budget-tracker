@@ -9,15 +9,14 @@ import {
   EXPENSE_DELETE } from './reducers';
 
 import {
-  getCategories
-} from '../services/api';
+  getCategories,
+  postCategory } from '../services/api';
 
 export const loadCategories = () => {
   return dispatch => {
     getCategories()
       .then(
         categories => {
-          console.log(categories);
           dispatch({
             type: CATEGORIES_LOAD,
             payload: categories
@@ -28,12 +27,16 @@ export const loadCategories = () => {
 };
 
 export const addCategory = category => {
-  category.id = shortid.generate();
-  category.timestamp = new Date();
-
-  return {
-    type: CATEGORY_ADD,
-    payload: category
+  return dispatch => {
+    postCategory(category)
+      .then(
+        category => {
+          dispatch({
+            type: CATEGORY_ADD,
+            payload: category
+          });
+        }
+      );
   };
 };
 
