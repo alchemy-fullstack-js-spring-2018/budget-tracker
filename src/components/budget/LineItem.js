@@ -10,8 +10,8 @@ export default class LineItem extends Component {
 
   static propTypes = {
     lineItem: PropTypes.object,
-    onRemove: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired
+    // onRemove: PropTypes.func.isRequired,
+    // onUpdate: PropTypes.func.isRequired
   };
 
   handleEdit = () => {
@@ -45,7 +45,7 @@ export default class LineItem extends Component {
               label="Update"
               lineItem={lineItem}
               onComplete={this.handleUpdate}
-              onCancel={this.handleCancel}
+              // onCancel={this.handleCancel}
             />
           </div>
         }

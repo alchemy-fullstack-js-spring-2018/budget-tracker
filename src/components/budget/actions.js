@@ -12,7 +12,9 @@ const categories = () => [
   addCategory({
     name: 'food',
     budget: 200.00,
-    lineItems: []
+    lineItems: [
+      { description: 'June Rent', amount: 500.00, date: new Date(1 / 1 / 2018) }
+    ]
   }).payload,
   addCategory({
     name: 'utilities',
@@ -48,6 +50,8 @@ export const removeCategory = category => ({
 export const addLineItem = (categoryId, lineItem) => {
   lineItem.id = shortid.generate();
   lineItem.date = lineItem.date ? lineItem.date : new Date();
+  console.log('ID', categoryId);
+  console.log('lineItem', lineItem);
 
   return {
     type: LINEITEM_ADD,

@@ -18,7 +18,7 @@ class LineItems extends Component {
     description: '',
     amount: 0,
     date: null,
-    categoryID: null
+    categoryId: null
   };
 
   handleAdd = event => {
@@ -39,7 +39,7 @@ class LineItems extends Component {
           {categories.map(category => <div key={category.name}>
             <h3>{category.name}</h3>
             <ul>
-              {category.lineItems.map(lineItem => <LineItem
+              {category.lineItems && category.lineItems.map(lineItem => <LineItem
                 key={lineItem.description}
                 // onRemove={removeLineItem}
                 // onUpdate={updateLineItem}
@@ -56,9 +56,10 @@ class LineItems extends Component {
 }
 
 export default connect(
-  (state, { categoryID }) => {
+  (state, { categoryId }) => {
+    console.log('state', state);
     return {
-      lineItems: getLineItemByCategory(categoryID, state)
+      lineItems: getLineItemByCategory(categoryId, state)
     };
   },
   { addLineItem }
