@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { getError } from './reducers';
-import { clearError } from './';
+import { clearError } from './actions';
 import PropTypes from 'prop-types';
 
 class Error extends PureComponent {
@@ -9,7 +9,7 @@ class Error extends PureComponent {
   static propTypes = {
     error: PropTypes.any,
     clearError: PropTypes.func.isRequired
-  }
+  };
 
   componentDidUpdate() {
     if(!this.props.error) return;
