@@ -139,28 +139,12 @@ describe('Expense Reducers', () => {
   });
 
 
-  // it('Creates an Expense', () => {
-  //   const prevState = [];
-  //   const state = expenses(prevState, { type: EXPENSE_CREATE, payload: expense1 });
-  //   expect(state).toEqual([expense1]);
-  //   expect(state).not.toBe(prevState);
-  // });
-
-  // it('Updates an Expense', () => {
-  //   const state = expenses(
-  //     [{ id: 1, name: 'Gas', budget: 100 }],
-  //     {
-  //       type: EXPENSE_UPDATE,
-  //       payload: { id: 1, name: 'Gas', budget: 200 }
-  //     }
-  //   );
-  //   expect(state).toEqual([{ id: 1, name: 'Gas', budget: 200 }]);
-  // });
-
-  // it('Deletes an Expense', () => {
-  //   const state = expenses([expense1, expense2], { type: EXPENSE_DELETE, payload: expense2 });
-  //   expect(state).toEqual([expense1]);
-  // });
+  it('Deletes an Expense', () => {
+    const state = expensesByCategory(
+      { 123: [expense1, expense2] }, 
+      { type: EXPENSE_DELETE, payload: { categoryId: 123, expense: expense2 } });
+    expect(state).toEqual({ 123: [expense1] });
+  });
 
 });
 
