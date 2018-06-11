@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
 import { loadCategories, addCategory, updateCategory, removeCategory } from './actions';
+import { getCategories } from '../../services/api';
 
 class Dashboard extends PureComponent {
 
@@ -27,7 +28,7 @@ class Dashboard extends PureComponent {
         <h1>Budget Dashboard</h1>
         <h2>Add a Category</h2>
         <CategoryForm onComplete={addCategory} label="Add"/>
-        <Categories categories={categories} removeCategory={removeCategory} updateCategory={updateCategory}/>
+        {categories && <Categories categories={categories} removeCategory={removeCategory} updateCategory={updateCategory}/>}
       </main>
     );
   }
