@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import Items from '../items/Items';
+import PropTypes from 'prop-types';
 
 export default class Game extends Component {
 
-  state = {
-    Items
+  static propTypes = {
+    categories: PropTypes.array
   };
-
-  // handleAdd = key => {
-
-  // };
 
   render() {
     return (
