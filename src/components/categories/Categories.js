@@ -22,15 +22,17 @@ export default class Categories extends PureComponent {
 
   render() {
     const { category, onRemove, onUpdate } = this.props;
+    const { viewing } = this.state;
     const { name, id } = category;
 
     return (
       <div>
         <li key={id} className={styles.categories}>
           {name}
-          <button onClick={this.handleView}>VIEW</button>
+          {!viewing && <button onClick={this.handleView}>VIEW</button>}
+          {viewing && <button onClick={this.handleView}>HIDE</button>} 
         </li>
-        {this.state.viewing && <CategoryItem
+        {viewing && <CategoryItem
           category={category}
           onRemove={onRemove}
           onUpdate={onUpdate}
