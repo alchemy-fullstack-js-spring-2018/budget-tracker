@@ -13,7 +13,7 @@ export class Expenses extends PureComponent {
     expenses: PropTypes.array,
     addExpense: PropTypes.func.isRequired,
     updateExpense: PropTypes.func.isRequired,
-    removeExpense: PropTypes.func.isRequired
+    removeExpense: PropTypes.func.isRequired,
   };
 
   handleExpenseAdd = data => {
@@ -50,25 +50,19 @@ export class Expenses extends PureComponent {
 }
 
 export default connect(
-  (state, { categoryId }) => {
+  (state, props) => {
     return {
-      expenses: getExpensesByCategory(categoryId, state)
+      expenses: state.expensesByCategory[props.categoryId]
     };
   },
   { addExpense, updateExpense, removeExpense }
 )(Expenses);
 
-
-
-// <div>
-//   <h2>Categories</h2>
-//   <CategoryForm onComplete={addCategory} label="Add"/>
-//   <ul>
-//     {categories.map(category => <Categories
-//       key={category.id}
-//       onRemove={removeCategory}
-//       category={category} 
-//       onUpdate={updateCategory}
-//     />)}
-//   </ul>
-// </div>
+// export default connect(
+//   (state, { categoryId }) => {
+//     return {
+//       expenses: getExpensesByCategory(categoryId, state)
+//     };
+//   },
+//   { addExpense, updateExpense, removeExpense }
+// )(Expenses);

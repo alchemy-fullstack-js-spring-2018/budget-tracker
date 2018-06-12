@@ -59,7 +59,7 @@ export function expensesByCategory(state = {}, { type, payload }) {
     }
     case EXPENSE_DELETE: {
       const copy = { ...state };
-      const update = copy[payload.categoryId].filter(expense => expense.id !== payload.expense.id);
+      const update = copy[payload.categoryId].filter(expense => expense.id !== payload.id);
       copy[payload.categoryId] = update;
       return copy;
     }
