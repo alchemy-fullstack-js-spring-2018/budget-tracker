@@ -1,5 +1,5 @@
 const request = require('superagent');
-const BASE_URL = 'https://open-budget-server.herokuapp.com/api/rmanro/categories';
+const BASE_URL = 'https://budget-tracker-server.herokuapp.com/api/rmanro/categories';
 
 export const postCategory = category => {
   return request
