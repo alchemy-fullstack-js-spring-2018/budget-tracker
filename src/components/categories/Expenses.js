@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExpense, updateExpense, removeExpense } from './actions';
-import { getExpensesByCategory } from './reducers';
 import ExpenseItem from './ExpenseItem';
 import ExpensesForm from './ExpenseForm';
 
@@ -57,12 +56,3 @@ export default connect(
   },
   { addExpense, updateExpense, removeExpense }
 )(Expenses);
-
-// export default connect(
-//   (state, { categoryId }) => {
-//     return {
-//       expenses: getExpensesByCategory(categoryId, state)
-//     };
-//   },
-//   { addExpense, updateExpense, removeExpense }
-// )(Expenses);

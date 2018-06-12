@@ -64,17 +64,15 @@ describe('Category Reducers', () => {
 describe('Expense Reducers', () => {
 
   const expense1 = {
-    id: 1,
+    id: 456,
     categoryId: 123,
-    timestamp: new Date(),
     name: 'Clothes',
     price: 200
   };
 
   const expense2 = {
     id: 123,
-    categoryId: 2,
-    timestamp: new Date(),
+    categoryId: 123,
     name: 'Furniture',
     price: 2000
   };
@@ -114,7 +112,7 @@ describe('Expense Reducers', () => {
       type: EXPENSE_CREATE,
       payload: {
         categoryId: 123,
-        expense: expense2
+        ...expense2
       }
     });
     expect(state).toEqual({ 123: [expense1, expense2] });
@@ -133,7 +131,7 @@ describe('Expense Reducers', () => {
   it('Deletes an Expense', () => {
     const state = expensesByCategory(
       { 123: [expense1, expense2] }, 
-      { type: EXPENSE_DELETE, payload: { categoryId: 123, expense: expense2 } });
+      { type: EXPENSE_DELETE, payload: expense2  });
     expect(state).toEqual({ 123: [expense1] });
   });
 
