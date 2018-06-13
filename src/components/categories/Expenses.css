@@ -1,0 +1,6 @@
+:local(.expenses) {
+  padding: 5px 0;
+  h2 {
+    background: rgba(255, 255, 255, 0.538);
+  }
+}

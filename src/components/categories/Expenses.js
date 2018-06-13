@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addExpense, updateExpense, removeExpense } from './actions';
 import ExpenseItem from './ExpenseItem';
 import ExpensesForm from './ExpenseForm';
+import styles from './Expenses.css';
 
 export class Expenses extends PureComponent {
 
@@ -32,7 +33,7 @@ export class Expenses extends PureComponent {
     if(!expenses) return null;
 
     return (
-      <div>
+      <div className={styles.expenses}>
         <h2>Expenses:</h2>
         <ExpensesForm onComplete={this.handleExpenseAdd} label="Add" categoryId={categoryId}/>
         <ul>
