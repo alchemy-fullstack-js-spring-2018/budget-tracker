@@ -28,7 +28,7 @@ export default class Categories extends PureComponent {
     return (
       <div>
         <li key={id} className={styles.categories}>
-          {name}
+          <h3>{name}</h3>
           {!viewing && <button onClick={this.handleView}>VIEW</button>}
           {viewing && <button onClick={this.handleView}>HIDE</button>} 
         </li>

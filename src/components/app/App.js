@@ -7,7 +7,7 @@ export default class App extends PureComponent {
   render() {
     return (
       <main>
-        <h1>Budget Tracker</h1>
+        <h1>Budget Tracker</h1><br/>
         <Loading/>
         <Error/>
         <Dashboard/>

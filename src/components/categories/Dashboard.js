@@ -28,11 +28,12 @@ class Dashboard extends PureComponent {
 
     return (
       <div>
-        <h2>Categories</h2>
-        <CategoryForm onComplete={addCategory} label="Add"/>
+        <CategoryForm onComplete={addCategory} label="ADD CATEGORY"/>
         <ul>
           <ReactCSSTransitionGroup
             transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
             {categories.map(category => <Categories

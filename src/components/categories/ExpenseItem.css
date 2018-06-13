@@ -1,0 +1,11 @@
+:local(.expenseItem) {
+
+  background-color: rgba(152, 128, 240, 0.453);
+
+  button {
+    background-color: steelblue;
+    color: white;
+    padding: 4px;
+    margin: 3px 10px;
+  }
+}
