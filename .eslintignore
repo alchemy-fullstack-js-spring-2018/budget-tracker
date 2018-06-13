@@ -1,0 +1,8 @@
+.vscode
+./docs
+/.vscode
+*.vscode
+*./docs
+**.vscode
+**/.vscode
+**/docs
