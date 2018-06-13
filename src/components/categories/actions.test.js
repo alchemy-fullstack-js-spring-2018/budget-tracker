@@ -1,5 +1,5 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
-import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, EXPENSE_ADD } from './reducers';
+import { loadCategories, addCategory, removeCategory, updateCategory, addExpense } from './actions';
 
 it('creates a load action', () => {
   const { type, payload } = loadCategories();
@@ -29,11 +29,28 @@ it('create a remove action', () => {
   });
 });
 
-it(' creates an upodate action', () => {
+it(' creates an update action', () => {
   const category = { name: 'meat', budget: 50 };
   const action = updateCategory(category);
   expect(action).toEqual({ 
     type: CATEGORY_UPDATE,
     payload: category
+  });
+
+  it('create an add expense', () => {
+    const parentId = 123;
+    const data = { text: '20% of budget' };
+
+    const { type, payload } = addExpense(parentId, data);
+    expect(type).toBe(EXPENSE_ADD);
+
+    const { categoryId, expense } = payload;
+    expect(categoryId).toBe(parentId);
+
+    const { text, id, timestamp } = expense;
+    expect(text).toBe(data.text);
+    expect(id).toBeTruthy();
+    expect(timestamp).toBeTruthy();
+
   });
 });
