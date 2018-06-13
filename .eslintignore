@@ -1,0 +1,10 @@
+.vscode
+./docs
+/.vscode
+*.vscode
+*./docs
+**.vscode
+**/.vscode
+**/docs
+node_modules
+docs
