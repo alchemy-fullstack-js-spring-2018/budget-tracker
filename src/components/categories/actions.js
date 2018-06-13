@@ -73,7 +73,7 @@ export const addExpense = (categoryId, expense) => dispatch => {
         type: EXPENSE_ADD,
         payload: {
           categoryId,
-          comment: saved
+          expense
         }
       });
     });
