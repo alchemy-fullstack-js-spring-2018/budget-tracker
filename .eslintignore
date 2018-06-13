@@ -6,3 +6,5 @@
 **.vscode
 **/.vscode
 **/docs
+node_modules
+docs
