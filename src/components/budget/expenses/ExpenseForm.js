@@ -15,7 +15,7 @@ export default class ExpenseForm extends Component {
     id: '',
     timestamp: '',
     name: '',
-    cost: '',
+    cost: 0,
     categoryId: this.props.categoryId,
   };
 
@@ -45,7 +45,7 @@ export default class ExpenseForm extends Component {
 
         <label>
           Cost:
-          <input name="cost" value={cost} onChange={this.handleChange}/>
+          <input name="cost" type="number" value={cost} onChange={this.handleChange}/>
         </label>
         <button type="submit">{label}</button>
       </form>
