@@ -5,6 +5,8 @@ import CategoryForm from './CategoryForm';
 import Categories from './Categories';
 import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
 import { getCategories } from './reducers';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import './Dashboard.css';
 
 class Dashboard extends PureComponent {
 
@@ -29,12 +31,17 @@ class Dashboard extends PureComponent {
         <h2>Categories</h2>
         <CategoryForm onComplete={addCategory} label="Add"/>
         <ul>
-          {categories.map(category => <Categories
-            key={category.id}
-            onRemove={removeCategory}
-            category={category} 
-            onUpdate={updateCategory}
-          />)}
+          <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+            {categories.map(category => <Categories
+              key={category.id}
+              onRemove={removeCategory}
+              category={category} 
+              onUpdate={updateCategory}
+            />)}
+          </ReactCSSTransitionGroup>
         </ul>
       </div>
     );
