@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ExpenseForm from './ExpenseForm';
+import styles from './ExpenseItem.css';
 
 export default class ExpenseItem extends PureComponent {
 
@@ -39,14 +40,14 @@ export default class ExpenseItem extends PureComponent {
     const { id, name, price, timestamp, categoryId } = expense;
 
     return (
-      <div>
+      <div className={styles.expenseItem}>
         <li key={id}>
-          {name}
+          <strong>{name}</strong>
           <button onClick={this.handleView}>VIEW</button>
         </li>
         {this.state.viewing &&
         <li key={`detail${id}`}>
-          {price} - {timestamp.toLocaleString()}
+          <p>Price: ${price} <br/> Added: {timestamp.toLocaleString().substring(0, 10)}</p>
           {editing || <button onClick={this.handleEdit}>Edit</button>}
           <button onClick={() => onRemove(expense)}>REMOVE</button>
           {editing &&

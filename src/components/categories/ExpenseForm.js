@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import styles from './ExpenseForm.css';
 
 const defaultState = {
   name: '',
@@ -53,7 +54,7 @@ export default class ExpenseForm extends PureComponent {
     const { label, onCancel } = this.props;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={styles.expenseForm} onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input name="name" value={name} onChange={this.handleChange}/>
