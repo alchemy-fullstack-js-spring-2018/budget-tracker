@@ -1,5 +1,5 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, LINEITEM_ADD } from './reducers';
-import { loadCategories, addCategory, updateCategory, removeCategory, addLineItem } from './actions';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, EXPENSE_ADD } from './reducers';
+import { loadCategories, addCategory, updateCategory, removeCategory, addExpense } from './actions';
 
 it.skip('creates a load action', () => {
   const { type, payload } = loadCategories();
@@ -11,15 +11,15 @@ it.skip('creates a add action', () => {
   const rent = { 
     name: 'rent',
     budget: 500.00,
-    lineItemId: [{ id: 1, description: 'rent', amount: 500.00 }]
+    expenseId: [{ id: 1, description: 'rent', amount: 500.00 }]
   };
 
   const { type, payload } = addCategory(rent);
   expect(type).toBe(CATEGORY_ADD);
-  const { name, budget, lineItemId, id } = payload;
+  const { name, budget, expenseId, id } = payload;
   expect(name).toBe(rent.name);
   expect(budget).toBe(rent.budget);
-  expect(lineItemId).toEqual(rent.lineItemId);
+  expect(expenseId).toEqual(rent.expenseId);
   expect(id).toBeTruthy();
 });
 
@@ -27,7 +27,7 @@ it.skip('creates an update action', () => {
   const rent = { 
     name: 'rent',
     budget: 600.00,
-    lineItemId: [{ id: 1, description: 'rent', amount: 500.00 }]
+    expenseId: [{ id: 1, description: 'rent', amount: 500.00 }]
   };
 
   const action = updateCategory(rent);
@@ -41,7 +41,7 @@ it.skip('creates a remove action', () => {
   const rent = { 
     name: 'rent',
     budget: 500.00,
-    lineItemId: [{ id: 1, description: 'rent', amount: 500.00 }]
+    expenseId: [{ id: 1, description: 'rent', amount: 500.00 }]
   };
 
   const action = removeCategory(rent);
@@ -55,13 +55,13 @@ it.skip('create an add line item', () => {
   const parentId = 123;
   const data = { description: 'June Rent', amount: 700 };
 
-  const { type, payload } = addLineItem(parentId, data);
-  expect(type).toBe(LINEITEM_ADD);
+  const { type, payload } = addExpense(parentId, data);
+  expect(type).toBe(EXPENSE_ADD);
 
-  const { categoryId, lineItem } = payload;
+  const { categoryId, expense } = payload;
   expect(categoryId).toBe(parentId);
 
-  const { description, amount, id, date } = lineItem;
+  const { description, amount, id, date } = expense;
   expect(description).toBe(data.description);
   expect(amount).toBe(data.amount);
   expect(id).toBeTruthy();

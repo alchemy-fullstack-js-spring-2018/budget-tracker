@@ -1,12 +1,12 @@
 import {
   categories,
-  lineItemByCategory,
-  getLineItemByCategory,
+  expenseByCategory,
+  getExpenseByCategory,
   CATEGORIES_LOAD,
   CATEGORY_ADD,
   CATEGORY_UPDATE,
   CATEGORY_REMOVE,
-  LINEITEM_ADD } from './reducers';
+  EXPENSE_ADD } from './reducers';
 
 
 describe.only('categories reducer', () => {
@@ -56,35 +56,35 @@ describe.only('categories reducer', () => {
 
 });
 
-describe.only('lineItemsByCategory reducer', () => {
+describe.only('expensesByCategory reducer', () => {
 
   it('has a default value of empty object', () => {
-    const state = lineItemByCategory(undefined, {});
+    const state = expenseByCategory(undefined, {});
     expect(state).toEqual({});
   });
   
   it('add a line item to a category', () => {
-    const state = lineItemByCategory({}, { type: CATEGORY_ADD, payload: { id: 123 } });
+    const state = expenseByCategory({}, { type: CATEGORY_ADD, payload: { id: 123 } });
     expect(state).toEqual({ 123: [] });
   });
 
   it('delete a line item to a category', () => {
-    const state = lineItemByCategory({ 123: [], 1717: [] }, { type: CATEGORY_REMOVE, payload: { id: 123 } });
+    const state = expenseByCategory({ 123: [], 1717: [] }, { type: CATEGORY_REMOVE, payload: { id: 123 } });
     expect(state).toEqual({ 1717: [] });
   });
 
   it('creates a line item for all loaded categories', () => {
-    const state = lineItemByCategory({}, { 
+    const state = expenseByCategory({}, { 
       type: CATEGORIES_LOAD,
       payload: [{
         id: 123,
-        lineItems: [
+        expenses: [
           { description: 'rent', amount: 600 },
           { description: 'food', amount: 200 }
         ]
       }, {
         id: 1717,
-        lineItems: []
+        expenses: []
       }] 
     });
     expect(state).toEqual({ 
@@ -97,16 +97,16 @@ describe.only('lineItemsByCategory reducer', () => {
   });
 
   it('adds a line item to a category', () => {
-    const state = lineItemByCategory({ 
+    const state = expenseByCategory({ 
       123: [
         { description: 'rent', amount: 600 },
         { description: 'food', amount: 200 }
       ] },
     { 
-      type: LINEITEM_ADD,
+      type: EXPENSE_ADD,
       payload: {
         categoryId: 123,
-        lineItem: { description: 'utilities', amount: 300 }
+        expense: { description: 'utilities', amount: 300 }
       }
     });
     expect(state).toEqual({ 
@@ -123,18 +123,18 @@ describe.only('lineItemsByCategory reducer', () => {
 describe.only('selectors', () => {
 
   it('gets a line item for a category id', () => {
-    const lineItems = [
+    const expenses = [
       { description: 'rent', amount: 600 },
       { description: 'food', amount: 200 }
     ];
     const state = {
-      lineItemByCategory: {
-        123: lineItems
+      expenseByCategory: {
+        123: expenses
       }
     };
 
-    const selected = getLineItemByCategory(123, state);
-    expect(selected).toBe(lineItems);
+    const selected = getExpenseByCategory(123, state);
+    expect(selected).toBe(expenses);
   });
 
 });
