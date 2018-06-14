@@ -1,8 +1,8 @@
 import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
 import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
 
-import { EXPENSE_CREATE, EXPENSE_UPDATE, EXPENSE_DELETE } from './reducers';
-import { loadExpenses } from './actions';
+import { EXPENSE_CREATE } from './reducers';
+import { addExpense } from './actions';
 
 describe.skip('Categories Actions', () => {
 
