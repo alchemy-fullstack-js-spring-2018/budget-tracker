@@ -9,7 +9,7 @@ import {
   EXPENSE_ADD } from './reducers';
 
 
-describe.only('categories reducer', () => {
+describe('categories reducer', () => {
 
   it('categories has a default value of empty array', () => {
     const state = categories(undefined, {});
@@ -120,7 +120,7 @@ describe.only('expensesByCategory reducer', () => {
 
 });
 
-describe.only('selectors', () => {
+describe('selectors', () => {
 
   it('gets a line item for a category id', () => {
     const expenses = [
