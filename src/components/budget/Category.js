@@ -33,7 +33,7 @@ export default class Category extends PureComponent {
     if(!category) return null;
     
     return (
-      <li key={category.name}>
+      <div key={category.name} style={{ display: 'inline-block', margin: '20px' }}>
         <h3>{category.name}</h3>
         <h3>${category.budget}</h3>
         {editing || <button onClick={this.handleEdit}>✐</button>}
@@ -48,7 +48,7 @@ export default class Category extends PureComponent {
             />
           </div>
         }
-      </li>
+      </div>
     );
   }
 }

@@ -5,22 +5,24 @@ import Expenses from './Expenses';
 import { Doughnut } from 'react-chartjs-2';
 
 const data = {
-  labels: [
-    'Red',
-    'Green',
-    'Yellow'
-  ],
+  labels: [],
   datasets: [{
-    data: [300, 50, 100],
+    data: [],
     backgroundColor: [
-      '#FF6384',
-      '#36A2EB',
-      '#FFCE56'
+      'rgba(255,99,132,1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)'
     ],
     hoverBackgroundColor: [
-      '#FF6384',
-      '#36A2EB',
-      '#FFCE56'
+      'rgba(255,99,132,1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)'
     ]
   }]
 };
@@ -38,18 +40,23 @@ export default class Categories extends PureComponent {
     const { categories, removeCategory, updateCategory } = this.props;
     if(!categories) return null;
 
+    if(categories.length) {
+      categories.map(category => {
+        data.labels.push(category.name);
+        data.datasets[0].data.push(category.budget);
+      });
+    }
+
     return (
       <div>
-        <ul>
-          <h2>Categories</h2>
-          {categories.map(category => <Category 
-            key={category.id}
-            onRemove={removeCategory}
-            onUpdate={updateCategory}
-            category={category}
-          />)
-          }
-        </ul>
+        <h2>Categories</h2>
+        {categories.map(category => <Category 
+          key={category.id}
+          onRemove={removeCategory}
+          onUpdate={updateCategory}
+          category={category}
+        />)
+        }
         <Doughnut data={data}/>
         {categories && <Expenses categories={categories}/>}
       </div>
