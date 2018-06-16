@@ -53,7 +53,7 @@ it.skip('creates a remove action', () => {
 
 it.skip('create an add line item', () => {
   const parentId = 123;
-  const data = { description: 'June Rent', amount: 700 };
+  const data = { name: 'June Rent', price: 700 };
 
   const { type, payload } = addExpense(parentId, data);
   expect(type).toBe(EXPENSE_ADD);
@@ -61,9 +61,9 @@ it.skip('create an add line item', () => {
   const { categoryId, expense } = payload;
   expect(categoryId).toBe(parentId);
 
-  const { description, amount, id, date } = expense;
-  expect(description).toBe(data.description);
-  expect(amount).toBe(data.amount);
+  const { name, price, id, timestamp } = expense;
+  expect(name).toBe(data.name);
+  expect(price).toBe(data.price);
   expect(id).toBeTruthy();
-  expect(date).toBeTruthy();
+  expect(timestamp).toBeTruthy();
 });
