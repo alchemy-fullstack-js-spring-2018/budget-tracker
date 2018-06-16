@@ -40,8 +40,8 @@ export const deleteCategory = id => {
     .then(res => res.json());
 };
 
-export const postExpense = (categoryId, expense) => {
-  return fetch(`${BASE_URL}/${categoryId}/expenses`, {
+export const postExpense = expense => {
+  return fetch(`${BASE_URL}/${expense.categoryId}/expenses`, {
     body: JSON.stringify(expense),
     method: 'POST'
   })

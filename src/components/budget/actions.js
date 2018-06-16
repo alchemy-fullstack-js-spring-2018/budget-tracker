@@ -65,13 +65,13 @@ export const removeCategory = category => dispatch => {
     });
 };
 
-export const addExpense = (categoryId, expense) => dispatch => {
-  postExpense(categoryId, expense)
+export const addExpense = expense => dispatch => {
+  postExpense(expense)
     .then(saved => {
       dispatch({
         type: EXPENSE_ADD,
         payload: {
-          categoryId,
+          categoryId: saved.categoryId,
           expense: saved
         }
       });
