@@ -70,7 +70,7 @@ export default class BudgetForm extends PureComponent {
         <input type="date" placeholder="timestamp" value={timestamp} onChange={this.handleChange}/>
         <select onChange={this.handleSelect}>
           <option>Category</option>
-          {categories.map(category => <option key={category.name} value={category.id}>
+          {categories.map(category => <option key={category.id} value={category.id}>
             {category.name}
           </option>)
           }

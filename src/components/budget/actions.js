@@ -66,7 +66,6 @@ export const removeCategory = category => dispatch => {
 };
 
 export const addExpense = (categoryId, expense) => dispatch => {
-  console.log('here');
   postExpense(categoryId, expense)
     .then(saved => {
       dispatch({

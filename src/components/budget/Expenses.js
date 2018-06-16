@@ -24,8 +24,7 @@ class Expenses extends PureComponent {
   handleAdd = event => {
     const { name, price, timestamp, categoryId } = event.edit;
     this.setState({ name, price, timestamp });
-    addExpense(categoryId, { name, price, timestamp });
-    console.log('here in the Handle add');
+    this.props.addExpense(categoryId, { name, price, timestamp });
   };
 
   render() {
@@ -37,11 +36,11 @@ class Expenses extends PureComponent {
         <h2>Add an Expense</h2>
         <BudgetForm onComplete={this.handleAdd} categories={categories} label="Add"/>
         <div>
-          {categories.map(category => <div key={category.name}>
+          {categories.map(category => <div key={category.id}>
             <h3>{category.name}</h3>
             <ul>
               {category.expenses && category.expenses.map(expense => <Expense
-                key={expense.name}
+                key={expense.id}
                 // onRemove={removeExpense}
                 // onUpdate={updateExpense}
                 expense={expense}
