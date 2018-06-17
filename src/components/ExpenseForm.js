@@ -41,7 +41,7 @@ export default class ExpenseForm extends Component {
         </div>
         <div className="cell">
           <label>$
-            <input type="number" name="price" value={price} onChange={this.handleChange}/>
+            <input type="number" name="price" step="0.01" value={price} onChange={this.handleChange}/>
           </label>
         </div>
         <div className="cell"></div>
