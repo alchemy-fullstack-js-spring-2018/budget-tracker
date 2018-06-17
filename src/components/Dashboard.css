@@ -1,0 +1,14 @@
+:local(.dashboard) {
+  h1 {
+    margin: 1rem 2rem;
+  }
+  .main-table {
+    margin: 0 1rem;
+  }
+  .table-header {
+    display: flex;
+  }
+  h2 {
+    font-size: 1em;
+  }
+}

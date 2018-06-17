@@ -1,0 +1,29 @@
+:local(.expense-item) {
+  background-color: white;
+  .sub-table-row:hover {
+    background-color: #bdfce7;
+  }
+  .sub-being-edited {
+    color: #777;
+    background-color: #b5cefc;
+    &:hover {
+      background-color: #b5cefc;
+    }
+  }
+  input {
+    width: 90%;
+    padding: 0.25rem;
+    font-size: 1em;
+    &[type="number"] {
+      width: 80%;
+      margin-left: 0.1rem;
+    }
+  }
+  button {
+    border: none;
+    padding: 0.5rem;
+    &:hover {
+      background-color: #bdfce7;
+    }
+  }
+}
