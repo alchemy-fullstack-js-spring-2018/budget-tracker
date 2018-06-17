@@ -7,7 +7,7 @@ export default class CategoryForm extends Component {
     onComplete: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string,
-    budget: PropTypes.number,
+    budget: PropTypes.string,
     id: PropTypes.string
   };
 
@@ -18,7 +18,7 @@ export default class CategoryForm extends Component {
 
   handleChange = ({ target }) => {
     let { value } = target;
-    if(target.type === 'number') value = +value || '';
+    // if(target.type === 'number') value = +value || '';
     this.setState({ [target.name]: value });
   };
 
