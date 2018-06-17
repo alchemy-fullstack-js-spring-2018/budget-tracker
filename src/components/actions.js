@@ -1,4 +1,3 @@
-import shortid from 'shortid';
 import {
   CATEGORIES_LOAD,
   CATEGORY_ADD,
@@ -12,7 +11,8 @@ import {
   getCategories,
   postCategory,
   putCategory,
-  deleteCategory } from '../services/api';
+  deleteCategory, 
+  postExpense } from '../services/api';
 
 export const loadCategories = () => {
   return dispatch => {
@@ -63,12 +63,14 @@ export const removeCategory = category => {
 };
 
 export const addExpense = (categoryId, expense) => {
-  expense.id = shortid.generate();
-  expense.timestamp = new Date();
-
-  return {
-    type: EXPENSE_CREATE,
-    payload: { categoryId, expense }
+  return dispatch => {
+    postExpense(categoryId, expense)
+      .then(expense => {
+        dispatch({
+          type: EXPENSE_CREATE,
+          payload: { categoryId, expense }
+        });
+      });
   };
 };
 
