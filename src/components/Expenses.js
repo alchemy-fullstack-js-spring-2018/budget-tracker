@@ -2,25 +2,44 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getExpensesByCategory } from './reducers';
+import { addExpense, updateExpense, removeExpense } from './actions';
 import ExpenseItem from './ExpenseItem';
+import ExpenseForm from './ExpenseForm';
+import styles from './Expenses.css';
 
 class Expenses extends Component {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
-    expenses: PropTypes.array
+    expenses: PropTypes.array,
+    addExpense: PropTypes.func.isRequired,
+    updateExpense: PropTypes.func.isRequired,
+    removeExpense: PropTypes.func.isRequired
   };
 
   render() {
-    const { expenses } = this.props;
+    const { categoryId, expenses, addExpense, updateExpense, removeExpense } = this.props;
     if(!expenses) return null;
 
     return (
-      <ul>
-        <h3>Expenses</h3>        
-        {expenses.map(expense => <ExpenseItem
-          key={expense.id}
-          expense={expense}/>)}
-      </ul>
+      <div className={styles.expenses}>
+        <h3>Expenses</h3>
+        <div className="sub-table">
+          <div className="sub-table-header">
+            <h4 className="sub-table-heading">Type</h4>
+            <h4 className="sub-table-heading">Amount</h4>
+            <h4 className="sub-table-heading">Actions</h4>
+          </div>
+          <ul>
+            <ExpenseForm categoryId={categoryId} onComplete={addExpense} label="ADD"/>      
+            {expenses.map(expense => <ExpenseItem
+              key={expense.id}
+              categoryId={categoryId}
+              expense={expense}
+              onUpdate={updateExpense}
+              onRemove={removeExpense}/>)}
+          </ul>
+        </div>
+      </div>
     );
   }
 }
@@ -30,5 +49,7 @@ export default connect(
     return {
       expenses: getExpensesByCategory(categoryId, state)
     };
-  }
+  },
+  { addExpense, updateExpense, removeExpense }
 )(Expenses);
+
