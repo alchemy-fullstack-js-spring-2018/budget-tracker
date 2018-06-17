@@ -29,3 +29,9 @@ export const postExpense = (categoryId, expense) => {
     .send(expense)
     .then(({ body }) => body);
 };
+
+export const putExpense = (categoryId, expense) => {
+  return request.put(`${baseURL}/${categoryId}/expenses/${expense.id}`)
+    .send(expense)
+    .then(({ body }) => body);
+};

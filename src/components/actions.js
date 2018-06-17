@@ -12,7 +12,8 @@ import {
   postCategory,
   putCategory,
   deleteCategory, 
-  postExpense } from '../services/api';
+  postExpense, 
+  putExpense } from '../services/api';
 
 export const loadCategories = () => {
   return dispatch => {
@@ -75,10 +76,14 @@ export const addExpense = (categoryId, expense) => {
 };
 
 export const updateExpense = (categoryId, expense) => {
-  
-  return {
-    type: EXPENSE_UPDATE,
-    payload: { categoryId, expense }
+  return dispatch => {
+    putExpense(categoryId, expense)
+      .then(expense => {
+        dispatch({
+          type: EXPENSE_UPDATE,
+          payload: { categoryId, expense }
+        });
+      });
   };
 };
 
