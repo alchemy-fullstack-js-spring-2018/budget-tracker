@@ -23,3 +23,9 @@ export const deleteCategory = id => {
   return request.delete(`${baseURL}/${id}`)
     .then(({ deleted }) => deleted);
 };
+
+export const postExpense = (categoryId, expense) => {
+  return request.post(`${baseURL}/${categoryId}/expenses`)
+    .send(expense)
+    .then(({ body }) => body);
+};
