@@ -13,7 +13,8 @@ import {
   putCategory,
   deleteCategory, 
   postExpense, 
-  putExpense } from '../services/api';
+  putExpense,
+  deleteExpense } from '../services/api';
 
 export const loadCategories = () => {
   return dispatch => {
@@ -88,9 +89,13 @@ export const updateExpense = (categoryId, expense) => {
 };
 
 export const removeExpense = (categoryId, expense) => {
-  
-  return {
-    type: EXPENSE_DELETE,
-    payload: { categoryId, expense }
+  return dispatch => {
+    deleteExpense(categoryId, expense)
+      .then(() => {
+        dispatch({
+          type: EXPENSE_DELETE,
+          payload: { categoryId, expense }
+        });
+      });
   };
 };
