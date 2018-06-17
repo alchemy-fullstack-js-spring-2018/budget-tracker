@@ -25,7 +25,8 @@ export default class CategoryForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if(this.state.name === '' || this.state.budget === '') return;
-    this.props.onComplete({ ...this.state, id: this.props.id });
+    const submission = this.props.id ? { ...this.state, id: this.props.id } : this.state;
+    this.props.onComplete(submission);
     this.setState({ name: '', budget: '' });
   };
 
