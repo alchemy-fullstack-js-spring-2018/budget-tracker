@@ -24,10 +24,11 @@ class Expenses extends Component {
       <div className={styles.expenses}>
         <h3>Expenses</h3>
         <div className="sub-table">
-          <div className="sub-table-header">
-            <h4 className="sub-table-heading">Type</h4>
-            <h4 className="sub-table-heading">Amount</h4>
-            <h4 className="sub-table-heading">Actions</h4>
+          <div className="table-header">
+            <h4 className="table-heading">Type</h4>
+            <h4 className="table-heading">Amount</h4>
+            <div className="cell"></div>
+            <h4 className="table-heading">Actions</h4>
           </div>
           <ul>
             <ExpenseForm categoryId={categoryId} onComplete={addExpense} label="ADD"/>      

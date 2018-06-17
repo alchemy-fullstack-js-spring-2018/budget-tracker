@@ -31,7 +31,7 @@ export default class ExpenseItem extends Component {
 
     return (
       <div className={styles['expense-item']}>
-        <li className={editing ? 'being-edited' : 'table-row'}>
+        <li className={editing ? 'sub-being-edited' : 'sub-table-row'}>
           <div className="cell">{name}</div>
           <div className="cell">${price}</div>
           <div className="cell">on {date.toLocaleDateString()}</div>
