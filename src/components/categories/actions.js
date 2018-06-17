@@ -1,4 +1,4 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE } from './reducers';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, EXPENSE_ADD } from './reducers';
 import shortid from 'shortid';
 
 const categories = [
@@ -30,3 +30,16 @@ export const updateCategory = category => ({
   type: CATEGORY_UPDATE,
   payload: category
 });
+
+// export const addExpense = ( categoryId, expense ) => dispatch => {
+//   postExpense(categoryId, expense)
+//     .then(saved => {
+//       dispatch({
+//         type:EXPENSE_ADD,
+//         payload: {
+//           categoryId,
+//           expense:saved
+//         }
+//       });
+//     });
+// };

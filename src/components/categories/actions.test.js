@@ -29,7 +29,7 @@ it('create a remove action', () => {
   });
 });
 
-it(' creates an upodate action', () => {
+it(' creates an update action', () => {
   const category = { name: 'meat', budget: 50 };
   const action = updateCategory(category);
   expect(action).toEqual({ 
