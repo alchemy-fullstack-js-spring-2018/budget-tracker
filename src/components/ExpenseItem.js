@@ -37,7 +37,7 @@ export default class ExpenseItem extends Component {
           <div className="cell">${price}</div>
           <div className="cell">on {date.toLocaleDateString()}</div>
           <div className="cell">
-            <button className="remove icon-button" onClick={onRemove}>&times;</button>
+            <button className="remove icon-button" onClick={() => onRemove(categoryId, expense)}>&times;</button>
             <button className={editing ? 'edit active' : 'edit icon-button'} onClick={this.handleEditToggle}>✎</button>  
           </div>
         </li>
