@@ -1,6 +1,5 @@
 :local(.expense-item) {
   background-color: white;
-  margin-bottom: 1rem;
   .sub-table-row:hover {
     background-color: #bdfce7;
   }
