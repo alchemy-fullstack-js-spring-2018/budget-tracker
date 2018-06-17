@@ -10,6 +10,7 @@ export default class ExpenseItem extends Component {
 
   static propTypes = {
     expense: PropTypes.object,
+    categoryId: PropTypes.string.isRequired,
     onRemove: PropTypes.func.isRequired,
     onUpdate: PropTypes.func.isRequired
   };
@@ -18,15 +19,15 @@ export default class ExpenseItem extends Component {
     this.setState(({ editing }) => ({ editing: !editing }));
   };
 
-  handleUpdate = info => {
-    this.props.onUpdate(info);
+  handleUpdate = (categoryId, expenseInfo) => {
+    this.props.onUpdate(categoryId, expenseInfo);
     this.setState({ editing: false });
   };
 
   render() {
     const { editing } = this.state;
-    const { expense, onRemove } = this.props;
-    const { name, price, timestamp } = expense;
+    const { expense, categoryId, onRemove } = this.props;
+    const { name, price, id, timestamp } = expense;
     const date = new Date(timestamp);
 
     return (
@@ -40,7 +41,7 @@ export default class ExpenseItem extends Component {
             <button className={editing ? 'edit active' : 'edit icon-button'} onClick={this.handleEditToggle}>✎</button>  
           </div>
         </li>
-        {editing && <ExpenseForm name={name} price={price} onComplete={this.handleUpdate} label="UPDATE"/>} 
+        {editing && <ExpenseForm name={name} price={price} id={id} categoryId={categoryId} onComplete={this.handleUpdate} label="UPDATE"/>} 
       </div>
 
     );
