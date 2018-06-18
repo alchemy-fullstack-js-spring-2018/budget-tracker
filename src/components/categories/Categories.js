@@ -35,7 +35,6 @@ class Categories extends PureComponent {
               onRemove={removeCategory} 
               onUpdate={updateCategory}
               category={category}
-              onUpdate={updateCategory}
             />)}
           </ul>
         </div>
