@@ -1,4 +1,4 @@
-import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, expensesByCategory, EXPENSE_CREATE, EXPENSE_DELETE, EXPENSE_ADD } from './reducers';
+import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, expensesByCategory, EXPENSE_ADD, getExpensesByCategory } from './reducers';
 it('has a default value of empty array', () => {
   const state = categories(undefined, {});
   expect(state).toEqual([]);
@@ -19,7 +19,7 @@ const category2 = {
 };
 
 it('loads category', () => {
-  const state = categories([], { type:CATEGORIES_LOAD, payload: [category1, category2] });
+  const state = categories([], { type: CATEGORIES_LOAD, payload: [category1, category2] });
   expect(state).toEqual([category1, category2]);
 });
 
@@ -53,50 +53,64 @@ describe(' expensesByCategory reducer', () => {
     expect(state).toEqual({});
   });
 
-  it('adds an entry on expense add', () => {
-    const state = expensesByCategory({}, { type: EXPENSE_CREATE, payload: { id: 123 } });
-    expect(state).toEqual({ 123: [] });
+  it('adds an entry on category add', () => {
+    const state = expensesByCategory({}, { type: CATEGORY_ADD, payload: { id: 5 } });
+    expect(state).toEqual({ 5: [] });
   });
 
   it('removes an expense on Category remove', () => {
-    const state = expensesByCategory({ 123: [], 456: [] }, { type: EXPENSE_DELETE, payload: { id: 123 } });
-    expect(state).toEqual({ 456: [] });
+    const state = expensesByCategory({ 5: [], 6: [] }, { type: CATEGORY_REMOVE, payload: { id: 5 } });
+    expect(state).toEqual({ 6: [] });
   });
 
   it('creates expenses for all loaded categories', () => {
     const state = expensesByCategory({}, { 
       type: CATEGORIES_LOAD, 
       payload: [{ 
-        id: 123, 
+        id: 5, 
         expenses: [
           { text: 'one' }, 
           { text: 'two' }
         ] 
       }, {
-        id: 456,
+        id: 6,
         expenses: []
       }] 
     });
     expect(state).toEqual({ 
-      123: [{ text: 'one' }, { text: 'two' }],
-      456: []
+      5: [{ text: 'one' }, { text: 'two' }],
+      6: []
     });
   });
 
   it('adds a expense to a category', () => {
-    const state = expensesByCategory({ 123: [{ text: 'one' }] }, {
+    const state = expensesByCategory({ 5: [{ text: 'one' }] }, {
       type: EXPENSE_ADD,
       payload: {
-        categoryId: 123,
+        categoryId: 5,
         expense: { text: 'two' }
       }
     });
 
-    expect(state).toEqual({ 123: [{ text: 'one' }, { text: 'two' }] });
+    expect(state).toEqual({ 5: [{ text: 'one' }, { text: 'two' }] });
   });
 
   // it('updates an expense on a category', () => {
 
   // });
 
+});
+
+describe('selectors', () => {
+
+  it('gets expenses for a category id', () => {
+    const expenses = [{ text: 'one' }];
+    const state = {
+      expensesByCategory: {
+        5: expenses
+      }
+    };
+    const selected = getExpensesByCategory(5, state);
+    expect(selected).toBe(expenses);
+  });
 });

@@ -7,6 +7,10 @@ export const EXPENSE_DELETE = 'EXPENSE_DELETE';
 export const EXPENSE_ADD = 'EXPENSE_ADD';
 export const EXPENSE_UPDATE = 'EXPENSE_UPDATE';
 
+export const getCategories = state => state.categories;
+export const getExpenses = state => state.expensesByCategory;
+export const getExpensesByCategory = (categoryId, state) => getExpenses(state)[categoryId];
+
 export function categories(state = [], { type, payload }) {
   switch (type) {
     case CATEGORIES_LOAD:
@@ -29,12 +33,12 @@ export function expensesByCategory(state = {}, { type, payload }) {
         map[category.id] = category.expenses;
         return map;
       }, {});
-    case EXPENSE_CREATE:
+    case CATEGORY_ADD:
       return {
         ...state,
         [payload.id]: []
       };
-    case EXPENSE_DELETE: {
+    case CATEGORY_REMOVE: {
       const copy = { ...state };
       delete copy[payload.id];
       return copy;
@@ -48,8 +52,8 @@ export function expensesByCategory(state = {}, { type, payload }) {
         ]
       };
     }
-    case EXPENSE_UPDATE:
-      return state.map(expense => expense.id === payload.id ? payload : expense);
+    // case EXPENSE_UPDATE:
+    //   return state.map(expense => expense.id === payload.id ? payload : expense);
 
 
     default:
