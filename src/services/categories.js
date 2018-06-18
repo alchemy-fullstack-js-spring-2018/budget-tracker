@@ -8,7 +8,7 @@ if(window) {
     window.localStorage.setItem(key, JSON.stringify(categories));
   };
 
-  // data = window.localStorage.getItem(key);
+  data = window.localStorage.getItem(key);
 }
 
 const categories = (data && data !== 'undefined') ? JSON.parse(data) : initCategories();
