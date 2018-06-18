@@ -19,7 +19,7 @@ const category2 = {
 };
 
 it('loads category', () => {
-  const state = categories([], { type:CATEGORIES_LOAD, payload: [category1, category2] });
+  const state = categories([], { type: CATEGORIES_LOAD, payload: [category1, category2] });
   expect(state).toEqual([category1, category2]);
 });
 
