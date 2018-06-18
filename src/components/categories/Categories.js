@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Category from './Category';
+import { getCategories } from './reducers';
 import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
 
-class Categories extends Component {
+class Categories extends PureComponent {
 
     static propTypes = {
       categories: PropTypes.array,
       addCategory: PropTypes.func.isRequired,
       removeCategory: PropTypes.func.isRequired,
-      updateCategory: PropTypes.func.isRequired,
-      loadCategories: PropTypes.func.isRequired
+      loadCategories: PropTypes.func.isRequired,
+      updateCategory: PropTypes.func.isRequired
     };
 
     componentDidMount() {
@@ -34,6 +35,7 @@ class Categories extends Component {
               onRemove={removeCategory} 
               onUpdate={updateCategory}
               category={category}
+              onUpdate={updateCategory}
             />)}
           </ul>
         </div>
@@ -42,6 +44,6 @@ class Categories extends Component {
 }
 
 export default connect(
-  state => ({ categories: state.categories }),
+  state => ({ categories: getCategories(state) }),
   { loadCategories, addCategory, removeCategory, updateCategory }
 )(Categories);

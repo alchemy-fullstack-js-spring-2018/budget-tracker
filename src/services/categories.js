@@ -1,15 +1,15 @@
 import shortid from 'shortid';
 
-// const key = 'categories';
+const key = 'categories';
 let data;
 
-// if(window) {
-//   window.onbeforeunload = () => {
-//     window.localStorage.setItem(key, JSON.stringify(categories));
-//   };
-  
-//   data = window.localStorage.getItem(key);
-// }
+if(window) {
+  window.onbeforeunload = () => {
+    window.localStorage.setItem(key, JSON.stringify(categories));
+  };
+
+  // data = window.localStorage.getItem(key);
+}
 
 const categories = (data && data !== 'undefined') ? JSON.parse(data) : initCategories();
 
@@ -18,25 +18,21 @@ export default categories;
 function initCategories() {
   return [{
     id: shortid.generate(),
-    name: 'Meat',
-    budget: 50, 
+    name: 'category',
+    budget: '$50',
     expenses: [
-      { id: shortid.generate(), text: '30% total expense' },
-      { id: shortid.generate(), text: '20% total expense' }
+      { id: shortid.generate(), text: 'money' },
+      { id: shortid.generate(), text: 'money2' }
     ]
-  }, { 
+  }, {
     id: shortid.generate(),
-    name: 'Produce', 
-    budget: 40,
-    expenses: [
-      { id: shortid.generate(), text: '30% total expense' },
-    ] 
-  }, { 
+    name: 'category1',
+    budget: '$40',
+    expense: []
+  }, {
     id: shortid.generate(),
-    name: 'Entertainment', 
-    budget: 10, 
-    expenses: [
-      { id: shortid.generate(), text: '30% total expense' },
-    ]
+    name: 'category2',
+    budget: '$50',
+    expense: []
   }];
 }

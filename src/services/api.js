@@ -4,15 +4,12 @@ import categories from './categories';
 export const getCategories = () => {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(categories.map(f => ({ ...f, expenses: [...f.expenses] })));
+      resolve(categories.map(c => ({ ...c, expenses: [...c.expenses] })));
     }, 500);
   });
 };
 
 export const postCategory = category => {
-  // return Promise.reject({
-  //   message: 'fruit stand is closed'
-  // });
 
   const newCategory = {
     ...category,
@@ -25,7 +22,7 @@ export const postCategory = category => {
 };
 
 export const putCategory = category => {
-  let index = categories.findIndex(f => f.id === category.id);
+  let index = categories.findIndex(c => c.id === category.id);
   if(index === -1) index = categories.length = 1;
   const updated = { ...category };
   categories.splice(index, 1, updated);
@@ -33,14 +30,14 @@ export const putCategory = category => {
 };
 
 export const deleteCategory = id => {
-  let index = categories.findIndex(f => f.id === id);
+  let index = categories.findIndex(c => c.id === id);
   if(index === -1) return;
   categories.splice(index, 1);
   return Promise.resolve({ removed: true });
 };
 
 export const postExpense = (categoryId, expense) => {
-  let category = categories.find(f => f.id === categoryId);
+  let category = categories.find(c => c.id === categoryId);
   if(!category) return;
 
   const newExpense = {

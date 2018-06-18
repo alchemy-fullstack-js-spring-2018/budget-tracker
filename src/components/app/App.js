@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Categories from '../categories/Categories';
 import Loading from './Loading';
 import Error from './Error';
 
-export default class App extends Component {
+export default class App extends PureComponent {
 
   render() {
     // console.log('we are in app');

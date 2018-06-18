@@ -1,8 +1,6 @@
-import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, EXPENSE_ADD } from './reducers';
+import { CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_UPDATE, CATEGORY_REMOVE, EXPENSE_ADD } from './reducers';
 import { ERROR, LOADING_START, LOADING_END } from '../app/reducers';
 import { getCategories, postCategory, putCategory, deleteCategory, postExpense } from '../../services/api';
-
-
 
 export const loadCategories = () => {
 
@@ -73,7 +71,7 @@ export const addExpense = (categoryId, expense) => dispatch => {
         type: EXPENSE_ADD,
         payload: {
           categoryId,
-          expense
+          expense: saved
         }
       });
     });
