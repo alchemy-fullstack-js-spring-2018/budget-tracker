@@ -20,7 +20,7 @@ class Expenses extends PureComponent {
 
     render() {
       const { expenses } = this.props;
-
+      if(!expenses) return null;
       return (
         <div>
           <ul>

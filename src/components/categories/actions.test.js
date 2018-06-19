@@ -6,7 +6,7 @@ describe.skip('actions tests', () => {
   it('creates a load action', () => {
     const { type, payload } = loadCategories();
     expect(type).toBe(CATEGORIES_LOAD);
-    expect(payload.length).toBe(2); //expects games array to be two in length.
+    expect(payload.length).toBe(2); //expects array to be two in length.
   });
 
   it(' create an add action', () => {
