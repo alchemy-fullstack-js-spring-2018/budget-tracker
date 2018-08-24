@@ -1,15 +1,17 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CategoryForm from './CategoryForm';
 import Expenses from './Expenses';
 import styles from './CategoryItem.css';
+import { updateCategory } from './actions';
 
-export default class CategoryItem extends PureComponent {
+export class CategoryItem extends PureComponent {
 
   static propTypes = {
     category: PropTypes.object.isRequired,
     onRemove: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired
   };
 
   state = {
@@ -25,7 +27,7 @@ export default class CategoryItem extends PureComponent {
   };
 
   handleUpdate = data => {
-    this.props.onUpdate(data);
+    this.props.updateCategory(data);
     this.setState({ editing: false });
   };
 
@@ -54,3 +56,8 @@ export default class CategoryItem extends PureComponent {
     );
   }
 }
+
+export default connect(
+  null,
+  { updateCategory }
+)(CategoryItem);

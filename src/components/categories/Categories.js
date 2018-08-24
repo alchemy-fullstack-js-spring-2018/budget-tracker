@@ -8,7 +8,6 @@ export default class Categories extends PureComponent {
   static propTypes = {
     category: PropTypes.object,
     onRemove: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired
   };
 
   state = {
@@ -21,7 +20,7 @@ export default class Categories extends PureComponent {
   };
 
   render() {
-    const { category, onRemove, onUpdate } = this.props;
+    const { category, onRemove } = this.props;
     const { viewing } = this.state;
     const { name, id } = category;
 
@@ -35,7 +34,6 @@ export default class Categories extends PureComponent {
         {viewing && <CategoryItem
           category={category}
           onRemove={onRemove}
-          onUpdate={onUpdate}
         />}
       </div>
     );

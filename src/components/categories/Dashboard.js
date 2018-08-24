@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from './CategoryForm';
 import Categories from './Categories';
-import { loadCategories, addCategory, removeCategory, updateCategory } from './actions';
+import { loadCategories, addCategory, removeCategory } from './actions';
 import { getCategories } from './reducers';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './Dashboard.css';
@@ -15,7 +15,6 @@ class Dashboard extends PureComponent {
     addCategory: PropTypes.func.isRequired,
     removeCategory: PropTypes.func.isRequired,
     loadCategories: PropTypes.func.isRequired,
-    updateCategory: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -23,7 +22,7 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const { categories, addCategory, removeCategory, updateCategory } = this.props;
+    const { categories, addCategory, removeCategory } = this.props; 
     if(!categories) return null;
 
     return (
@@ -40,7 +39,6 @@ class Dashboard extends PureComponent {
               key={category.id}
               onRemove={removeCategory}
               category={category} 
-              onUpdate={updateCategory}
             />)}
           </ReactCSSTransitionGroup>
         </ul>
@@ -51,5 +49,5 @@ class Dashboard extends PureComponent {
 
 export default connect(
   state => ({ categories: getCategories(state) }),
-  { loadCategories, addCategory, removeCategory, updateCategory }
+  { loadCategories, addCategory, removeCategory }
 )(Dashboard);
