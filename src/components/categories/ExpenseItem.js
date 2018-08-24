@@ -1,14 +1,16 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ExpenseForm from './ExpenseForm';
 import styles from './ExpenseItem.css';
+import { updateExpense } from './actions';
 
-export default class ExpenseItem extends PureComponent {
+export class ExpenseItem extends PureComponent {
 
   static propTypes = {
     expense: PropTypes.object.isRequired,
-    onUpdate: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired
+    onRemove: PropTypes.func.isRequired,
+    updateExpense: PropTypes.func.isRequired
   };
 
   state = {
@@ -30,7 +32,7 @@ export default class ExpenseItem extends PureComponent {
   };
 
   handleUpdate = data => {
-    this.props.onUpdate(data);
+    this.props.updateExpense(data);
     this.setState({ editing: false });
   };
 
@@ -68,23 +70,7 @@ export default class ExpenseItem extends PureComponent {
   }
 }
 
-
-
-
-
-
-
-
-
-
-{/* <div>
-        <li key={id} className={styles.categories}>
-          {name}
-          <button onClick={this.handleView}>VIEW</button>
-        </li>
-        {this.state.viewing && <CategoryItem
-          category={category}
-          onRemove={onRemove}
-          onUpdate={onUpdate}
-        />}
-      </div> */}
+export default connect(
+  null,
+  { updateExpense }
+)(ExpenseItem);

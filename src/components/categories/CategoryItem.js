@@ -49,7 +49,7 @@ export default class CategoryItem extends PureComponent {
         <h3>Budget: ${budget} <br/> Added: {timestamp.toLocaleString().substring(0, 10)}</h3>
         {editing || <button className={styles.editButton} onClick={this.handleEdit}>EDIT</button>}
         <button className={styles.removeButton} onClick={() => onRemove(category)}>REMOVE</button>
-        <Expenses categoryId={category.id} expenses={category.expenses}/>
+        <Expenses categoryId={category.id}/>
       </li>
     );
   }

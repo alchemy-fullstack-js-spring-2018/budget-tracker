@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExpense, updateExpense, removeExpense } from './actions';
+import { addExpense, removeExpense } from './actions';
+import { getExpensesByCategory } from './reducers';
 import ExpenseItem from './ExpenseItem';
 import ExpensesForm from './ExpenseForm';
 import styles from './Expenses.css';
@@ -12,7 +13,6 @@ export class Expenses extends PureComponent {
     categoryId: PropTypes.string.isRequired,
     expenses: PropTypes.array,
     addExpense: PropTypes.func.isRequired,
-    updateExpense: PropTypes.func.isRequired,
     removeExpense: PropTypes.func.isRequired,
   };
 
@@ -20,9 +20,6 @@ export class Expenses extends PureComponent {
     this.props.addExpense(data);
   };
 
-  handleUpdate = data => {
-    this.props.updateExpense(data);
-  };
 
   handleRemoveExpense = expense => {
     this.props.removeExpense(expense);
@@ -40,7 +37,6 @@ export class Expenses extends PureComponent {
           {expenses.map(expense => <ExpenseItem
             key={expense.id}
             expense={expense}
-            onUpdate={this.handleUpdate}
             onRemove={this.handleRemoveExpense}
           />)}     
         </ul>
@@ -50,10 +46,10 @@ export class Expenses extends PureComponent {
 }
 
 export default connect(
-  (state, props) => {
+  (state, { categoryId }) => {
     return {
-      expenses: state.expensesByCategory[props.categoryId]
+      expenses: getExpensesByCategory(state, categoryId)
     };
   },
-  { addExpense, updateExpense, removeExpense }
+  { addExpense, removeExpense }
 )(Expenses);
